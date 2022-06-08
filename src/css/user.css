@@ -1,0 +1,1455 @@
+
+.main-body {
+    width: 100%;
+}
+.page-with-header {
+    padding-top: 60px;
+}
+
+.layout.jsx-740312492 {
+    background-color: rgb(248, 248, 248);
+}
+
+.layout.jsx-175208557 {
+    margin: 0px auto;
+    width: 1100px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: rgb(248, 248, 248);
+}
+
+.container-v2.jsx-410242825 {
+    width: 1100px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 2px 8px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    padding: 24px 56px;
+}
+
+.container-v2.jsx-410242825 {
+    width: 1100px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 2px 8px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    padding: 24px 56px;
+}
+
+.css-n23t8l {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP1);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightBold);
+    color: var(--tux-colorTextPrimary);
+    display: block;
+}
+.sub-title-v2.jsx-410242825 {
+    margin-top: 2px;
+}
+.css-nyj7ur {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP2);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightRegular);
+    color: var(--tux-colorTextTertiary);
+}
+.contents-v2.jsx-410242825 {
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 130px;
+}
+.uploader.jsx-410242825 {
+    margin-top: 24px;
+}
+.upload-card.jsx-2404389384 {
+    width: 260px;
+    height: 458px;
+    border: 2px dashed rgba(22, 24, 35, 0.2);
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+.before-upload-stage.jsx-2404389384 {
+    border-radius: 8px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out 0s;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+.before-upload-stage.jsx-2404389384 .cloud-icon.jsx-2404389384 {
+    width: 40px;
+    height: 29px;
+}
+.before-upload-stage.jsx-2404389384 .text-main.jsx-2404389384 {
+    text-align: center;
+    margin-top: 24px;
+}
+.css-1q42136 {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP2);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    color: var(--tux-colorTextPrimary);
+}
+.before-upload-stage.jsx-2404389384 .text-sub.jsx-2404389384 {
+    margin-top: 4px;
+    margin-bottom: 24px;
+}
+.css-1wbo2p7 {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP4);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightRegular);
+    color: var(--tux-colorTextSecondary);
+}
+.before-upload-stage.jsx-2404389384 .text-video-info.jsx-2404389384 {
+    list-style: none;
+}
+.before-upload-stage.jsx-2404389384 .text-video-info.jsx-2404389384 div.jsx-2404389384 {
+    margin-bottom: 6px;
+    text-align: center;
+}
+.css-tad11f {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP4);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightRegular);
+    color: var(--tux-colorTextTertiary);
+}
+.before-upload-stage.jsx-2404389384 .file-select-button.jsx-2404389384 {
+    margin-top: 32px;
+    width: 100%;
+}
+.css-14w2a8u {
+    box-sizing: border-box;
+    appearance: none;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    text-decoration: none;
+    cursor: pointer;
+    background-clip: padding-box;
+    width: 100%;
+    font-size: var(--tux-fontSizeP3);
+    height: 36px;
+    min-width: 96px;
+    padding-inline: 15px;
+    color: var(--tux-colorConstTextInverse);
+    background-color: var(--tux-colorPrimary);
+    border-color: var(--tux-colorPrimary);
+}
+.css-1db5cpb {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    opacity: 1;
+    overflow: hidden;
+    gap: 6px;
+}
+.css-1z070dx {
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.form-v2.jsx-2580397738 {
+    margin-left: 24px;
+    flex: 1 1 0%;
+    min-width: 0px;
+}
+.form-v2.jsx-2580397738 .caption-wrap-v2.jsx-2580397738 {
+    margin-bottom: 24px;
+}
+.container.jsx-1717967343 {
+    outline-style: none;
+    position: relative;
+    flex: 1 1 0%;
+}
+.container.jsx-1717967343 .text-container.jsx-1717967343 {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.css-wpwnoe {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP3);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    color: var(--tux-colorTextPrimary);
+    display: inline;
+}
+.require-font.jsx-1717967343 {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 17px;
+    color: rgba(22, 24, 35, 0.5);
+    white-space: pre;
+}
+.container.jsx-1717967343 .margin-t-4.jsx-1717967343 {
+    margin-top: 4px;
+}
+.container-v2.jsx-1043401508 {
+    min-height: 46px;
+    position: relative;
+    text-align: center;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 4px;
+}
+.editor {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    cursor: text;
+    width: 100%;
+    position: relative;
+    padding: 0px 80px 0px 16px;
+}
+.DraftEditor-root {
+    position: relative;
+}
+.DraftEditor-editorContainer, .DraftEditor-root, .public-DraftEditor-content {
+    height: inherit;
+    text-align: initial;
+}
+.container-v2.jsx-1043401508 .icon-style.jsx-1043401508 {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: 8px;
+    top: 12px;
+    cursor: pointer;
+}
+.container-v2.jsx-1043401508 .icon-style.hash.jsx-1043401508 {
+    right: 12px;
+}
+
+.container.jsx-1717967343 .container-at.jsx-1717967343 {
+    width: 100%;
+}
+.container.jsx-1717967343 .hide-display.jsx-1717967343 {
+    visibility: hidden;
+}
+.container-at.jsx-1717967343 {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 0px;
+}
+.form-v2.jsx-2580397738 .margin-t-24.jsx-2580397738 {
+    margin-top: 24px;
+}
+.container-v2.jsx-662133185 {
+    position: relative;
+    line-height: 0;
+    padding: 6px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 2px;
+}
+.bg-container-v2.jsx-662133185 {
+    display: flex;
+    border: 2px solid rgba(22, 24, 35, 0.12);
+    box-sizing: border-box;
+    border-radius: 2px;
+}
+.bg-container-v2.empty.jsx-662133185 {
+    border: 2px solid transparent;
+}
+.candidate-v2.empty {
+    background-color: rgba(22, 24, 35, 0.03);
+}
+.candidate-v2 {
+    width: 84.2px;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+.chosen-v2.empty.jsx-662133185 {
+    display: none;
+}
+
+.chosen-v2.jsx-662133185 {
+    cursor: grab;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    box-sizing: content-box;
+    border: 6px solid rgb(255, 255, 255);
+    box-shadow: rgb(34 90 89 / 20%) 2px 4px 20px;
+    border-radius: 8px;
+}
+.tiktok-select {
+    position: relative;
+    display: inline-flex;
+}
+.tiktok-select .tiktok-select-selector {
+    height: 36px;
+    background: rgba(22, 24, 35, 0.06);
+    border-radius: 4px;
+    padding: 7px 12px;
+    box-sizing: border-box;
+    display: inline-flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+}
+.editor .public-DraftEditor-content {
+    border-style: none;
+    outline-style: none;
+    padding: 12px 0px;
+    overflow: auto;
+}
+.container-v2.jsx-1043401508 .icon-style.at.jsx-1043401508 {
+    right: 40px;
+}
+.container-v2.jsx-1043401508 .icon-style.hash.jsx-1043401508 {
+    right: 12px;
+}
+.tiktok-select .tiktok-select-selector .tiktok-select-selector-left {
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.tiktok-select .tiktok-select-selector .tiktok-select-selector-text {
+    height: 22px;
+    font-family: ProximaNova;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(22, 24, 35, 0.5);
+}
+.tiktok-select .tiktok-select-selector .tiktok-select-selector-text-checked {
+    color: rgb(22, 24, 35);
+}
+.checkbox-container.jsx-1504123287 {
+    display: flex;
+}
+.checkbox-container.jsx-1504123287 .checkbox.jsx-1504123287 {
+    margin-right: 32px;
+}
+.css-ypesld {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: 24px;
+}
+.css-14gj7xv {
+    box-sizing: border-box;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    padding-inline: 12px 0px;
+    order: 1;
+}
+.css-4pkwts {
+    box-sizing: border-box;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin: 0 !important;
+    margin-block-start: 3px;
+}
+
+.css-1pzrh5a {
+    box-sizing: border-box;
+    appearance: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    cursor: pointer;
+    margin: 0px;
+}
+.css-mbgljv {
+    box-sizing: border-box;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-radius: 2px;
+    pointer-events: none;
+    color: var(--tux-colorBGPrimary);
+    border: none;
+    background: var(--tux-colorPrimary);
+}
+.css-mbgljv > svg {
+    visibility: visible;
+}
+.css-3wpmrz:hover, [data-tux-checkbox-input]:focus-visible + .css-3wpmrz, [data-tux-checkbox-input]:hover + .css-3wpmrz {
+    border: 1.5px solid rgb(234, 40, 78);
+}
+.css-3wpmrz {
+    box-sizing: border-box;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-radius: 2px;
+    pointer-events: none;
+    color: var(--tux-colorBGPrimary);
+    border: 1.5px solid var(--tux-colorLineSecondary);
+}
+
+.switch-wrap.jsx-824446345 {
+    margin-top: 24px;
+    margin-bottom: 6px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.switch-wrap.jsx-824446345 .switch-text.jsx-824446345 {
+    margin-right: 14px;
+}
+.tiktok-switch {
+    position: relative;
+    box-sizing: border-box;
+    overflow: visible;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    color: rgb(22, 24, 35);
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+}
+.tiktok-switch .tiktok-switch__switch-wrapper {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    padding: 2px;
+    box-sizing: border-box;
+    left: 0px;
+    top: 0px;
+    background: rgba(22, 24, 35, 0.12);
+    border-radius: 22px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+    cursor: pointer;
+}
+.tiktok-switch .tiktok-switch__switch-wrapper .tiktok-switch__switch-inner {
+    position: absolute;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    left: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 22px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 15%) 0px 1px 2px;
+    transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+    z-index: 2;
+}
+.tiktok-switch.is-checked .tiktok-switch__switch-wrapper {
+    background: rgb(11, 224, 155);
+}
+
+.tiktok-switch.is-checked .tiktok-switch__switch-inner {
+    left: 100%;
+    transform: translate(-100%, -50%);
+}
+.tiktok-select-dropdown {
+    position: absolute;
+    top: 36px;
+    max-height: 1000px;
+    left: 0px;
+    display: inline-flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 4px;
+    border-radius: 4px;
+    padding: 4px 0px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+    overflow: overlay;
+    z-index: 1111;
+}
+.Ypffh {
+    background: 0 0;
+    border: 0;
+    display: flex;
+    width:100%;
+    flex-grow: 1;
+    font-size: inherit;
+    max-height: 100px;
+    outline: 0;
+    padding: 0;
+    resize: none;
+}
+.input__inner{
+    border:none;
+    width: 100%;
+}
+@keyframes rotation-jsx-1545465582 {
+    0% {
+        transform: scale(1) rotate(45deg);
+    }
+    50% {
+        transform: scale(1) rotate(225deg);
+        border-radius: 50%;
+    }
+    100% {
+        transform: scale(1) rotate(405deg);
+       border-radius: 50%;
+    }
+}
+@keyframes marquee-jsx-1545465582 {
+    0% {
+        transform:translateX(0px)
+    }
+    50% {
+        
+        transform:translateX(-50px)
+        
+    }
+    100% {
+        transform:translateX(-100px)
+    }
+}
+@keyframes symbol3-jsx-1545465582 {
+    0% {
+        transform:translate(0px,0px) rotate(0deg);
+        opacity:0
+    }
+    25% {
+        transform:translate(-2px,-2px) rotate(45deg);
+        opacity:1
+    }
+    50% { 
+        transform:translate(-6px,-6px) rotate(90deg);
+       opacity:1
+    }
+    100% {
+        transform:translate(-12px,-16px) rotate(180deg);
+        
+        opacity:0.6
+        
+    }
+}
+@keyframes symbol2-jsx-1545465582 {
+    0% {
+        transform:translate(0px,0px) rotate(0deg);
+        opacity:0
+    }
+    25% {
+        transform:translate(-2px,-2px) rotate(45deg);
+        opacity:1
+    }
+    50% { 
+        transform:translate(-6px,-6px) rotate(90deg);
+       opacity:1
+    }
+    100% {
+        transform:translate(-12px,-16px) rotate(180deg);
+        
+        opacity:0.6
+        
+    }
+}
+@keyframes symbol1-jsx-1545465582 {
+    0% {
+        transform:translate(0px,0px) rotate(0deg);
+        opacity:0
+    }
+    25% {
+        transform:translate(-3px,-3px) rotate(25deg);
+        opacity:1
+    }
+    50% { 
+        transform:translate(-6px,-6px) rotate(45deg);
+       opacity:0.8
+    }
+    100% {
+        transform:translate(-12px,-16px) rotate(90deg);
+        
+        opacity:0.4
+        
+    }
+}
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+/* 2.1 THUMB */
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: #fff;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: -5px;
+}
+
+input[type=range]::-moz-range-thumb {
+  background-color: #555;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+input[type=range]::-ms-thumb {
+  background-color: #555;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+/* 2.2 TRACK */
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-color: #fff;
+  height: 3px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  outline: none;
+}
+
+input[type=range]::-moz-range-track {
+  background-color: #555;
+  height: 3px;
+}
+
+input[type=range]::-ms-track {
+  background-color: #555;
+  height: 3px;
+}
+
+input[type=range]::-ms-fill-lower {
+  background-color: HotPink
+}
+
+input[type=range]::-ms-fill-upper {
+  background-color: black;
+}
+.tiktok-select-dropdown .tiktok-select-dropdown-item {
+    width: 100%;
+    display: flex;
+    background: rgb(255, 255, 255);
+    padding: 10px 12px;
+    font-family: ProximaNova;
+    font-size: 16px;
+    line-height: 22px;
+    box-sizing: border-box;
+    color: rgb(22, 24, 35);
+    cursor: pointer;
+}
+.tiktok-select-dropdown .tiktok-select-dropdown-item.is-selected {
+    background: rgba(22, 24, 35, 0.06) !important;
+}
+.tiktok-select-dropdown .tiktok-select-dropdown-item:hover{
+    background-color: rgb(248, 248, 248);
+}
+.copyright.jsx-824446345 .learn-more.jsx-824446345 {
+    cursor: pointer;
+}
+
+
+.form-v2.jsx-2580397738 .button-row.jsx-2580397738 {
+    display: flex;
+    margin-top: 24px;
+}
+.form-v2.jsx-2580397738 .button-row.jsx-2580397738 .btn-cancel.jsx-2580397738 {
+    width: 164px;
+    margin-right: 16px;
+    background-color: transparent;
+}
+.css-txoc9t {
+    box-sizing: border-box;
+    appearance: none;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    text-decoration: none;
+    cursor: pointer;
+    background-clip: padding-box;
+    width: 100%;
+    font-size: var(--tux-fontSizeP3);
+    height: 48px;
+    min-width: 72px;
+    padding-inline: 23px;
+    color: var(--tux-colorConstTextPrimary);
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(227, 227, 227);
+}
+.css-n99h88 {
+    box-sizing: border-box;
+    appearance: none;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    text-decoration: none;
+    cursor: pointer;
+    background-clip: padding-box;
+    width: 100%;
+    font-size: var(--tux-fontSizeP3);
+    height: 48px;
+    min-width: 72px;
+    padding-inline: 23px;
+    color: var(--tux-colorConstTextInverse);
+    background-color: var(--tux-colorPrimary);
+    border-color: var(--tux-colorPrimary);
+}
+.form-v2.jsx-2580397738 .button-row.jsx-2580397738 .btn-post.jsx-2580397738 {
+    width: 164px;
+}
+.tiktok-select-selector-postfix-icon{
+    transform: rotate(0deg); 
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    transform-origin: center center;
+    flex-shrink: 0
+
+}
+.css-txoc9t:hover:not(:disabled) {
+    background-color: rgb(248, 248, 248);
+    border-color: rgb(204, 204, 204);
+}
+.css-n99h88:disabled {
+    cursor: not-allowed;
+    color: var(--tux-colorTextQuaternary);
+    background-color: rgb(242, 242, 242);
+    border-color: rgb(242, 242, 242);
+}
+
+.preview-v2.jsx-1545465582 {
+    position: relative;
+    background: rgb(255, 255, 255);
+    line-height: 0;
+    width: 284px;
+    height: 556px;
+}
+.preview-v2.jsx-1545465582 > .player {
+    height: 486px;
+    width: 259px;
+    background-color: rgb(0, 0, 0);
+    object-fit: contain;
+    margin-left: 12px;
+    margin-top: 13px;
+    border-radius: 0.5px;
+}
+.video-controls-v2.jsx-4048669318 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    top: 0px;
+    overflow: hidden;
+}
+.video-controls-v2-bottom.jsx-4048669318 {
+    position: absolute;
+    bottom: 5px;
+    opacity: 0;
+    width: calc(100% - 10px);
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 90px;
+    transition: all 0.3s ease-out 0s;
+    background: linear-gradient(rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.65) 100%);
+    border-radius: 8px 8px 20px 20px;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 {
+    position: absolute;
+    height: 20px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    width: calc(100% - 45px);
+    transform: translateX(-50%);
+    left: 50%;
+    bottom: 50px;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 .left.jsx-4048669318 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 span.jsx-4048669318 {
+    cursor: pointer;
+    user-select: none;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 .left.jsx-4048669318 .time.jsx-4048669318 {
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 600;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    padding: 0px 6px;
+    margin-top: 2px;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 .right.jsx-4048669318 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 .right.jsx-4048669318 .volume.jsx-4048669318 {
+    margin-right: 14px;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 span.jsx-4048669318 {
+    cursor: pointer;
+    user-select: none;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 .right.jsx-4048669318 .icon.jsx-4048669318 {
+    width: 16px;
+    height: 16px;
+}
+.video-controls-v2-bottom.jsx-4048669318 .prograess-wrap.jsx-4048669318 {
+    position: absolute;
+    bottom: 30px;
+    width: calc(100% - 40px);
+    transform: translateX(-50%);
+    left: 50%;
+}
+.video-controls-v2-bottom.jsx-4048669318 .prograess-wrap.jsx-4048669318 .progress-bar.jsx-4048669318 {
+    width: 100%;
+    height: 3px;
+    background: rgb(86, 86, 86);
+    opacity: 0.8;
+    position: absolute;
+    cursor: pointer;
+}
+.video-controls-v2-bottom.jsx-4048669318 .prograess-wrap.jsx-4048669318 .progress-bar.jsx-4048669318 {
+    width: 100%;
+    height: 3px;
+    background: rgb(86, 86, 86);
+    opacity: 0.8;
+    position: absolute;
+    cursor: pointer;
+}
+
+.change-video-btn.jsx-1545465582 .file.jsx-1545465582 {
+    font-size: 12px;
+    line-height: 17px;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, Arial, Tahoma;
+    font-weight: 400;
+    color: rgba(22, 24, 35, 0.75);
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 150px;
+}
+.video-controls-v2-bottom.jsx-4048669318 .details.jsx-4048669318 .left.jsx-4048669318 .icon.jsx-4048669318 {
+    width: 16px;
+    height: 16px;
+}
+.video-controls-v2.jsx-4048669318:hover .video-controls-v2-bottom.jsx-4048669318 {
+    opacity: 1;
+}
+.preview-v2.jsx-1545465582 .album-container.jsx-1545465582 .album.jsx-1545465582 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: conic-gradient(from 90deg at 50% 50%, rgb(57, 57, 57) -40.11deg, rgb(21, 21, 21) 47.27deg, rgb(57, 57, 57) 143.02deg, rgb(22, 22, 22) 227.49deg, rgb(57, 57, 57) 319.89deg, rgb(21, 21, 21) 407.27deg);
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 {
+    position: absolute;
+    bottom: 70px;
+    left: 25px;
+    z-index: 2;
+    opacity: 0.6;
+    color: white;
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 .username.jsx-1545465582 {
+    font-size: 12px;
+    line-height: 17px;
+    font-family: proxima-bold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 .caption.jsx-1545465582 {
+    font-size: 12px;
+    line-height: 17px;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, Arial, Tahoma;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 150px;
+    margin-bottom: 4px;
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 .sound-container.jsx-1545465582 {
+    display: flex;
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 .sound-container.jsx-1545465582 .music-icon.jsx-1545465582 {
+    margin-right: 7px;
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 .sound-container.jsx-1545465582 .sound.jsx-1545465582 {
+    max-width: 150px;
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 17px;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, Arial, Tahoma;
+    font-weight: 400;
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 .sound-container.jsx-1545465582 .sound.jsx-1545465582 .marquee.jsx-1545465582 {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    animation: 10s linear 0s infinite normal none running marquee-jsx-1545465582;
+}
+.preview-v2.jsx-1545465582 .meta-data.jsx-1545465582 .sound-container.jsx-1545465582 .sound.jsx-1545465582 .marquee.jsx-1545465582 p.jsx-1545465582 {
+    display: inline-block;
+}
+.preview-v2.jsx-1545465582 .title.jsx-1545465582 {
+    position: absolute;
+    top: 40px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    z-index: 2;
+    width: 100%;
+    opacity: 0.6;
+    font-size: 12px;
+    line-height: 17px;
+    font-family: proxima-bold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 700;
+}
+.preview-v2.jsx-1545465582 .title.jsx-1545465582 .following.jsx-1545465582 {
+    color: rgba(255, 255, 255, 0.75);
+    margin-right: 20px;
+}
+.preview-v2.jsx-1545465582 .title.jsx-1545465582 .for-you.jsx-1545465582 {
+    color: white;
+}
+.preview-v2.jsx-1545465582 .avatar-container.jsx-1545465582 .avatar.jsx-1545465582 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+.preview-v2.jsx-1545465582 .avatar-container.jsx-1545465582 {
+    position: absolute;
+    bottom: 275px;
+    right: 20px;
+    z-index: 2;
+}
+.preview-v2.jsx-1545465582 .album-container.jsx-1545465582 .rotate.jsx-1545465582 {
+    animation: 2s linear 0s infinite normal none running rotation-jsx-1545465582;
+}
+.preview-v2.jsx-1545465582 .album-container.jsx-1545465582 .avatar.jsx-1545465582 {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 8px;
+    right: 8px;
+    border-radius: 50%;
+}
+.preview-v2.jsx-1545465582 .music-symbols.jsx-1545465582 {
+    position: absolute;
+    bottom: 125px;
+    right: 64px;
+    z-index: 2;
+}
+
+.margin-t-24.jsx-1504123287 {
+    margin-top: 24px;
+}
+.title-v2.jsx-1504123287 {
+    margin-bottom: 4px;
+}
+.css-1rssc4n {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: var(--tux-fontSizeP3);
+    line-height: 1.5;
+    font-family: var(--tux-fontFamilyParagraph);
+    font-weight: var(--tux-fontWeightSemibold);
+    color: var(--tux-colorTextPrimary);
+}
+.video-controls-v2-bottom.jsx-4048669318 .prograess-wrap.jsx-4048669318 .circle.jsx-4048669318 {
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 10%) -1px 1px 1px;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: -1px;
+    z-index: 2;
+}
+.video-controls-v2-bottom.jsx-4048669318 .prograess-wrap.jsx-4048669318 .bar.jsx-4048669318 {
+    background: rgb(255, 255, 255);
+    height: 3px;
+    position: absolute;
+    z-index: 1;
+    cursor:pointer ;
+}
+.preview-v2.jsx-1545465582 .album-container.jsx-1545465582 {
+    position: absolute;
+    bottom: 74px;
+    right: 20px;
+    z-index: 2;
+    opacity: 0.6;
+}
+.preview-v2.jsx-1545465582 .music-bar-icon.jsx-1545465582 {
+    position: absolute;
+    bottom: 130px;
+    right: 24px;
+    z-index: 2;
+    opacity: 0.6;
+}
+.preview-v2.jsx-1545465582 .music-symbols.jsx-1545465582 .music-symbol1.jsx-1545465582 {
+    position: absolute;
+    top: calc(20px);
+    left: calc(-20px);
+    display: block;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqBAMAAAA37dRoAAAAKlBMVEVHcEz///////////////////////////////////////////////////+LBpLMAAAADnRSTlMA5chSljkdbdesDoC6KyVM4j8AAAEGSURBVCjPY2AYqoDXc3sUpmiGoKBgJ4aEoSAYaG4OQBY9KAgDx5GMFUQAA7goC5KoA1yUCUl0A1w0EEn0AlzUESEoAxfkEr1cAnOFMFyUWQFIQCXE4KKcUBuulswQnAAXTUyAM1cgnGuJ8E/EAjhTGSHqgvAvwgYGVTC5fNJkBhYHVNcwsCkKCqoxIQWIAywAZIIY0FwDDu0jCFEbMLkRJCqKEJ2MCBYFuCAbxDWFqCHKDXHNCpAoxL/LPbcxQF3DDhQUB7NYGwUFCyKgeowEJQrgKUIY7t/gKER0yKiip55GVNdAAVr8QoEiwjVIAORySYxUuQgo2oYhCgxToQuYSZi1HJpKASWuMmKIoNdkAAAAAElFTkSuQmCC);
+    width: calc(15px);
+    height: calc(15px);
+    animation: 2s linear 0s infinite normal none running symbol1-jsx-1545465582;
+}
+.preview-v2.jsx-1545465582 .music-symbols.jsx-1545465582 .music-symbol2.jsx-1545465582 {
+    position: absolute;
+    top: calc(8px);
+    left: calc(-24px);
+    display: block;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAnBAMAAAB+jUwGAAAAIVBMVEVHcEz///8KCgoAAADb29v+/v74+Pj9/f3r6+vt7e3+/v46fNaiAAAAC3RSTlMAgAUJEW9LYCg3ePZMC1YAAADHSURBVCjPtdKxCsIwEAbgUKu4/kMi7VQS8AGaDnYTBAe3QnE24guIuFccnEV8X5OKQ+6yeuPH3XG5ixC/WAseeZ/AqUqgW/DiBySzMyArgjsAiqJPRJ9AuaF4Q/mqiWVL4MjQvCEHOpKxDoo+XtvGoWf1dtXhwLXtJGtg7BaFSLU9MXX+WbTBDGEBBJ8B6fq7gGVcn2OMGOdfHFKYKieHysJJUMQ4CcfDhWQ2fiZlCZr2ur/XFd2+D81XamniuFLNP55O2H/jA+wsHqGF+n7NAAAAAElFTkSuQmCC);
+    width: calc(12px);
+    height: calc(12px);
+    animation: 2s linear 0s infinite normal none running symbol2-jsx-1545465582;
+}
+.preview-v2.jsx-1545465582 .music-symbols.jsx-1545465582 .music-symbol3.jsx-1545465582 {
+    position: absolute;
+    top: calc(-4px);
+    left: calc(-28px);
+    display: block;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: calc(9px);
+    height: calc(9px);
+    animation: 2s linear 0s infinite normal none running symbol3-jsx-1545465582;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUBAMAAAB7UtADAAAAGFBMVEVHcEz///////////////////////////8dS1W+AAAACHRSTlMATCEtEzcFRkCtaw4AAACASURBVAjXY2BABWxOpgkwRqGgYACYrSgIAmVgtiGYLQRmO4LZomA2O5BVauQM1sxUauTGwMCiAGJDSAYDMAkxzgRMqoDJ5KRSByAJZrMaCooASYgRgoLCMM1shSA2W4B6Edh+kDuMBQWBUkzBDhBXBMCcz47EBhrhAPeXKsRSBgDSxhAt1wemLgAAAABJRU5ErkJggg==);
+}
+.preview-v2.jsx-1545465582 .tiktok-app-frame.jsx-1545465582 {
+    background-image: url(data:image/png;base64,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cASOwBE44AgcgSNwBI7AAUfgCByBI3AEDjgCR+AIHIEjcMAROAJH4AgcgQOOwBE4AkfgCBxwBI7AETgCBxxwwBE4AkfgCBxwBI7AETgCR+CAI3AEjsAROAIHHIEjcASOwBE44AgcgSNwBI7AAUfgCByBI3AEDjgCR+AIHIEjcMAROAJH4AgccMABR+AIHIEjcMAROAJH4AgcgQOOwBE4AkfgCBxwBI7AETgCR+CAI3AEjsAROAIHHIEjcASOwBE44AgcgSNwBI61AwccgSNwBI7AAUfgCByBI3AEDjgCR+AIHIEjcMAROAJH4AgcgQOOwBE4AkfgCBxwBI7AETgCR+CAI3AEjsAROAIHHIEjcASOwAEHHHAEjsAROAIHHIEjcASOwBE44AgcgSNwBI7AAUfgCByBI3AEDjgCR+AIHIEjcMAROAJH4AgcgQOOwBE4AkfgCBxwBI7AETgCBxyBI3AEjsAROOAIHIEjcASOwAFH4AgcgSNwBA44AkfgCByBI3DAETgCR+AIHIEDjsAROAJH4AgccASOwBE4AgcccMAROAJH4AgccASOwBE4AkfggCNwBI7AETgCBxyBI3AEjsAROOAIHIEjcASOwAFH4AgcgSNwBA44AkfgCByBI3DAETgCR+AIHHAEjsAROAJH4IAjcASOwBE4AgccgSNwBI7AETjgCByBI3AEjsABR+AIHIEjcAQOOAJH4AgcgSNwwBE4AkfgCBxwwAFH4AgcgSNwwBE4AkfgCByBA47AETgCR+AIHHAEjsAROAJH4IAjcASOwBE4AgccgSNwBI7AETjgCByBI3AEjsABR+AIHIEjcMABBxyBI3AEjsABR+AIHIEjcAQOOAJH4AgcgSNwwBE4AkfgCByBA47AETgCR+AIHHAEjsAROAJH4IAjcASOwBE41g4ccASOwBE4AgccgSNwBI7AETjgCByBI3AEjsABR+AIHIEjcAQOOAJH4AgcgSNwwBE4AkfgCByBA47AETgCR+AIHHAEjsAROAIHHHDAETgCR+AIHHAEjsAROAJH4IAjcASOwBE4AgccgSNwBI7AETjgCByBI3AEjsABR+AIHIEjcAQOOAJH4AgcgSNwwBE4AkfgCBxwBI7AETgCR+CAI3AEjsAROAIHHIEjcASOwBE44AgcgSNwBI7AAUfgCByBI3AEDjgCR+AIHIEjcMAROAJH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);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+.change-video-btn.jsx-1545465582 {
+    margin-top: 18px;
+    background: rgb(255, 255, 255);
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    box-sizing: border-box;
+    border-radius: 12px;
+    padding: 13px;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.change-video-btn.jsx-1545465582 .btn.jsx-1545465582 {
+    font-size: 12px;
+    line-height: 17px;
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    color: rgb(22, 24, 35);
+    cursor: pointer;
+}
+.change-video-btn.jsx-1545465582 .file.jsx-1545465582 img.jsx-1545465582 {
+    margin-right: 4px;
+}
+.change-video-btn.jsx-1545465582 .file.jsx-1545465582 .file-text.jsx-1545465582 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.modal-mask-container.jsx-3220008684 {
+    position: fixed;
+    inset: 0px;
+    display: flex;
+    z-index: 1001;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.5);
+}
+.modal {
+    display: flex;
+    flex-direction: column;
+    background: rgb(255, 255, 255);
+    border-radius: 9px;
+    width: 310px;
+    z-index: 1000;
+    overflow: hidden;
+    margin: auto;
+}
+.modal-title-container.jsx-3220008684 {
+    padding: 32px 32px 24px;
+}
+.DraftEditor-alignLeft .public-DraftStyleDefault-block {
+    text-align: left;
+}
+.public-DraftStyleDefault-block {
+    position: relative;
+    white-space: pre-wrap;
+}
+.jsx-2745951964.hidden{
+visibility: hidden;
+}
+.jsx-1545465582 .loader {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 4px solid orange;
+  border-top-color: #002147;
+  box-sizing: border-box;
+  background: transparent;
+  animation: loading 1s linear infinite;
+}
+.uploading-stage.jsx-2404389384 {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+}
+.upload-card.jsx-2404389384 {
+    width: 260px;
+    height: 458px;
+    border: 2px dashed rgba(22, 24, 35, 0.2);
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+element.style {
+    font-size: 16px;
+}
+.tiktok-progress .tiktok-progress-inner {
+    position: absolute;
+    font-family: ProximaNova;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 22px;
+    height: 22px;
+    color: rgba(22, 24, 35, 0.75);
+}
+
+.tiktok-progress {
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-feature-settings: "tnum";
+    position: relative;
+    overflow: hidden;
+    color: rgb(255, 255, 255);
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 32px;
+    border-radius: 50%;
+}
+.uploading-stage-text.jsx-2404389384 {
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: rgba(22, 24, 35, 0.75);
+    text-align: center;
+    max-width: 220px;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+.css-1gmhaaw {
+    box-sizing: border-box;
+    appearance: none;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    text-decoration: none;
+    cursor: pointer;
+    background-clip: padding-box;
+    font-size: var(--tux-fontSizeP4);
+    height: 28px;
+    min-width: 96px;
+    padding-inline: 11px;
+    color: var(--tux-colorConstTextPrimary);
+    background-color: rgb(255, 255, 255);
+    border-color: rgb(227, 227, 227);
+}
+.tiktok-progress, .tiktok-progress .tiktok-progress-inner {
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.css-1smgn1w {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    opacity: 1;
+    overflow: hidden;
+    gap: 4px;
+}
+.tiktok-progress, .tiktok-progress .tiktok-progress-inner {
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  0% {
+    transform: rotate(360deg);
+  }
+}
+.modal-title.jsx-3220008684 {
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgb(22, 24, 35);
+    word-break: break-word;
+    text-align: center;
+}
+.modal-sub-title.jsx-3220008684 {
+    margin-top: 8px;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, Arial, Tahoma;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    word-break: break-word;
+    text-align: center;
+    color: rgba(22, 24, 35, 0.5);
+}
+.modal-btn.jsx-3220008684 {
+    padding: 16.5px 16px 17px;
+    text-align: center;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, Arial, Tahoma;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    word-break: break-word;
+    cursor: pointer;
+}
+.modal > .emphasis {
+    font-family: proxima-semibold, PingFangSC, sans-serif !important;
+    font-weight: 600 !important;
+    color: rgb(254, 44, 85) !important;
+}
+.modal-btn.jsx-3220008684 {
+    padding: 16.5px 16px 17px;
+    text-align: center;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, Arial, Tahoma;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    word-break: break-word;
+    cursor: pointer;
+}
+
+.input-container-v2.jsx-2745951964 {
+    display: flex;
+    min-height: 46px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 4px;
+}
+.input-container-v2.jsx-2745951964 .search-icon.jsx-2745951964 {
+    width: 24px;
+    height: 24px;
+    margin-left: 12px;
+    margin-top: 9px;
+}
+.input-container-v2.jsx-2745951964 .search-friends.jsx-2745951964 {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 12px 10px;
+    flex: 1 1 auto;
+    border-style: none;
+    outline-style: none;
+    word-break: break-word;
+}
+.input-container-v2.jsx-2745951964 .close-icon.jsx-2745951964 {
+    width: 26px;
+    height: 26px;
+    margin-top: 9px;
+    margin-right: 9px;
+}
+.scroll-parent {
+    width: 100%;
+    position: relative;
+    max-height: 225px;
+    overflow: auto;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(34 90 89 / 20%) 2px 0px 20px -20px, rgb(34 90 89 / 20%) 0px 8px 20px -2px, rgb(34 90 89 / 20%) 0px 0px 20px -20px;
+    top: -1px;
+    border-radius: 0px 0px 4px 4px;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    padding: 20px 0px;
+}
+.container.jsx-3082184673 {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.container.jsx-3082184673 .user-col.full-width.jsx-3082184673 {
+    width: 100%;
+}
+.container.jsx-3082184673 .user-col.jsx-3082184673 {
+    display: flex;
+    flex-direction: column;
+}
+.container.jsx-3082184673 .user-col.jsx-3082184673 .title.jsx-3082184673 {
+    color: rgba(22, 24, 35, 0.5);
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18px;
+    margin-left: 24px;
+    margin-bottom: 8px;
+}
+.container.jsx-1498925541 {
+    height: 68px;
+    padding: 10px 30px 10px 24px;
+    display: flex;
+    cursor: pointer;
+}
+.container.jsx-1498925541 .avatar.jsx-1498925541 {
+    height: 48px;
+    width: 48px;
+    min-width: 48px;
+    border-radius: 50%;
+    display: block;
+}
+.container.jsx-1498925541 .user-info.jsx-1498925541 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 12px;
+    margin-top: 4px;
+    overflow: hidden;
+}
+.container.jsx-1498925541 .user-info.jsx-1498925541 .name.jsx-1498925541 {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-size: 17px;
+    line-height: 20px;
+    font-style: normal;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 20px;
+    color: rgb(22, 24, 35);
+}
+.container.jsx-1498925541 .user-info.jsx-1498925541 .user-id.jsx-1498925541 {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 2px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    height: 18px;
+    color: rgba(22, 24, 35, 0.5);
+}
+.container.jsx-1717967343 .hide-display.jsx-1717967343 {
+    visibility: hidden;
+}
