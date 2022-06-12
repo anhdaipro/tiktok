@@ -21,6 +21,7 @@ const Video=(props)=>{
     const seekbarref=useRef(null)
     const [time,setTime]=useState(0)
     const [volume,setVolume]=useState(0.5)
+    const [drag,Drag]=useState(false)
     const canvas=useRef()
     const socket=useRef()  
     const naviga=useNavigate()
@@ -120,6 +121,7 @@ const Video=(props)=>{
             }
         }
     },[item.play])
+
     const settimevideo=(e)=>{
         e.stopPropagation() 
         const rects = e.currentTarget.getBoundingClientRect();
@@ -239,7 +241,16 @@ const Video=(props)=>{
                                 </div>
                             </div>
                             <div className="tiktok-nlv8yo-DivVideoControlContainer ek83qou6">
-                                <div onClick={(e)=>settimevideo(e)} onDragOver={(e)=>settimevideo(e)}  className="tiktok-1gmtcd3-DivSeekBarContainer ek83qou1">
+                                <div    onClick={(e)=>settimevideo(e)}
+                                    onMouseUp={e=>setDrag(false)}
+                                    onMouseDown={e=>setDrag(true)}
+                                    onMouseMove={e=>{
+                                        e.preventDefault()
+                                        if(!drag){
+                                            return
+                                        }
+                                        settimevideo(e)
+                                        }}   className="tiktok-1gmtcd3-DivSeekBarContainer ek83qou1">
                                     <div className="tiktok-ckj05b-DivSeekBarProgress ek83qou3"></div>
                                     <div className="tiktok-ifi2lf-DivSeekBarCircle ek83qou5" style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}}></div>
                                     <div className="tiktok-122kkp0-DivSeekBar ek83qou4" style={{transform: `scaleX(${(time.minutes*60+time.seconds)/item.duration}) translateY(-50%)`}}></div>

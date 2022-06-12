@@ -7,7 +7,6 @@ import {Link} from "react-router-dom"
 const Sinabar=(props)=>{
     const {user,showlogin}=props
     const [state,setState]=useState({show_all_suggested:false,show_all_following:false})
-    const [listsuggest,setSuggested]=useState([])
     const [listuser,setListuser]=useState([])
     const [listhagtag,setListhashtag]=useState([])
     const [listmusic,setListmusic]=useState([])
