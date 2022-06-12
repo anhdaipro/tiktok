@@ -21,7 +21,7 @@ const Video=(props)=>{
     const seekbarref=useRef(null)
     const [time,setTime]=useState(0)
     const [volume,setVolume]=useState(0.5)
-    const [drag,Drag]=useState(false)
+    const [drag,setDrag]=useState({time:false,volume:false})
     const canvas=useRef()
     const socket=useRef()  
     const naviga=useNavigate()
@@ -227,8 +227,19 @@ const Video=(props)=>{
                             </div>
                             <div className="tiktok-q09c19-DivVoiceControlContainer e71rlrn12">
                                 {item.muted?"":
-                                <div onDragOver={(e)=>setVolumevideo(e)} onClick={(e)=>setVolumevideo(e)} class="tiktok-6ksj57-DivVolumeControlContainer e18vm3210">
-                                    <div ref={seekbarref}  onDragOver={(e)=>setVolumevideo(e)} onClick={(e)=>setVolumevideo(e)} class="tiktok-1nww5qr-DivVolumeControlProgress e18vm3211"></div>
+                                <div 
+                                onClick={(e)=>setVolumevideo(e)}
+                                    onMouseUp={e=>setDrag({...drag,volume:false})}
+                                    onMouseDown={e=>setDrag({...drag,volume:true})}
+                                    onMouseMove={e=>{
+                                        e.preventDefault()
+                                        if(!drag.volume){
+                                            return
+                                        }
+                                        setVolumevideo(e)
+                                        }}   
+                                 class="tiktok-6ksj57-DivVolumeControlContainer e18vm3210">
+                                    <div ref={seekbarref} class="tiktok-1nww5qr-DivVolumeControlProgress e18vm3211"></div>
                                     <div class="tiktok-1j0s7u0-DivVolumeControlCircle e18vm3213" style={{transform: `translateY(-${(volume)*42}px)`}}></div>
                                     <div  class="tiktok-1pqw0yi-DivVolumeControlBar e18vm3212" style={{transform: `scaleY(${volume})`}}></div>
                                 </div>}
@@ -241,16 +252,17 @@ const Video=(props)=>{
                                 </div>
                             </div>
                             <div className="tiktok-nlv8yo-DivVideoControlContainer ek83qou6">
-                                <div    onClick={(e)=>settimevideo(e)}
-                                    onMouseUp={e=>setDrag(false)}
-                                    onMouseDown={e=>setDrag(true)}
+                                <div  onClick={(e)=>settimevideo(e)}
+                                    onMouseUp={e=>setDrag({...drag,time:false})}
+                                    onMouseDown={e=>setDrag({...drag,time:true})}
                                     onMouseMove={e=>{
                                         e.preventDefault()
-                                        if(!drag){
+                                        if(!drag.time){
                                             return
                                         }
                                         settimevideo(e)
-                                        }}   className="tiktok-1gmtcd3-DivSeekBarContainer ek83qou1">
+                                        }}   
+                                        className="tiktok-1gmtcd3-DivSeekBarContainer ek83qou1">
                                     <div className="tiktok-ckj05b-DivSeekBarProgress ek83qou3"></div>
                                     <div className="tiktok-ifi2lf-DivSeekBarCircle ek83qou5" style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}}></div>
                                     <div className="tiktok-122kkp0-DivSeekBar ek83qou4" style={{transform: `scaleX(${(time.minutes*60+time.seconds)/item.duration}) translateY(-50%)`}}></div>
