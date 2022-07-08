@@ -6,11 +6,20 @@ import { loginURL } from "../urls"
 import axios from 'axios';
 import { headers,facebookLogin,login } from "../actions/auth"
 const LoginFacebook=()=>{
-
+    const [state,setState] = useState({isLoggedIn: false,userID: "",name: "",
+    email: "",picture: ""
+    })
     const  responseFb=(response) =>{
         (async ()=>{
             try{
                 await facebookLogin(response.accessToken);
+                setState({
+                    isLoggedIn: true,
+                    userID: response.userID,
+                    name: response.name,
+                    email: response.email,
+                    picture: response.picture.data.url
+                });
                 let form=new FormData()
                 form.append('token',localStorage.access_token)
                 axios.post(loginURL, form, headers)
