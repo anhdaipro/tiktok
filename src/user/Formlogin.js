@@ -17,19 +17,24 @@ const Formlogin=(props)=>{
         e.preventDefault();
         (async ()=>{
             try{
-            await login(email,password) 
+            login(email,password) 
             setTimeout(function(){
-                {if(!isAuthenticated){
+                {if(isAuthenticated!=null){
+                    if(isAuthenticated){
                     setState({...state,error:true})
+                    }
+                    else{
+                        setState({...state,error:false})
+                    }
                 }
             }
             },1000)
         }
         catch{
         }
-        })()
-        
+        })()  
     }
+
     const setsentcode=(e)=>{
         e.preventDefault();
         let form=new FormData()
