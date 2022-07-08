@@ -170,6 +170,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
         const x = e.clientX - rects.left -8;
         const times=(x/rects.width)*item.duration
         videoref.current.currentTime=times
+        console.log(x)
     }
     
     const setshowinfo=(e,value)=>{
