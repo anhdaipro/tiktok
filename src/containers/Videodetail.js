@@ -107,7 +107,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
             const timer=setTimeout(()=>{
                 videoref.current.volume=volume
                 setState({...state,totalTime:videoref.current.currentTime+1})
-                setTime({seconds:Math.floor(videoref.current.currentTime+1) % 60,minutes:Math.floor((videoref.current.currentTime+1) / 60) % 60})
+                setTime({seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
             },1000)
             return ()=>clearTimeout(timer)
         }
@@ -167,7 +167,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     const settimevideo=(e)=>{
         e.stopPropagation() 
         const rects = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rects.left;
+        const x = e.clientX - rects.left -8;
         const times=(x/rects.width)*item.duration
         videoref.current.currentTime=times
     }
