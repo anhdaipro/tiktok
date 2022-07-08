@@ -305,7 +305,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
                                     <div class="tiktok-1ioucls-DivSeekBarCircle e10mb03c4" style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}}></div>
                                     <div class="tiktok-zqr7z4-DivSeekBar e10mb03c3" style={{transform: `scaleX(${(time.minutes*60+time.seconds)/item.duration}) translateY(-50%)`}}></div>
                                 </div>
-                                <div class="tiktok-o2z5xv-DivSeekBarTimeContainer e10mb03c1">{('0'+time.minutes).slice(-2)}:{('0'+time.seconds).slice(-2)}/{('0'+item.minutes).slice(-2)}:{('0'+item.seconds).slice(-2)}</div>
+                                <div class="tiktok-o2z5xv-DivSeekBarTimeContainer e10mb03c1">{('0'+time.minutes).slice(-2)}:{('0'+Math.round(time.seconds)).slice(-2)}/{('0'+Math.floor(item.duration / 60) % 60).slice(-2)}:{('0'+Math.floor(item.duration) % 60).slice(-2)}</div>
                             </div>
                             <div class="tiktok-mzxtw3-DivVideoControlTop e10mb03c7"></div>
                             <div class="tiktok-1ap2cv9-DivVideoControlBottom e10mb03c6"></div>
