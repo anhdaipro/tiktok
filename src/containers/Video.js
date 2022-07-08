@@ -125,7 +125,7 @@ const Video=(props)=>{
     const settimevideo=(e)=>{
         e.stopPropagation() 
         const rects = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rects.left;
+        const x = e.clientX - rects.left-6;
         const times=(x/rects.width)*item.duration
         console.log(x)
         videoref.current.currentTime=times
