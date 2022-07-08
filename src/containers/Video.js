@@ -94,7 +94,7 @@ const Video=(props)=>{
             const timer=setTimeout(()=>{
             videoref.current.volume=volume
            
-            setTime({seconds:Math.floor(videoref.current.currentTime) % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
+            setTime({seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
             },1000)
             return ()=>clearTimeout(timer)
         }
