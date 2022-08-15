@@ -20,7 +20,7 @@ const plugins = [mentionPlugin,hashtagPlugin,mentionPlugin2];
 const MentionSuggestions = mentionPlugin.MentionSuggestions;
 const MentionSuggestions2 =mentionPlugin2.MentionSuggestions;  
 const Formupload=(props)=>{
-    const {files,setstate,fileid,loading}=props
+    const {files,setstate,fileid,loading,listimage,setlistimage}=props
     const [state,setState]=useState({text:'',show_viewer:false,viewer:[{name:'Public',value:'1'},{name:'Friends',value:'2'},{name:'Private',value:'3'}]})
     const [formData,setFormData]=useState({stitch:true,comment:true,duet:true,copyright:false,viewer:'1'})
     const [showResult, setShowResult] = useState(true);
@@ -62,7 +62,32 @@ const Formupload=(props)=>{
         setSuggestions(defaultSuggestionsFilter(value, suggestions,trigger));
     }, []);
 
-    
+    const dragItem = useRef(null)
+	const dragOverItem = useRef(null)
+	//const handle drag sorting
+	const handleSort = () => {
+		//duplicate items
+		let _fruitItems = listimage.map(item=>{
+            return({...item,choice:false})
+        })
+		//remove and save the dragged item content
+		const draggedItemContent = _fruitItems.splice(dragItem.current, 1)[0]
+        console.log(draggedItemContent)
+		//switch the position
+		_fruitItems.splice(dragOverItem.current, 0, draggedItemContent)
+		//reset the position ref
+		dragItem.current = null
+		dragOverItem.current = null
+        
+		//update the actual array
+		setlistimage(_fruitItems)
+	}
+
+	//handle name change
+	
+
+	//handle new item addition
+	
 
     console.log(defaultSuggestionsFilter)
     const fetchkeyword=useCallback(debounce((trigger,value)=>{
@@ -227,16 +252,32 @@ const Formupload=(props)=>{
                 <span className="css-1rssc4n">Ảnh bìa</span>
                 <div className="jsx-662133185 jsx-1690480325 container-v2">
                     <div className="jsx-662133185 jsx-1690480325 bg-container-v2 empty">
-                        {files.list_image.length==0 || !loading?
+                        {listimage.length==0 || !loading?
                         <div className="jsx-662133185 jsx-1690480325 candidate-v2 empty"></div>
                         :<>
-                        {files.list_image.map(item=>
-                        <img draggable="false" src={item} className="jsx-662133185 jsx-1690480325 candidate-v2 bg"/>
+                        {listimage.map((item,index)=>
+                        <img 
+                        onDragStart={(e) => {
+                            dragItem.current = index
+                            const listdata=listimage.map((file,i)=>{
+                                if(i==index){
+                                    return({...file,choice:true})
+                                }
+
+                                return({...file,choice:false})
+                            })
+                            setlistimage(listdata)
+                        }}
+						onDragEnter={(e) => (dragOverItem.current = index)}
+						onDragEnd={()=>handleSort()}
+						onDragOver={(e) => e.preventDefault()}
+                        draggable
+                         src={item.media_preview} className={`jsx-662133185 ${item.choice?'active':''} jsx-1690480325 candidate-v2 bg`}/>
                         )}
                         </>}
                     </div>
                     
-                    {files.list_image.length==0 || !loading?
+                    {listimage.length==0 || !loading?
                     <div className="jsx-662133185 jsx-1690480325 chosen-v2 empty" style={{transform: 'translate3d(4px, 1px, 0px) scaleX(1.1) scaleY(1.1)'}}>
                         <div className="jsx-662133185 jsx-1690480325"></div>
                     </div>
