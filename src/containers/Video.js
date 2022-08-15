@@ -112,7 +112,7 @@ const Video=(props)=>{
     },[time])
 
     useEffect(()=>{
-        if(videoref.current!=null){
+        if(videoref.current){
             if(item.play){
                 videoref.current.play()
             }
@@ -121,6 +121,7 @@ const Video=(props)=>{
             }
         }
     },[item.play])
+
 
     const settimevideo=(e)=>{
         e.stopPropagation() 
