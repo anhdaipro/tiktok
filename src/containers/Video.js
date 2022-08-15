@@ -99,17 +99,7 @@ const Video=(props)=>{
             return ()=>clearTimeout(timer)
         }
     },[time,item,volume])
-    useEffect(()=>{
-        let times=time.seconds+time.minutes*60
-        if(times>5 && times<20){
-            var ctx = canvas.current.getContext("2d");
-            var text = "30-08-2017\n15:25\n(79.85858454, 17.56852655)";
-            ctx.font = "30px Arial";
-            ctx.fillStyle = "red";
-            ctx.textAlign = "center";
-            ctx.fillText(text, canvas.width/2, canvas.height/2); 
-        }
-    },[time])
+    
 
     useEffect(()=>{
         if(videoref.current){
@@ -268,7 +258,7 @@ const Video=(props)=>{
                                     <div className="tiktok-ifi2lf-DivSeekBarCircle ek83qou5" style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}}></div>
                                     <div className="tiktok-122kkp0-DivSeekBar ek83qou4" style={{transform: `scaleX(${(time.minutes*60+time.seconds)/item.duration}) translateY(-50%)`}}></div>
                                 </div>
-                                <div className="tiktok-1atuw3p-DivSeekBarTimeContainer ek83qou2">{('0'+time.minutes).slice(-2)}:{('0'+time.seconds).slice(-2)}/{('0'+item.minutes).slice(-2)}:{('0'+item.seconds).slice(-2)}</div>
+                                <div className="tiktok-1atuw3p-DivSeekBarTimeContainer ek83qou2">{('0'+time.minutes).slice(-2)}:{('0'+Math.round(time.seconds)).slice(-2)}/{('0'+item.minutes).slice(-2)}:{('0'+item.seconds).slice(-2)}</div>
                             </div>
                             <div className="tiktok-fxqf0v-DivVideoControlBottom ek83qou0"></div>
                             <div onClick={(e)=>setvideochoice(e,item,'show_report',true)} data-e2e="video-report" className="tiktok-czl35e-PReportText item-center e71rlrn13">
