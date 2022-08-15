@@ -90,15 +90,15 @@ const Video=(props)=>{
         naviga(`${item.user.username}/video/${item.id}`)  
     }
     useEffect(()=>{
-        if(videoref.current!=null){
+        if(videoref.current){
             const timer=setTimeout(()=>{
             videoref.current.volume=volume
-           
-            setTime({seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
+            setTime(current=>{return{seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}})
             },1000)
             return ()=>clearTimeout(timer)
         }
-    },[time,item,volume])
+    },[volume,videoref])
+
     
 
     useEffect(()=>{
