@@ -103,15 +103,15 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     },[item])
 
     useEffect(()=>{
-        if(loading && videoref.current){   
+        if(loading && videoref.current){
             const timer=setTimeout(()=>{
-                videoref.current.volume=volume
-                setState({...state,totalTime:videoref.current.currentTime+1})
-                setTime({seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
+            videoref.current.volume=volume
+            setState({...state,totalTime:videoref.current.currentTime+1})
+            setTime(current=>{return{seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}})
             },1000)
             return ()=>clearTimeout(timer)
         }
-    },[time,item,loading])
+    },[volume,videoref,loading])
     console.log(state.totalTime)
     useEffect(()=>{
         if(videoref.current!=null &&loading){
