@@ -1,4 +1,4 @@
-import Navbar from "../containers/Navbar"
+﻿import Navbar from "../containers/Navbar"
 import React,{useState,useEffect,useRef,useCallback} from 'react'
 import { dataURLtoFile } from "../constants"
 import {useNavigate} from 'react-router-dom'
@@ -18,6 +18,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
     const [loading,setLoading]=useState(false)
     const [idfile,setIdfile]=useState(null)
     const [time,setTime]=useState({minutes:0,seconds:0})
+    const [listimage,setListimage]=useState([])
     const [percent,setPercent]=useState(0)
     useEffect(()=>{
         if(videoref.current!=null){
@@ -55,6 +56,48 @@ const Uploadvideo=({user,isAuthenticated})=>{
             return value.replace(item.toString(),'')
         }
     }
+    let list_image=[]
+    useEffect(()=>{
+        if(listimage.length==0 && files){
+        list_image.length=0
+        let video = document.createElement('video');
+        let i = 1;
+        video.addEventListener('loadeddata', function() {
+            this.currentTime = i;
+        });
+        video.addEventListener('seeked', function() {
+            // now video has seeked and current frames will show
+            // at the time as we expect
+            generateThumbnail(i);
+            // when frame is captured, increase here by 5 seconds
+            i += files.duration/9;
+            // if we are not past end, seek to next interval
+            if (i <= this.duration) {
+              // this will trigger another seeked event
+              this.currentTime = i;
+            }
+            else {
+              // Done!, next action
+                return
+            }
+        });
+        function generateThumbnail(i) {   
+            console.log(i)  
+            let canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            let image = canvas.toDataURL("image/png");
+            let file_preview = dataURLtoFile(image,'dbc9a-rg53.png');
+            list_image.push({media_preview:image,file_preview:file_preview,time:i})
+            setListimage(list_image)
+        }
+        console.log(i)
+        video.preload = 'metadata';
+        video.src=files.video
+    }
+    },[files])
+    
     const previewFile=(e)=>{
         [].forEach.call(e.target.files, function(file) {
             var url = (window.URL || window.webkitURL).createObjectURL(file);
@@ -63,13 +106,10 @@ const Uploadvideo=({user,isAuthenticated})=>{
                 if(snapImage()){
                     ( async ()=>{
                         try{
-                            const controller = new AbortController();
-                            const signal = controller.signal;
                             let form=new FormData()
                             setLoading(false)
                             var sendDate = (new Date()).getTime();
-                            timeprocess()
-                            
+                            timeprocess()     
                             form.append('file',fileupload.file)
                             form.append('file_preview',fileupload.file_preview,)
                             form.append('duration',Math.round(fileupload.duration))
@@ -119,6 +159,8 @@ const Uploadvideo=({user,isAuthenticated})=>{
             video.play();  
         }) 
     }
+          
+    console.log(listimage)
     const timeprocess=()=>{
         setPercent(0)
         let percents=0
@@ -146,6 +188,9 @@ const Uploadvideo=({user,isAuthenticated})=>{
     }
     const setvolum=()=>{
         setState({...state,muted:!state.muted})  
+    }
+    const setlistimage=(data)=>{
+        setListimage(data)
     }
 
     const settimevideo=(e)=>{
@@ -314,7 +359,9 @@ const Uploadvideo=({user,isAuthenticated})=>{
                                 </div>
                                 <Formupload
                                 files={files}
+                                listimage={listimage}
                                 fileid={idfile}
+                                setlistimage={data=>setListimage(data)}
                                 loading={loading}
                                 setstate={(name,value)=>setstate(name,value)}
                                 />
