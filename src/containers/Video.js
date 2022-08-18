@@ -19,7 +19,7 @@ const Video=(props)=>{
     const {item,setvideochoice,setshowvideo,setlistcomment,user,updatenotify,notify}=props
     const videoref=useRef(null)
     const seekbarref=useRef(null)
-    const [time,setTime]=useState(0)
+    const [time,setTime]=useState({seconds:0,minutes:0})
     const [volume,setVolume]=useState(0.5)
     const [drag,setDrag]=useState({time:false,volume:false})
     const canvas=useRef()
@@ -90,14 +90,16 @@ const Video=(props)=>{
         naviga(`${item.user.username}/video/${item.id}`)  
     }
     useEffect(()=>{
-        if(videoref.current){
+        if(item.show_video){
             const timer=setTimeout(()=>{
             videoref.current.volume=volume
-            setTime(current=>{return{seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}})
-            },1000)
+            setTime(current=>{
+                return{...current,seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}
+            })
+            },200)
             return ()=>clearTimeout(timer)
         }
-    },[volume,videoref])
+    },[volume,item.show_video,time])
 
     
 
@@ -116,7 +118,7 @@ const Video=(props)=>{
     const settimevideo=(e)=>{
         e.stopPropagation() 
         const rects = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rects.left-6;
+        const x = e.clientX - rects.left;
         const times=(x/rects.width)*item.duration
         console.log(x)
         videoref.current.currentTime=times
