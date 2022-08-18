@@ -27,6 +27,7 @@ const BrowserMode=(props)=>{
     const [time,setTime]=useState({minutes:0,seconds:0})
     const [volume,setVolume]=useState(0.5)
     const seekbarref=useRef(null)
+    const [drag,setDrag]=useState({time:false,volume:false})
     const socket=useRef()  
     const naviga=useNavigate()
     const [listrecommend,setListrecommned]=useState([])
@@ -186,7 +187,16 @@ const BrowserMode=(props)=>{
                                         </div>
                                     </div>
                                     {!item.play?<svg class="tiktok-i8t918-SvgPlayIcon e1oyh2e10" fill="#fff" width="120" height="120" version="1.1" viewBox="0 0 36 36"><path class="ytp-svg-fill" d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z" id="ytp-id-303"></path></svg>:''}
-                                    <div class="tiktok-65ogze-DivSeekBarContainer e123m2eu0">
+                                    <div onClick={(e)=>settimevideo(e)}
+                                        onMouseUp={e=>setDrag({...drag,time:false})}
+                                        onMouseDown={e=>setDrag({...drag,time:true})}
+                                        onMouseMove={e=>{
+                                        e.preventDefault()
+                                        if(!drag.time){
+                                            return
+                                        }
+                                        settimevideo(e)
+                                        }}    class="tiktok-65ogze-DivSeekBarContainer e123m2eu0">
                                         <div class="tiktok-14kubmr-DivSeekBarProgress e123m2eu2"></div>
                                         <div style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}} class="tiktok-1n0974s-DivSeekBarCircleWrapper e123m2eu4">
                                             <div class="tiktok-1okt9xk-DivSeekBarCircle e123m2eu5"></div>
