@@ -2050,3 +2050,6 @@ cursor: pointer;
     } 
     
 }
+.active{
+border: 2px solid #e77979;
+}
