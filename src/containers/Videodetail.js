@@ -103,15 +103,15 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     },[item])
 
     useEffect(()=>{
-        if(loading && videoref.current){
+        if(loading ){
             const timer=setTimeout(()=>{
             videoref.current.volume=volume
-            setState({...state,totalTime:videoref.current.currentTime+1})
-            setTime(current=>{return{seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}})
-            },1000)
+            setState({...state,totalTime:videoref.current.currentTime+0.1})
+            setTime({seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
+            },200)
             return ()=>clearTimeout(timer)
         }
-    },[volume,videoref,loading])
+    },[volume,videoref,loading,time])
     console.log(state.totalTime)
     useEffect(()=>{
         if(videoref.current!=null &&loading){
@@ -167,7 +167,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     const settimevideo=(e)=>{
         e.stopPropagation() 
         const rects = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rects.left -8;
+        const x = e.clientX - rects.left;
         const times=(x/rects.width)*item.duration
         videoref.current.currentTime=times
         console.log(x)
