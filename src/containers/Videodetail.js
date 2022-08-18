@@ -344,7 +344,9 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
                                 <div class="tiktok-1wejges-DivVolumeControlCircle e1cts53v3" style={{transform: `translateY(-${(volume)*80}px)`}}></div>
                                 <div class="tiktok-18ly8p2-DivVolumeControlBar e1cts53v2" style={{transform: `scaleY(${volume})`}}></div>
                             </div>
-                            <button onClick={(e)=>setvideochoice(e,item,'muted',!item.muted)} data-e2e="browse-sound" class="tiktok-z6k360-ButtonVoiceControlNew e1oyh2e25">
+                            <button onClick={(e)=>{setvideochoice(e,item,'muted',!item.muted)
+                            setVolume(item.muted?0.5:0)
+                        }} data-e2e="browse-sound" class="tiktok-z6k360-ButtonVoiceControlNew e1oyh2e25">
                             
                                 <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     {item.muted?
