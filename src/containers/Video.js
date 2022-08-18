@@ -145,6 +145,7 @@ const Video=(props)=>{
     }
     const setmutedvideo=(e)=>{
         e.stopPropagation() 
+        setVolume(item.muted?0.5:0)
         setvideochoice(e,item,'muted',!item.muted)
     }
     return(
