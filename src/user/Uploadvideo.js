@@ -31,13 +31,13 @@ const Uploadvideo=({user,isAuthenticated})=>{
         }
     },[files,state])
     useEffect(()=>{
-        if(files.file){
+        if(idfile){
             const timer=setTimeout(()=>{
             setTime({seconds:Math.floor(videoref.current.currentTime) % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
             },1000)
             return ()=>clearTimeout(timer)
         }
-    },[time,files])
+    },[time,idfile])
 
     useEffect(()=>{
         (async ()=>{
