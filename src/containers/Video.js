@@ -99,7 +99,7 @@ const Video=(props)=>{
             },200)
             return ()=>clearTimeout(timer)
         }
-    },[volume,item.show_video,time])
+    },[volume,item,time,videoref])
 
     
 
