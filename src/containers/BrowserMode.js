@@ -71,7 +71,7 @@ const BrowserMode=(props)=>{
             const timer=setTimeout(()=>{
                 videoref.current.volume=volume
             setTime({seconds:Math.floor(videoref.current.currentTime+1) % 60,minutes:Math.floor((videoref.current.currentTime+1) / 60) % 60})
-            },200)
+            },100)
             return ()=>clearTimeout(timer)
         }
     },[time,item,loading])
