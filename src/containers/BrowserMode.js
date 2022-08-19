@@ -67,12 +67,14 @@ const BrowserMode=(props)=>{
     },[item])
 
     useEffect(()=>{
-        if(loading && videoref.current){   
+        if(loading){   
             const timer=setTimeout(()=>{
-                videoref.current.volume=volume
-            setTime({seconds:Math.floor(videoref.current.currentTime+1) % 60,minutes:Math.floor((videoref.current.currentTime+1) / 60) % 60})
-            },100)
-            return ()=>clearTimeout(timer)
+            videoref.current.volume=volume
+            setTime(current=>{
+                return{...current,seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}
+            })
+        },100)
+        return ()=>clearTimeout(timer)
         }
     },[time,item,loading])
 
