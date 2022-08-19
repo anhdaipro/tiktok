@@ -31,7 +31,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
         }
     },[files,state])
     useEffect(()=>{
-        if(videoref.current!=null){
+        if(files.file){
             const timer=setTimeout(()=>{
             setTime({seconds:Math.floor(videoref.current.currentTime) % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
             },1000)
@@ -268,7 +268,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
                                                         <span onClick={(e)=>setplayvideo(e)} className="jsx-4048669318 play-btn">
                                                             <img src={`${state.play!=undefined&& state.play?'https://lf16-tiktok-common.ttwstatic.com/obj/tiktok-web-common-sg/ies/creator_center/svgs/pause.3f559180.svg':'https://lf16-tiktok-common.ttwstatic.com/obj/tiktok-web-common-sg/ies/creator_center/svgs/play.6cac639f.svg'}`} className="jsx-4048669318 icon"/>
                                                         </span>
-                                                        <span className="jsx-4048669318 time">{time.minutes}:{(`0${Math.round(time.seconds)}`).slice(-2)} / 0:{(`0${Math.round(files.duration)}`).slice(-2)}</span>
+                                                        <span className="jsx-4048669318 time">{('0'+time.minutes).slice(-2)}:{(`0${Math.round(time.seconds)}`).slice(-2)} /{('0'+Math.floor(files.duration / 60) % 60).slice(-2)}:{(`0${Math.round(Math.floor(files.duration) % 60)}`).slice(-2)}</span>
                                                     </div>
                                                     <div className="jsx-4048669318 right">
                                                         <span onClick={()=>setvolum()} className="jsx-4048669318 volume">
