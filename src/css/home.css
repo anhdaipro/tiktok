@@ -2023,7 +2023,42 @@ cursor: pointer;
     padding: 8px 0;
 }
 }
-
+.tiktok-2xqv0y-ButtonBasicButtonContainer-StyledVideoSwitchV2 {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transform: rotate(90deg);
+    top: calc(50% + 8px);
+    margin-top: -24px;
+    background: rgba(255, 255, 255, 0.12);
+    right: 20px;
+}
+.tiktok-1iiukfq-ButtonBasicButtonContainer-StyledVideoSwitchV2 {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transform: rotate(-90deg);
+    top: calc(50% - 48px);
+    margin-top: -24px;
+    background: rgba(255, 255, 255, 0.12);
+    right: 20px;
+}
 @media screen and (max-width: 1079px){
 .tiktok-1p48f7x-DivItemContainer {
     width: calc(100vw - 388px);
