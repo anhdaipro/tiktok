@@ -2045,6 +2045,7 @@ cursor: pointer;
     position: absolute;
     z-index: 1;
     display: flex;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     width: 40px;
@@ -2059,6 +2060,7 @@ cursor: pointer;
     background: rgba(255, 255, 255, 0.12);
     right: 20px;
 }
+
 @media screen and (max-width: 1079px){
 .tiktok-1p48f7x-DivItemContainer {
     width: calc(100vw - 388px);
