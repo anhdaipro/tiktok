@@ -23,8 +23,7 @@ const Profile=(props)=>{
     useEffect(()=>{
         (async ()=>{
             await checkAuthenticated
-            try{
-                
+            try{  
                 const [obj1, obj2] = await axios.all([
                     axios.get(`https://daiviet.herokuapp.com/api/v3/${userprofile}/video?choice=${state.choice}`,headers),
                     axios.get(`https://daiviet.herokuapp.com/api/v3/${userprofile}/profile`,headers),
