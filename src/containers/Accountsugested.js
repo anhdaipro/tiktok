@@ -181,7 +181,7 @@ const Sinabar=(props)=>{
                                 {listuser.map((item,index)=>{
                                     if(!item.suggested){
                                     return(
-                                    <div onMouseEnter={(e)=>setuser(e,index,'show_info',true)} onMouseLeave={(e)=>setuser(e,index,'show_info',false)} key={index} class="tiktok-kwqs83-DivUserLinkContainer e797se20"> 
+                                    <div key={index} class="tiktok-kwqs83-DivUserLinkContainer e797se20"> 
                                         <Link data-e2e="following-user-avatar" to={`/${item.user.username}`}>
                                             <div class="e797se22 tiktok-n1lhfn-DivContainer-StyledUserAvatar e1vl87hj1" style={{width: '32px', height: '32px'}}>
                                                 <span shape="circle" class="e1vl87hj2 tiktok-gigx3u-SpanAvatarContainer-StyledAvatar e1e9er4e0" style={{width: '32px', height: '32px'}}>
