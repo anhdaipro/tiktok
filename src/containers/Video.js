@@ -53,7 +53,9 @@ const Video=(props)=>{
                 const res = await axios.post(followinguserURL,form,headers)
                 setvideochoice(e,item,'following',res.data.follow)
                 const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,follow:res.data.follow}
+                if(user.id!=item.user.id){
                 socket.current.emit("sendData",data)
+                }
             }
             catch{
                 console.log('error')
