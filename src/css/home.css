@@ -2061,11 +2061,7 @@ cursor: pointer;
     right: 20px;
 }
 
-@media screen and (max-width: 1079px){
-.tiktok-1p48f7x-DivItemContainer {
-    width: calc(100vw - 388px);
-}
-}
+
 @media screen and (max-width: 1919px){
 .tiktok-1lh5noh-DivVideoCardContainer {
     height: calc(450px + (100vw - 768px) / 1152 * 100);

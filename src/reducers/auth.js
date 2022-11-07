@@ -21,7 +21,8 @@ import {
     CREATE_THREAD_SUCCESS,
     CREATE_THREAD_FAIL,
     UPDATE_NOTIFI_SUCCESS,
-    COMMENT_NOTIFY
+    COMMENT_NOTIFY,
+    REQUEST_LOGIN
 
 } from '../actions/types';
 import { dataURLtoFile } from '../constants';
@@ -31,6 +32,7 @@ let initialState = {
     refresh: localStorage.getItem('refresh'),
     isAuthenticated: null,
     user: null,
+    requestlogin:false,
     notify:null,
     listtag:[]
 };
@@ -48,6 +50,11 @@ const rootReducer=(state = initialState, action)=>{
                 ...state,
                 user:payload
             }
+        case REQUEST_LOGIN:{
+            return{
+                ...state,requestlogin:payload
+            }
+        }
         case AUTHENTICATED_SUCCESS:
             return {
                 ...state,

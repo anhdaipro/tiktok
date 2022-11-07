@@ -34,8 +34,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     const socket=useRef()  
     useEffect(() => { 
         socket.current = io.connect('https://anhdai12345.herokuapp.com/');
-        socket.current.on("message",e => {
-            const data=e.data
+        socket.current.on("message",({data}) => {
             const count_unread=data.like || data.follow ?notify.count_notify_unseen+1:notify.count_notify_unseen-1
             const count_notify_unseen=count_unread>0?count_unread:0
             const data_unread={count_notify_unseen:count_notify_unseen,send_to:data.send_to}
@@ -50,8 +49,6 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
         fetchdata(e)
     }
 
-
-    
     const fetchdata=(e)=>{
         (async ()=>{
             if(localStorage.token!='null'&&expiry>0){
@@ -104,15 +101,15 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
 
     useEffect(()=>{
         if(loading ){
-            const timer=setTimeout(()=>{
+            const timer=setInterval(()=>{
             videoref.current.volume=volume
-            setState({...state,totalTime:videoref.current.currentTime+0.1})
+            setState({...state,totalTime:videoref.current.currentTime+0.2})
             setTime({seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60})
             },200)
-            return ()=>clearTimeout(timer)
+            return ()=>clearInterval(timer)
         }
-    },[volume,videoref,loading,time])
-    console.log(state.totalTime)
+    },[volume,videoref,loading])
+    
     useEffect(()=>{
         if(videoref.current!=null &&loading){
             if(item.play){
@@ -129,32 +126,30 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     },[item,state])
 
     useEffect(()=>{
-            if(loading&&(state.totalTime/item.duration)>0.5 && !state.view){ 
-                setState({...state,view:true})
-                setTimeout(()=>{
-                let form =new FormData()
-                form.append('view',true)
+        if(loading&&(state.totalTime/item.duration)>0.5 && !state.view){ 
+            setState({...state,view:true})
+            let form =new FormData()
+            form.append('view',true)
+            const timer= setTimeout(()=>{
                 axios.post(`${actionvideoURL}/${item.id}`,form,headers)
                 .then(res=>{
-            })
+                })
             },2000)
-        }
-               
+            return ()=>clearTimeout(timer)
+        }        
     },[loading,state])
-    const setfollow=(e)=>{
-        (async ()=>{
-            let form=new FormData()
-            form.append('id',item.user.id)
-            try{
-                const res = await axios.post(followinguserURL,form,headers)
-                setItem({...item,following:res.data.follow,count_follow:res.data.follow})
-                const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,follow:res.data.follow}
-                socket.current.emit("sendData",data)
-            }
-            catch{
-                console.log('error')
-            }
-        })()
+    const setfollow= async (e)=>{
+        let form=new FormData()
+        form.append('id',item.user.id)
+        try{
+            const res = await axios.post(followinguserURL,form,headers)
+            setItem({...item,following:res.data.follow,count_follow:res.data.follow})
+            const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,follow:res.data.follow}
+            socket.current.emit("sendData",data)
+        }
+        catch(e){
+            console.log(e)
+        }
     }
 
     const setvideochoice=(e,item,name,value,name_choice,value_choice)=>{
@@ -164,32 +159,11 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     }
 
     
-    const settimevideo=(e)=>{
-        e.stopPropagation() 
-        const rects = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rects.left;
-        const times=(x/rects.width)*item.duration
-        videoref.current.currentTime=times
-        console.log(x)
-    }
-    
     const setshowinfo=(e,value)=>{
         
         setItem({...item,show_info:value})
     }
-    const setVolumevideo=(e)=>{
-        e.stopPropagation() 
-        const rects = seekbarref.current.getBoundingClientRect();
-        const y = e.clientY - rects.top;
-        const value=(1-y/rects.height)>0 && (1-y/rects.height)<=1?(1-y/rects.height):(1-y/rects.height)>=1?1:0
-        if((1-y/rects.height)>0){
-            setItem({...item,muted:false})
-        }
-        else{
-            setItem({...item,muted:true})
-        }
-        setVolume(value)
-    }
+    
 
     const settag=(e,value)=>{
         setTags(value)
@@ -225,24 +199,23 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
         })
         addreply(e,parent,list_comment)
     }
-    const addreply=(e,parent,list_comment)=>{
-        (async ()=>{
-            try{
-                const length=listcomment.filter(item=>item.parent==parent.id).length
-                if(parent.count_reply>length){
-                    const res = await axios.get(`${listcommentreplyURL}/${item.id}?parent_id=${parent.id}&from_item=${length}`,headers)
-                    const  list_comments=[...list_comment,...res.data]
-                    if(res.data)
+    const addreply= async (e,parent,list_comment)=>{
+        try{
+            const length=listcomment.filter(item=>item.parent==parent.id).length
+            if(parent.count_reply>length){
+                const res = await axios.get(`${listcommentreplyURL}/${item.id}?parent_id=${parent.id}&from_item=${length}`,headers)
+                const  list_comments=[...list_comment,...res.data]
+                if(res.data)
                     console.log(list_comments)
                     setlistcomment(list_comments)
                     
                 }
             }
-            catch{
-                console.log('error')
-            }
-        })()
+        catch(e){
+            console.log(e)
+        }
     }
+
     const commentreport=listcomment.find(comment=>comment.show_report)
     const setitem=(value)=>{
         setItem(value)
@@ -250,6 +223,91 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     const coppylink=()=>{
         navigator.clipboard.writeText(window.location);
         alert('Copied')
+    }
+   
+    const settimevideo=(e)=>{
+        e.stopPropagation() 
+        const rects = progress.current.getBoundingClientRect();
+        const {left,width}=rects
+        const clientX=e.clientX
+        const percent=(clientX-left)/width
+        const times=percent*item.duration
+        videoref.current.currentTime=times
+    }
+    const volumeref=useRef()
+    const setVolumevideo=(e)=>{
+        e.stopPropagation() 
+        const rects = seekbarref.current.getBoundingClientRect();
+        const volumerects = volumeref.current.getBoundingClientRect();
+        console.log(rects)
+        const {height,bottom,top}=volumerects
+        const clientY=e.clientY
+        const value=bottom-clientY
+        const percent=value/height>=1?1:value/height<=0?0:value/height
+        if(percent>0){
+            setvideochoice(e,item,'muted',false)
+        }
+        else{
+            setvideochoice(e,item,'muted',true)
+        }
+        setVolume(percent)
+    }
+    
+    const progress=useRef()
+    
+    useEffect(()=>{
+        document.addEventListener('mousemove',setprogess)
+        return ()=>{
+            document.removeEventListener('mousemove',setprogess)
+        }
+    },[drag.time,progress,drag.volume,seekbarref,state.show_volume])
+    const setdrag=(e)=>{
+        e.stopPropagation()
+        setDrag({...drag,time:false,volume:false})
+    }
+    useEffect(()=>{
+        document.addEventListener('mouseup',setdrag)
+        return ()=>{
+            document.removeEventListener('mouseup',setdrag)
+        }
+    },[])
+    const setprogess=(e)=>{
+        settime(e)
+        setvolume(e)
+    }
+    const settime=(e)=>{
+        const rects = progress.current.getBoundingClientRect();
+        const clientX=e.clientX
+        const left =rects.left
+        const width=rects.width
+        const min=left
+        const max=left+width
+        if(drag.time && clientX>=min && clientX <=max){
+            const percent=(clientX-left)/width
+            const times=percent*item.duration
+            videoref.current.currentTime=times
+        }
+    }
+
+    const setvolume=(e)=>{
+        if(state.show_volume){
+        const rects = seekbarref.current.getBoundingClientRect();
+        const volumerects = volumeref.current.getBoundingClientRect();
+        const {top,bottom,height}=volumerects
+        const clientY=e.clientY
+        const min=rects.top
+        const max=rects.bottom
+        if(drag.volume && clientY>=min && clientY <=max){
+            const percent=(bottom-clientY)/height>=1?1:(bottom-clientY)/height<=0?0:(bottom-clientY)/height
+            if(percent==0){
+                setvideochoice(e,item,'muted',true)
+            }
+            else{
+                setvideochoice(e,item,'muted',false)
+            }
+            setVolume(percent)
+        }
+    }
     }
     return(
         <>
@@ -282,25 +340,18 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
                     {item!=null?<>
                     <div class="tiktok-5uccoo-DivVideoContainer e1oyh2e27">
                         <div  class="tiktok-7tjqm6-DivBlurBackground e1oyh2e8" style={{backgroundImage: `url(&quot;https://p16-sign-va.tiktokcdn.com/tos-useast2a-p-0037-aiso/46934c9b82cd445c954baa7ea6a999af_1652016316~tplv-dmt-logom:tos-useast2a-pv-0037-aiso/210e8379da074de3863841fb7f6b37d4.image?x-expires=1652256000&amp;x-signature=qTVyw4QPMysi9VWk9IUYX9vrx6M%3D&quot;)`}}></div>
-                        <div onClick={(e)=>setvideochoice(e,item,'play',!item.play)} class="tiktok-1g216w0-DivVideoWrapper e1oyh2e9">
-                            <div mode="2" class="tiktok-1jxhpnd-DivContainer e1yey0rl0">
+                        <div class="tiktok-1g216w0-DivVideoWrapper e1oyh2e9">
+                            <div onClick={(e)=>setvideochoice(e,item,'play',!item.play)} mode="2" class="tiktok-1jxhpnd-DivContainer e1yey0rl0">
                                 <img mode="2" src={item.video_preview} alt="Nhạc chế Chuyện Thi Cử 🤣 Có ai thấy nhột khum ta 😆 Chúc các bạn thi thật tốt nha 💪🏻 #thaybeou40" loading="lazy" class="tiktok-j6dmhd-ImgPoster e1yey0rl1"/>
                                 {!item.hidden_video?
-                                <div data-e2e="browse-video" class="tiktok-1h63bmc-DivBasicPlayerWrapper e1yey0rl2">
+                                <div  data-e2e="browse-video" class="tiktok-1h63bmc-DivBasicPlayerWrapper e1yey0rl2">
                                     <video  ref={videoref} src={item.video} autoplay='' preload="auto" muted={item.muted?true:false} playsinline="" loop class="tiktok-1sm3sg-VideoBasic e1yey0rl4"></video>
                                 </div>:''}
                             </div>
                             <div class="tiktok-hdu6so-DivVideoControlContainer e10mb03c5">
-                                <div  onClick={(e)=>settimevideo(e)} 
-                                    onMouseUp={e=>setDrag({...drag,time:false})}
+                                <div onClick={(e)=>settimevideo(e)} 
                                     onMouseDown={e=>setDrag({...drag,time:true})}
-                                    onMouseMove={e=>{
-                                        e.preventDefault()
-                                        if(!drag.time){
-                                            return
-                                        }
-                                        settimevideo(e)
-                                        }}  
+                                    ref={progress}
                                  class="tiktok-bo5mth-DivSeekBarContainer e10mb03c0">
                                     <div  class="tiktok-j48lkt-DivSeekBarProgress e10mb03c2"></div>
                                     <div class="tiktok-1ioucls-DivSeekBarCircle e10mb03c4" style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}}></div>
@@ -329,18 +380,10 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
                         </button>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 48 48" width="40" height="40" data-e2e="browse-logo" class="tiktok-1ncsqqe-StyledLogo e1oyh2e13"><g fillRule="evenodd" clipPath="url(#logo-icon_svg__a)" clipRule="evenodd"><path fill="#000" d="M0 36c0 6.627 5.373 12 12 12h24c6.627 0 12-5.373 12-12V12c0-6.628-5.373-12-12-12H12C5.373 0 0 5.372 0 12v24z"></path><path fill="#25F4EE" d="M30.636 6.288A9.23 9.23 0 0130.35 4h-6.97v26.133c0 3.014-2.056 5.457-5.062 5.457-3.006 0-5.443-2.443-5.443-5.456 0-3.014 2.437-5.457 5.443-5.457.6 0 .797.098 1.337.278v-7.051c-.562-.079-.754-.12-1.337-.12C11.515 17.785 6 23.315 6 30.135c0 6.82 5.515 12.349 12.318 12.349 6.708 0 12.357-5.375 12.51-12.062V17.049c2.528 1.733 5.395 2.746 8.689 2.746V13.19c-4.275 0-7.866-2.933-8.88-6.902z"></path><path fill="#fff" d="M33.12 8.77a9.23 9.23 0 01-.287-2.288h-6.971v26.134c0 3.014-2.055 5.456-5.061 5.456s-5.443-2.442-5.443-5.456a5.45 5.45 0 015.443-5.456c.6 0 .797.097 1.337.277v-7.05c-.562-.08-.754-.12-1.337-.12-6.803 0-12.318 5.529-12.318 12.349S13.998 44.965 20.8 44.965c6.707 0 12.357-5.374 12.51-12.062V19.531c2.528 1.733 5.395 2.747 8.689 2.747v-6.606c-4.275 0-7.866-2.933-8.88-6.901z"></path><path fill="#FE2C55" d="M15.92 35.033a5.446 5.446 0 01-.562-2.416c0-3.014 2.437-5.457 5.443-5.457.523 0 .739.074 1.143.212l.194.066v-7.051l-.21-.03c-.411-.059-.623-.09-1.127-.09-.386 0-.769.018-1.146.053v4.635l-.194-.066c-.404-.138-.62-.212-1.143-.212-3.006 0-5.443 2.443-5.443 5.457a5.46 5.46 0 003.045 4.9zm-4.972 4.997a12.29 12.29 0 009.853 4.935c6.707 0 12.357-5.374 12.51-12.061V19.532c2.528 1.733 5.395 2.746 8.689 2.746v-6.605a9.2 9.2 0 01-2.483-.341v4.463c-3.294 0-6.161-1.013-8.69-2.746v13.372c-.152 6.688-5.802 12.062-12.509 12.062-2.763 0-5.314-.912-7.37-2.453zm23.455-28.401a9.206 9.206 0 01-3.715-5.146h2.145a9.155 9.155 0 001.57 5.146z"></path></g><defs><clipPath id="logo-icon_svg__a"><rect width="48" height="48" fill="#fff" rx="10.5"></rect></clipPath></defs></svg>
                         <div class="tiktok-1bhjqk0-DivVoiceControlContainer e1oyh2e26">
-                            <div onClick={(e)=>setVolumevideo(e)}
-                            onMouseUp={e=>setDrag({...drag,volume:false})}
+                            <div ref={seekbarref} onClick={(e)=>setVolumevideo(e)}
                             onMouseDown={e=>setDrag({...drag,volume:true})}
-                            onMouseMove={e=>{
-                                e.preventDefault()
-                                if(!drag.volume){
-                                    return
-                                }
-                                setVolumevideo(e)
-                                }}  
                              class="tiktok-t8cj5n-DivVolumeControlContainer e1cts53v0">
-                                <div  ref={seekbarref} class="tiktok-m4h4si-DivVolumeControlProgress e1cts53v1"></div>
+                                <div ref={volumeref}  class="tiktok-m4h4si-DivVolumeControlProgress e1cts53v1"></div>
                                 <div class="tiktok-1wejges-DivVolumeControlCircle e1cts53v3" style={{transform: `translateY(-${(volume)*80}px)`}}></div>
                                 <div class="tiktok-18ly8p2-DivVolumeControlBar e1cts53v2" style={{transform: `scaleY(${volume})`}}></div>
                             </div>
