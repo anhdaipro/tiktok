@@ -1,10 +1,11 @@
 import React,{useState,useEffect,useRef,useCallback} from 'react'
 import axios from "axios"
-import { headers,expiry } from "../actions/auth";
+import { headers,expiry,setrequestlogin} from "../actions/auth";
 import {useNavigate} from "react-router-dom"
 import { listuploadvideoURL,followinguserURL, actionvideoURL, listcommentURL } from "../urls";
 import { number } from "../constants";
 import io from "socket.io-client"
+import {useSelector,useDispatch} from "react-redux"
 import {
   EmailShareButton,
   FacebookShareButton,
@@ -16,15 +17,22 @@ import {
 } from "react-share";
 
 const Video=(props)=>{
-    const {item,setvideochoice,setshowvideo,setlistcomment,user,updatenotify,notify}=props
+    const {item,setvideochoice,setshowvideo,updatenotify,notify}=props
     const videoref=useRef(null)
+    const user=useSelector(state=>state.user)
+    const requestlogin=useSelector(state=>state.requestlogin)
+    console.log(requestlogin)
     const seekbarref=useRef(null)
     const [time,setTime]=useState({seconds:0,minutes:0})
     const [volume,setVolume]=useState(0.5)
+    const [state,setState]=useState({show_volume:false})
     const [drag,setDrag]=useState({time:false,volume:false})
     const canvas=useRef()
     const socket=useRef()  
-    const naviga=useNavigate()
+    const navigate=useNavigate()
+    const dispatch = useDispatch()
+    const timeoutRef = useRef(null);
+    
     useEffect(() => { 
         socket.current = io.connect('https://anhdai12345.herokuapp.com/');
         socket.current.on("message",e => {
@@ -45,63 +53,78 @@ const Video=(props)=>{
         }
     },[item.muted])
 
-    const setfollow=(e)=>{  
-        (async ()=>{
-            let form=new FormData()
-            form.append('id',item.user.id)
-            try{
+    const setfollow= async (e)=>{  
+        let form=new FormData()
+        form.append('id',item.user.id)
+        try{
+            if(user){
                 const res = await axios.post(followinguserURL,form,headers)
                 setvideochoice(e,item,'following',res.data.follow)
                 const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,follow:res.data.follow}
                 if(user.id!=item.user.id){
-                socket.current.emit("sendData",data)
-                }
-            }
-            catch{
-                console.log('error')
-            }
-        })()
-    }
-
-    const setlikevideo=(e)=>{
-        fetchdata(e)
-    }
-
-    const fetchdata=(e)=>{
-        (async ()=>{
-            if(localStorage.token!='null'&&expiry>0){
-                let form=new FormData()
-                form.append('action','like')
-                try{
-                    const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers)
-                    setvideochoice(e,item,'like',res.data.like,'count_like',res.data.count_like)
-                    const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,like:res.data.like}
                     socket.current.emit("sendData",data)
                 }
-                catch{
-                    console.log('error')
-                }
             }
-        })()
+            else{
+                dispatch(setrequestlogin(true))
+            }
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+
+    const setlikevideo= async (e)=>{
+        let form=new FormData()
+        form.append('action','like')
+        try{
+            if(user){
+                const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers)
+                setvideochoice(e,item,'like',res.data.like,'count_like',res.data.count_like)
+                const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,like:res.data.like}
+                socket.current.emit("sendData",data)
+            }
+            else{
+                dispatch(setrequestlogin(true))
+            }
+        }
+        catch{
+            console.log('error')
+        }
     }
 
     const setsharevideo=()=>{
-        console.log('aaaaaaaaaa')
+        if(user){
+            console.log('aaaaaaaaaa')
+        }
+        else{
+            dispatch(requestlogin(true))
+        }
     }
-    const setshowcomment=(e)=>{    
-        naviga(`${item.user.username}/video/${item.id}`)  
+
+    const setshowcomment=(e)=>{  
+        if(user){  
+            navigate(`${item.user.username}/video/${item.id}`)  
+        }
+        else{
+            dispatch(setrequestlogin(true))
+        }
     }
     useEffect(()=>{
         if(item.show_video){
-            const timer=setTimeout(()=>{
-            videoref.current.volume=volume
-            setTime(current=>{
-                return{...current,seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}
-            })
+            timeoutRef.current=setInterval(()=>{
+                if(videoref.current){
+                    videoref.current.volume=volume
+                    setTime(current=>{
+                        return{...current,seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}
+                    })
+                }
             },200)
-            return ()=>clearTimeout(timer)
+            return ()=>{if (timeoutRef.current) {
+                clearInterval(timeoutRef.current);
+            }}
         }
-    },[volume,item,time,videoref])
+    },[item.show_video,videoref])
 
     
 
@@ -119,27 +142,35 @@ const Video=(props)=>{
 
     const settimevideo=(e)=>{
         e.stopPropagation() 
-        const rects = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rects.left;
-        const times=(x/rects.width)*item.duration
-        console.log(x)
+        const rects = progress.current.getBoundingClientRect();
+        const {left,width}=rects
+        const clientX=e.clientX
+        const percent=(clientX-left)/width
+        const times=percent*item.duration
         videoref.current.currentTime=times
     }
-
+    const volumeref=useRef()
     const setVolumevideo=(e)=>{
         e.stopPropagation() 
         const rects = seekbarref.current.getBoundingClientRect();
+        const volumerects = volumeref.current.getBoundingClientRect();
         console.log(rects)
-        const y = e.clientY - rects.top;
-        console.log(y)
-        const value=(1-y/rects.height)>=0 && (1-y/rects.height)<=1?(1-y/rects.height):(1-y/rects.height)>=1?1:0
-        if((1-y/rects.height)>0){
+        const {height,bottom,top}=volumerects
+        const clientY=e.clientY
+        const value=bottom-clientY
+        const percent=value/height>=1?1:value/height<=0?0:value/height
+        console.log(clientY)
+        console.log(bottom)
+        console.log(top)
+        console.log(bottom-clientY)
+        console.log(percent)
+        if(percent>0){
             setvideochoice(e,item,'muted',false)
         }
         else{
             setvideochoice(e,item,'muted',true)
         }
-        setVolume(value)
+        setVolume(percent)
     }
     const setplayvideo=(e)=>{
         e.stopPropagation() 
@@ -150,6 +181,64 @@ const Video=(props)=>{
         setVolume(item.muted?0.5:0)
         setvideochoice(e,item,'muted',!item.muted)
     }
+    
+    const progress=useRef()
+    
+    useEffect(()=>{
+        document.addEventListener('mousemove',setprogess)
+        return ()=>{
+            document.removeEventListener('mousemove',setprogess)
+        }
+    },[drag.time,progress,drag.volume,seekbarref,state.show_volume])
+    const setdrag=(e)=>{
+        e.stopPropagation()
+        setDrag({...drag,time:false,volume:false})
+    }
+    useEffect(()=>{
+        document.addEventListener('mouseup',setdrag)
+        return ()=>{
+            document.removeEventListener('mouseup',setdrag)
+        }
+    },[])
+    const setprogess=(e)=>{
+        settime(e)
+        setvolume(e)
+    }
+    const settime=(e)=>{
+        const rects = progress.current.getBoundingClientRect();
+        const clientX=e.clientX
+        const left =rects.left
+        const width=rects.width
+        const min=left
+        const max=left+width
+        if(drag.time && clientX>=min && clientX <=max){
+            const percent=(clientX-left)/width
+            const times=percent*item.duration
+            videoref.current.currentTime=times
+        }
+    }
+
+    const setvolume=(e)=>{
+        if(state.show_volume){
+        const rects = seekbarref.current.getBoundingClientRect();
+        const volumerects = volumeref.current.getBoundingClientRect();
+        const {top,bottom,height}=volumerects
+        const clientY=e.clientY
+        const min=rects.top
+        const max=rects.bottom
+        if(drag.volume && clientY>=min && clientY <=max){
+            const percent=(bottom-clientY)/height>=1?1:(bottom-clientY)/height<=0?0:(bottom-clientY)/height
+            if(percent==0){
+                setvideochoice(e,item,'muted',true)
+            }
+            else{
+                setvideochoice(e,item,'muted',false)
+            }
+            setVolume(percent)
+        }
+    }
+    }
+
     return(
         <div onMouseLeave={(e)=>setshowvideo(e,item,'show_video',false)} onMouseEnter={(e)=>setshowvideo(e,item,'show_video',true)} data-e2e="recommend-list-item-container" className="tiktok-1p48f7x-DivItemContainer ecck2zc0">
             <a className="avatar-anchor tiktok-8wecda ecck2zc4" data-e2e="video-author-avatar" href={item.user.username}>
@@ -177,7 +266,7 @@ const Video=(props)=>{
                             <h4 data-e2e="video-author-nickname" className="tiktok-7uj1aq-H4AuthorName e1aily492">{item.user.name}</h4>
                         </a>
                     </div>
-                    <button onClick={(e)=>setfollow(e)} type="button" data-e2e="feed-follow" class={`eqy70r40 ${!item.following?'tiktok-jcprrh-Button-StyledFollowButton':'tiktok-wy7mh8-Button-StyledFollowButton'} ehk74z00`}>{item.following?"Following":"Follow"}</button>
+                    <button onClick={(e)=>setfollow(e)} type="button" data-e2e="feed-follow" className={`eqy70r40 ${!item.following?'tiktok-jcprrh-Button-StyledFollowButton':'tiktok-wy7mh8-Button-StyledFollowButton'} ehk74z00`}>{item.following?"Following":"Follow"}</button>
                     <div data-e2e="video-desc" className="tiktok-1ejylhp-DivContainer e18aywvs0">
                         {JSON.parse(item.caption).map(cap=>{
                             if(cap.type=='tag' || cap.type=='hashtag'){
@@ -204,14 +293,14 @@ const Video=(props)=>{
                     </h4>
                 </div>
                 <div className="tiktok-kd7foj-DivVideoWrapper e71rlrn16">
-                    <div onClick={(e)=>setshowcomment(e)} data-e2e="feed-video" className="tiktok-1lh5noh-DivVideoCardContainer e71rlrn7">
+                    <div data-e2e="feed-video" className="tiktok-1lh5noh-DivVideoCardContainer e71rlrn7">
                         <canvas ref={canvas} width="56.25" height="100" className="tiktok-196h150-CanvasVideoCardPlaceholder e71rlrn0"></canvas>
                         <div className="tiktok-1rgp3yx-DivVideoPlayerContainer e71rlrn15">
                             <div mode="0" className="tiktok-yf3ohr-DivContainer e1yey0rl0">
                                 <img mode="0" src={item.video_preview} alt="🌸 Subscribe to YouTube → Bayashi TV #tiktokfood #roastbeef #sandwich #asmr" loading="lazy" className="tiktok-1itcwxg-ImgPoster e1yey0rl1"/>
                                 {item.show_video && !item.show_comment && !item.hidden_video?
                                 <div className="tiktok-1h63bmc-DivBasicPlayerWrapper e1yey0rl2">
-                                    <video ref={videoref} src={item.video} autoplay=''  play={true} preload="auto" muted={item.muted && volume<=0?true:false} playsinline="" loop className="tiktok-lkdalv-VideoBasic e1yey0rl4"></video>
+                                    <video onClick={(e)=>setshowcomment(e)} ref={videoref} src={item.video} autoplay=''  play={true} preload="auto" muted={item.muted && volume<=0?true:false} playsinline="" loop className="tiktok-lkdalv-VideoBasic e1yey0rl4"></video>
                                 </div>:''}
                             </div>
                             <div onClick={(e)=>setplayvideo(e)} data-e2e="video-play" className="tiktok-mlcjt3-DivPlayIconContainer-StyledDivPlayIconContainer e71rlrn9">
@@ -221,24 +310,16 @@ const Video=(props)=>{
                                     :<path className="ytp-svg-fill" d="M 12,26 18.5,22 18.5,14 12,10 z M 18.5,22 25,18 25,18 18.5,14 z" id="ytp-id-303"></path>
                                 }</svg>
                             </div>
-                            <div className="tiktok-q09c19-DivVoiceControlContainer e71rlrn12">
-                                {item.muted?"":
-                                <div 
-                                onClick={(e)=>setVolumevideo(e)}
-                                    onMouseUp={e=>setDrag({...drag,volume:false})}
+                            <div onMouseEnter={()=>setState({...state,show_volume:true})} onMouseLeave={()=>setState({...state,show_volume:false})} className="tiktok-q09c19-DivVoiceControlContainer e71rlrn12">
+                                {state.show_volume && (
+                                <div ref={seekbarref}
+                                    onClick={(e)=>setVolumevideo(e)}
                                     onMouseDown={e=>setDrag({...drag,volume:true})}
-                                    onMouseMove={e=>{
-                                        e.preventDefault()
-                                        if(!drag.volume){
-                                            return
-                                        }
-                                        setVolumevideo(e)
-                                        }}   
-                                 class="tiktok-6ksj57-DivVolumeControlContainer e18vm3210">
-                                    <div ref={seekbarref} class="tiktok-1nww5qr-DivVolumeControlProgress e18vm3211"></div>
-                                    <div class="tiktok-1j0s7u0-DivVolumeControlCircle e18vm3213" style={{transform: `translateY(-${(volume)*42}px)`}}></div>
-                                    <div  class="tiktok-1pqw0yi-DivVolumeControlBar e18vm3212" style={{transform: `scaleY(${volume})`}}></div>
-                                </div>}
+                                 className="tiktok-6ksj57-DivVolumeControlContainer e18vm3210">
+                                    <div ref={volumeref} className="tiktok-1nww5qr-DivVolumeControlProgress e18vm3211"></div>
+                                    <div className="tiktok-1j0s7u0-DivVolumeControlCircle e18vm3213" style={{transform: `translateY(-${(volume)*42}px)`}}></div>
+                                    <div  className="tiktok-1pqw0yi-DivVolumeControlBar e18vm3212" style={{transform: `scaleY(${volume})`}}></div>
+                                </div>)}
                                 <div onClick={(e)=>setmutedvideo(e)} data-e2e="video-sound" className="tiktok-105iyqb-DivMuteIconContainer e71rlrn11">
                                     <svg width="24" height="24" viewBox="0 0 48 48" fill="#fff" xmlns="http://www.w3.org/2000/svg">
                                     {item.muted?
@@ -248,16 +329,9 @@ const Video=(props)=>{
                                 </div>
                             </div>
                             <div className="tiktok-nlv8yo-DivVideoControlContainer ek83qou6">
-                                <div  onClick={(e)=>settimevideo(e)}
-                                    onMouseUp={e=>setDrag({...drag,time:false})}
+                                <div  ref={progress}
+                                    onClick={(e)=>settimevideo(e)}
                                     onMouseDown={e=>setDrag({...drag,time:true})}
-                                    onMouseMove={e=>{
-                                        e.preventDefault()
-                                        if(!drag.time){
-                                            return
-                                        }
-                                        settimevideo(e)
-                                        }}   
                                         className="tiktok-1gmtcd3-DivSeekBarContainer ek83qou1">
                                     <div className="tiktok-ckj05b-DivSeekBarProgress ek83qou3"></div>
                                     <div className="tiktok-ifi2lf-DivSeekBarCircle ek83qou5" style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}}></div>
@@ -271,14 +345,14 @@ const Video=(props)=>{
                                 Report
                             </div>
                             {item.hidden_video!=undefined&&item.hidden_video?
-                            <div class="tiktok-1hvil8h-DivMask e71rlrn1">
-                                <div class="tiktok-1xocg1k-DivMaskContainer e71rlrn2">
-                                    <div class="tiktok-1enzgpu-DivMaskIcon e71rlrn3">
+                            <div className="tiktok-1hvil8h-DivMask e71rlrn1">
+                                <div className="tiktok-1xocg1k-DivMaskContainer e71rlrn2">
+                                    <div className="tiktok-1enzgpu-DivMaskIcon e71rlrn3">
                                         <svg width="28" height="28" viewBox="0 0 16 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M13.9637 0.370662C14.1617 0.168152 14.4882 0.170371 14.6834 0.375552L15.6676 1.40986C15.8531 1.60483 15.851 1.91164 15.6629 2.10407L6.33538 11.644C5.86141 12.1288 5.09629 12.1169 4.6365 11.6177L0.326723 6.93829C0.144403 6.74033 0.151478 6.43358 0.342731 6.24424L1.35546 5.24162C1.55673 5.04237 1.88315 5.0499 2.07502 5.25822L5.5238 9.0028L13.9637 0.370662Z"></path></svg>
                                     </div>
-                                    <div class="tiktok-1lqjh50-DivMaskTitle e71rlrn4">Thanks for reporting</div>
-                                    <div class="tiktok-14c7g23-DivMaskDetail e71rlrn5">To improve your experience, this video has been hidden. We’ll show you fewer videos like this.</div>
-                                    <button onClick={(e)=>setvideochoice(e,item,'hidden_video',false,'success_report',false)} class="tiktok-nsc3oe-ButtonMask e71rlrn6">Show Video</button>
+                                    <div className="tiktok-1lqjh50-DivMaskTitle e71rlrn4">Thanks for reporting</div>
+                                    <div className="tiktok-14c7g23-DivMaskDetail e71rlrn5">To improve your experience, this video has been hidden. We’ll show you fewer videos like this.</div>
+                                    <button onClick={(e)=>setvideochoice(e,item,'hidden_video',false,'success_report',false)} className="tiktok-nsc3oe-ButtonMask e71rlrn6">Show Video</button>
                                 </div>
                             </div>:''}
                         </div>

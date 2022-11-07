@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { checkAuthenticated,login,expiry} from '../actions/auth';
+import Loginhome from '../user/Loginhome';
 
 const Layout = ({children,checkAuthenticated,isAuthenticated,user }) => {
     useEffect(() => {
@@ -20,7 +21,7 @@ const Layout = ({children,checkAuthenticated,isAuthenticated,user }) => {
     return (
         <>  
             {children}
-            
+            <Loginhome/>
         </>
         
     );

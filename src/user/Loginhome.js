@@ -1,22 +1,23 @@
 
 import React,{useState,useEffect} from 'react'
 import Formsignup from "./Formsignup"
-import {signup,login,facebookLogin,googleLogin,reset_password} from "../actions/auth"
-import { connect } from 'react-redux';
+import {signup,login,facebookLogin,googleLogin,reset_password,setrequestlogin} from "../actions/auth"
+import { connect,useDispatch } from 'react-redux';
 import Formlogin from './Formlogin'
 import LoginGoogle from "./LoginGoogle"
 import LoginFacebook from "./LoginFacebook"
-const Loginhome=({setrequestlogin,user,isAuthenticated,login})=>{
+const Loginhome=({user,isAuthenticated,login,requestlogin})=>{
     const [requestsignup,setRequestsingnup]=useState(false)
     const [state,setState]=useState({show_brower:false,loginemail:false,show_login:false,show_password:false,resetsencode:false,time:0})
     const [singnup,setSignup]=useState({show_signup:false})
     const [requestSent, setRequestSent] = useState(false);
+    const dispatch = useDispatch()
     const loginchoice=()=>{
         setState({...state,loginemail:false,show_login:true,loginphonewithcode:true,requestreset:false})
     }
     
     const setclose=()=>{
-        setrequestlogin(false)
+        dispatch(setrequestlogin(false))
         if(!requestsignup){
         setState({...state,show_login:false,loginemail:false,loginphonewithcode:true,requestreset:false})
         }
@@ -31,6 +32,7 @@ const Loginhome=({setrequestlogin,user,isAuthenticated,login})=>{
     }
     
     return(
+        requestlogin && (
         <div className='tiktok-py8jux-DivModalContainer e1gjoq3k0'>
                 <div className="tiktok-1fs75a4-DivModalMask e1gjoq3k1"></div>
                 <div className="tiktok-1bg0j8b-DivContentContainer e1gjoq3k2">
@@ -109,9 +111,10 @@ const Loginhome=({setrequestlogin,user,isAuthenticated,login})=>{
                     </div>
                 </div>
             </div>
+            )
     )
 }
 const mapStateToProps = state => ({
-    isAuthenticated: state.isAuthenticated
+    isAuthenticated: state.isAuthenticated,requestlogin:state.requestlogin
 });
-export default connect(mapStateToProps, { login,signup,facebookLogin,googleLogin,reset_password })(Loginhome);
+export default connect(mapStateToProps, { login,signup,facebookLogin,googleLogin,reset_password,setrequestlogin })(Loginhome);

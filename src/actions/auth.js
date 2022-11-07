@@ -20,7 +20,8 @@ import {
     CREATE_THREAD_FAIL,
     CREATE_THREAD_SUCCESS,
     GET_THREAD_FAIL,
-    UPDATE_NOTIFI_SUCCESS
+    UPDATE_NOTIFI_SUCCESS,
+    REQUEST_LOGIN
 } from './types';
 
 import axios from 'axios';
@@ -61,12 +62,13 @@ export const googleAuthenticate = (state, code) => async dispatch => {
 
 export const googleLogin = (accessToken) => async dispatch => {
     try {
+        console.log(accessToken)
         const res=await axios.post('https://daiviet.herokuapp.com/api-auth/convert-token', {
 			token: accessToken,
             backend: "google-oauth2",
             grant_type: "convert_token",
-            client_id: "kVDYxFXPZ8KRIusXjnjAk44fgKEHptuWtDI98yke",
-            client_secret: "WlMOdXQKc3XALyVaIXOaEsVAjh1FTa2IrmxcbUARUHLIFLiL02RvEAEu2sJl4LpFO2P0cNvZnbF2W39VjVdEhsqcPK7vRyFwpYl1JCGgh2fu5jmTs6ip529SJN17u0CZ",
+            client_id: "874868987927-hudvamdogth0ei4hctcp5gja538tggkf.apps.googleusercontent.com",
+            client_secret: "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",
 		})
         dispatch({
             type: GOOGLE_AUTH_SUCCESS,
@@ -234,7 +236,12 @@ export const signup = (username, email, password,profile) => async dispatch => {
         })
     }
 };
-
+export const setrequestlogin= (data)=>  {
+    return{
+        payload:data,
+        type:REQUEST_LOGIN
+    }
+}
 export const reset_password = (email) => async dispatch => {
     const config = {
         headers: {

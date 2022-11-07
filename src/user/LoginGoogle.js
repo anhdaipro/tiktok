@@ -10,6 +10,7 @@ const LoginGoogle=(props)=>{
     const responseGoogle = (res) => {
         (async ()=>{
             try{
+                console.log(res)
                 await googleLogin(res.accessToken);
                 let form=new FormData()
                 form.append('token',localStorage.access_token)
@@ -38,7 +39,7 @@ const LoginGoogle=(props)=>{
     }
     return(
         <GoogleLogin
-            clientId="487987454497-pgoqpfq7s8tp7icr8c3c7pqm7mvmulbp.apps.googleusercontent.com"
+            clientId="AIzaSyBZVkd_qWs-BHzt0xzzAahhhIJBaynKSGQ"
             buttonText="Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}

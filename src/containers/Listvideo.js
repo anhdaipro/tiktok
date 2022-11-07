@@ -2,19 +2,16 @@ import Navbar from "./Navbar"
 import React,{useState,useEffect,useRef,useCallback} from 'react'
 import axios from "axios"
 import '../css/home.css';
-import { headers,expiry, updatenotify } from "../actions/auth";
-import { listuploadvideoURL,listvideofollowingURL,listfollowingcommentURL, listvideorecommendURL } from "../urls";
-import { number } from "../constants";
+import { headers,updatenotify,setrequestlogin } from "../actions/auth";
+import { listuploadvideoURL,listfollowingcommentURL, listvideorecommendURL } from "../urls";
 import Video from "./Video"
 import Reportvideo from "./Reportvideo"
-import {connect} from "react-redux"
+import {connect,useDispatch,useSelector} from "react-redux"
 import Sinabar from "./Accountsugested";
-import Loginhome from "../user/Loginhome";
 const origin= window.location.origin
 const Listvideo=(props)=>{
-    const {loadingdata,listpostdata,statedata,user,isAuthenticated,notify,updatenotify}=props
+    const {loadingdata,listpostdata,statedata,user,notify,updatenotify}=props
     const [state,setState]=useState({show_brower:false,show_share:false,full:false,type:0})
-    const [requestlogin,setrequestlogin]=useState(false)
     const [listpost,setListpost]=useState([])
     const [loading,setLoading]=useState(false)
     useEffect(()=>{
@@ -22,6 +19,7 @@ const Listvideo=(props)=>{
         setState(statedata)
         setLoading(loadingdata)
     },[loadingdata,listpostdata,statedata])
+    const dispatch = useDispatch()
     useEffect(()=>{
         window.onscroll=()=>{
             (async ()=>{
@@ -51,7 +49,8 @@ const Listvideo=(props)=>{
         },[loading])
         
     const showlogin=()=>{
-        setrequestlogin(true)
+        console.log(setrequestlogin(true))
+        dispatch(setrequestlogin(true))
     }
     
     
@@ -105,8 +104,6 @@ const Listvideo=(props)=>{
                         {listpost.map(item=>
                         <Video
                             item={item}
-                            
-                            user={user}
                             updatenotify={(data,notifi_type)=>updatenotify(data,notifi_type)}
                             notify={notify}
                             setshowvideo={(e,item,name,value)=>setshowvideo(e,item,name,value)}
@@ -121,10 +118,6 @@ const Listvideo=(props)=>{
             </div>
         </div>
         <div id="modal">
-            {requestlogin?
-            <Loginhome
-            setrequestlogin={(value)=>setrequestlogin(value)}
-            />:''}
             {listpost.some(item=>item.show_report)?
             <div className="tiktok-py8jux-DivModalContainer e1gjoq3k0">
                 <div class="tiktok-1fs75a4-DivModalMask e1gjoq3k1"></div> 
@@ -140,6 +133,6 @@ const Listvideo=(props)=>{
     )
 }
 const mapStateToProps = state => ({
-    isAuthenticated: state.isAuthenticated,user:state.user,notify:state.notify
+    user:state.user,notify:state.notify
 });
 export default connect(mapStateToProps,{updatenotify})(Listvideo);
