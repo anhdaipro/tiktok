@@ -10,7 +10,6 @@ const LoginFacebook=()=>{
     email: "",picture: ""
     })
     const  responseFb= async (response) =>{
-
             try{
                 console.log(response)
                 await facebookLogin(response.accessToken);
@@ -37,14 +36,16 @@ const LoginFacebook=()=>{
                 }
                     })
             }
-            catch{
-
+            catch(e){
+                console.log(e)
             }
     }
     return(
         <ReactFacebookLogin
-            appId="419040963377690"
-            fields="name,email"
+            appId="864145964959803"
+            
+            autoLoad={true}
+            fields="name,email,picture"
             callback={responseFb}
             render={renderProps => (
             <div onClick={renderProps.onClick} class="tiktok-xbg2z9-DivBoxContainer e1cgu1qo0">
