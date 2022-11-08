@@ -200,19 +200,18 @@ export const login = (username, password) => async dispatch => {
 };
 
 export const checkAuthenticated = () => async dispatch => {
-    console.log(localStorage.token)
-            try {
-                const res = await axios.get(userinfoURL,{ 'headers': { Authorization:`JWT ${localStorage.token}` }})
-                dispatch({
-                    payload: res.data,
-                        type: AUTHENTICATED_SUCCESS
-                });
-                
-            } catch (err) {
-                dispatch({
-                    type: AUTHENTICATED_FAIL
-                });
-            }
+    try {
+        const res = await axios.get(userinfoURL,{ 'headers': { Authorization:`JWT ${localStorage.token}` }})
+        dispatch({
+            payload: res.data,
+            type: AUTHENTICATED_SUCCESS
+        });     
+    } 
+    catch (err) {
+        dispatch({
+            type: AUTHENTICATED_FAIL
+        });
+    }
 }
 export const signup = (username, email, password,profile) => async dispatch => {
     const config = {
@@ -293,7 +292,7 @@ export const expiry=new Date(expirationDate).getTime() - new Date().getTime()
 console.log(expiry)
 export const headers={'headers': localStorage.token!='null' && expiry>0?{ Authorization:`JWT ${localStorage.token}`,'Content-Type': 'application/json' }:{'Content-Type': 'application/json'}}
 export const logout = () => dispatch => {
-    localStorage.token=null
+    localStorage.removeItem('token')
     
     dispatch({
         type: LOGOUT

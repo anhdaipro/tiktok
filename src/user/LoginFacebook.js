@@ -9,9 +9,10 @@ const LoginFacebook=()=>{
     const [state,setState] = useState({isLoggedIn: false,userID: "",name: "",
     email: "",picture: ""
     })
-    const  responseFb=(response) =>{
-        (async ()=>{
+    const  responseFb= async (response) =>{
+
             try{
+                console.log(response)
                 await facebookLogin(response.accessToken);
                 setState({
                     isLoggedIn: true,
@@ -39,7 +40,6 @@ const LoginFacebook=()=>{
             catch{
 
             }
-        })()
     }
     return(
         <ReactFacebookLogin

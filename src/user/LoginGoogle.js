@@ -4,42 +4,52 @@ import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
 import { loginURL } from "../urls"
 import axios from 'axios';
+import { gapi } from "gapi-script";
 import { headers,googleLogin,login } from "../actions/auth"
 const LoginGoogle=(props)=>{
     const {googleLogin,login}=props
-    const responseGoogle = (res) => {
-        (async ()=>{
+    useEffect(() => {
+        function start() {
+          gapi.client.init({
+            clientId: "874868987927-hudvamdogth0ei4hctcp5gja538tggkf.apps.googleusercontent.com",
+            scope: 'email',
+          });
+        }
+    
+        gapi.load('client:auth2', start);
+      }, []);
+    const responseGoogle = async (res) => {
+        
             try{
                 console.log(res)
                 await googleLogin(res.accessToken);
                 let form=new FormData()
                 form.append('token',localStorage.access_token)
-                axios.post(loginURL,form, {
+                const res1 = await axios.post(loginURL,form, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(res=>{
-                    const token = res.data.access;
-                    localStorage.setItem('token',token);
-                    const search = window.location.search;
-                    const params = new URLSearchParams(search);
-                    if(params.get('next')!=null){
-                        window.location.href=params.get('next')
-                        }
-                    else{
-                        window.location.href='/'
-                        }
-                    })  
+                
+                const token = res1.data.access;
+                localStorage.setItem('token',token);
+                const search = window.location.search;
+                const params = new URLSearchParams(search);
+                if(params.get('next')!=null){
+                    window.location.href=params.get('next')
+                }
+                else{
+                    window.location.href='/'
+                } 
             }
-            catch{
-
+            catch(e){
+                console.log(e)
             }
-        })()
+       
     }
     return(
         <GoogleLogin
-            clientId="AIzaSyBZVkd_qWs-BHzt0xzzAahhhIJBaynKSGQ"
+            clientId="874868987927-hudvamdogth0ei4hctcp5gja538tggkf.apps.googleusercontent.com"
             buttonText="Google"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
