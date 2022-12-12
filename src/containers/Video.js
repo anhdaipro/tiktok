@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef,useCallback} from 'react'
+﻿import React,{useState,useEffect,useRef,useCallback} from 'react'
 import axios from "axios"
 import { headers,expiry,setrequestlogin} from "../actions/auth";
 import {useNavigate} from "react-router-dom"
@@ -27,6 +27,7 @@ const Video=(props)=>{
     const [volume,setVolume]=useState(0.5)
     const [state,setState]=useState({show_volume:false})
     const [drag,setDrag]=useState({time:false,volume:false})
+    const [duration,setDuration]=useState(0)
     const canvas=useRef()
     const socket=useRef()  
     const navigate=useNavigate()
@@ -34,7 +35,7 @@ const Video=(props)=>{
     const timeoutRef = useRef(null);
     
     useEffect(() => { 
-        socket.current = io.connect('https://anhdai12345.herokuapp.com/');
+        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
         socket.current.on("message",e => {
             const data=e.data
             const count_unread=data.like || data.follow ?notify.count_notify_unseen+1:notify.count_notify_unseen-1
@@ -104,27 +105,20 @@ const Video=(props)=>{
 
     const setshowcomment=(e)=>{  
         if(user){  
-            navigate(`${item.user.username}/video/${item.id}`)  
+            navigate(`/${item.user.username}/video/${item.id}`)  
         }
         else{
             dispatch(setrequestlogin(true))
         }
     }
     useEffect(()=>{
-        if(item.show_video){
-            timeoutRef.current=setInterval(()=>{
-                if(videoref.current){
-                    videoref.current.volume=volume
-                    setTime(current=>{
-                        return{...current,seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60}
-                    })
-                }
-            },200)
-            return ()=>{if (timeoutRef.current) {
-                clearInterval(timeoutRef.current);
-            }}
+        if(item.show_video && duration){
+            if(videoref.current){
+                videoref.current.volume=volume    
+                
+            }
         }
-    },[item.show_video,videoref])
+    },[item.show_video,videoref,duration])
 
     
 
@@ -159,11 +153,6 @@ const Video=(props)=>{
         const clientY=e.clientY
         const value=bottom-clientY
         const percent=value/height>=1?1:value/height<=0?0:value/height
-        console.log(clientY)
-        console.log(bottom)
-        console.log(top)
-        console.log(bottom-clientY)
-        console.log(percent)
         if(percent>0){
             setvideochoice(e,item,'muted',false)
         }
@@ -174,7 +163,14 @@ const Video=(props)=>{
     }
     const setplayvideo=(e)=>{
         e.stopPropagation() 
-        setvideochoice(e,item,'play',!item.play)
+        if(videoref.current.paused){
+            setvideochoice(e,item,'play',true)
+            videoref.current.play()
+        }
+        else{
+            setvideochoice(e,item,'play',false)
+            videoref.current.pause()
+        }
     }
     const setmutedvideo=(e)=>{
         e.stopPropagation() 
@@ -300,7 +296,14 @@ const Video=(props)=>{
                                 <img mode="0" src={item.video_preview} alt="🌸 Subscribe to YouTube → Bayashi TV #tiktokfood #roastbeef #sandwich #asmr" loading="lazy" className="tiktok-1itcwxg-ImgPoster e1yey0rl1"/>
                                 {item.show_video && !item.show_comment && !item.hidden_video?
                                 <div className="tiktok-1h63bmc-DivBasicPlayerWrapper e1yey0rl2">
-                                    <video onClick={(e)=>setshowcomment(e)} ref={videoref} src={item.video} autoplay=''  play={true} preload="auto" muted={item.muted && volume<=0?true:false} playsinline="" loop className="tiktok-lkdalv-VideoBasic e1yey0rl4"></video>
+                                    <video 
+                                    onPlay={(e)=>setvideochoice(e,item,'play',true)}
+                                    onPause={e=>setvideochoice(e,item,'play',false)}
+                                    onTimeUpdate={()=>{
+                                        console.log(videoref.current.currentTime)
+                                        setTime({...time,seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60
+                                        })
+                                    }} onLoadedData={()=>setDuration(videoref.current.duration)} onClick={(e)=>setshowcomment(e)} ref={videoref} src={item.video} autoplay=''  play={true} preload="auto" muted={item.muted && volume<=0?true:false} playsinline="" loop className="tiktok-lkdalv-VideoBasic e1yey0rl4"></video>
                                 </div>:''}
                             </div>
                             <div onClick={(e)=>setplayvideo(e)} data-e2e="video-play" className="tiktok-mlcjt3-DivPlayIconContainer-StyledDivPlayIconContainer e71rlrn9">
@@ -337,7 +340,7 @@ const Video=(props)=>{
                                     <div className="tiktok-ifi2lf-DivSeekBarCircle ek83qou5" style={{left: `calc(${(time.minutes*60+time.seconds)/item.duration*100}%)`}}></div>
                                     <div className="tiktok-122kkp0-DivSeekBar ek83qou4" style={{transform: `scaleX(${(time.minutes*60+time.seconds)/item.duration}) translateY(-50%)`}}></div>
                                 </div>
-                                <div className="tiktok-1atuw3p-DivSeekBarTimeContainer ek83qou2">{('0'+time.minutes).slice(-2)}:{('0'+Math.round(time.seconds)).slice(-2)}/{('0'+item.minutes).slice(-2)}:{('0'+item.seconds).slice(-2)}</div>
+                                <div className="tiktok-1atuw3p-DivSeekBarTimeContainer ek83qou2">{('0'+time.minutes).slice(-2)}:{('0'+Math.floor(time.seconds)).slice(-2)}/{('0'+item.minutes).slice(-2)}:{('0'+item.seconds).slice(-2)}</div>
                             </div>
                             <div className="tiktok-fxqf0v-DivVideoControlBottom ek83qou0"></div>
                             <div onClick={(e)=>setvideochoice(e,item,'show_report',true)} data-e2e="video-report" className="tiktok-czl35e-PReportText item-center e71rlrn13">
