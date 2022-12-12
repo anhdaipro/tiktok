@@ -4,42 +4,12 @@ import ReactFacebookLogin from 'react-facebook-login/dist/facebook-login-render-
 import { connect } from 'react-redux';
 import { loginURL } from "../urls"
 import axios from 'axios';
-import { headers,facebookLogin,login } from "../actions/auth"
+import { headers,responseFb,login } from "../actions/auth"
 const LoginFacebook=()=>{
     const [state,setState] = useState({isLoggedIn: false,userID: "",name: "",
     email: "",picture: ""
     })
-    const  responseFb= async (response) =>{
-            try{
-                console.log(response)
-                await facebookLogin(response.accessToken);
-                setState({
-                    isLoggedIn: true,
-                    userID: response.userID,
-                    name: response.name,
-                    email: response.email,
-                    picture: response.picture.data.url
-                });
-                let form=new FormData()
-                form.append('token',localStorage.access_token)
-                axios.post(loginURL, form, headers)
-                .then(res=>{
-                    const token = res.data.access;
-                    localStorage.setItem('token',token);
-                    const search = window.location.search;
-                    const params = new URLSearchParams(search);
-                    if(params.get('next')!=null){
-                        window.location.href=params.get('next')
-                    }
-                    else{
-                    window.location.href='/'
-                }
-                    })
-            }
-            catch(e){
-                console.log(e)
-            }
-    }
+    
     return(
         <ReactFacebookLogin
             appId="864145964959803"
@@ -58,4 +28,4 @@ const LoginFacebook=()=>{
 const mapStateToProps = state => ({
     isAuthenticated: state.isAuthenticated
 });
-export default connect(mapStateToProps, { login,facebookLogin })(LoginFacebook);
+export default connect(mapStateToProps, { login,responseFb })(LoginFacebook);
