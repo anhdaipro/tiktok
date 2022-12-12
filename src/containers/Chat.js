@@ -184,7 +184,7 @@ const Message=(props)=>{
 
 
     useEffect(() => { 
-        socket.current = io.connect('https://anhdai12345.herokuapp.com/');
+        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
         socket.current.on('message',(e)=>{
         const data = (e.data)
         if(data.send_to!=undefined){
