@@ -41,7 +41,6 @@ return(
                                         <Route path="/room/:roomID" element={<Room/>} />
                                         <Route exact path="/en" element={<Recommend/>}/>
                                         <Route exact path="/live" element={<MainRecorder/>}/>
-                                        
                                         <Route exact path="/following" element={<Following/>}/>
                                         <Route exact path="/tag/:name" element={<Hashtag/>}/>   
                                         <Route exact path="/upload" element={<Uploadvideo/>}/>
