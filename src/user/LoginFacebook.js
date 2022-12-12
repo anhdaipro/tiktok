@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { loginURL } from "../urls"
 import axios from 'axios';
 import { headers,responseFb,login } from "../actions/auth"
-const LoginFacebook=()=>{
+const LoginFacebook=({responseFb})=>{
     const [state,setState] = useState({isLoggedIn: false,userID: "",name: "",
     email: "",picture: ""
     })
