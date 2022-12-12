@@ -6,6 +6,7 @@
     outline: 0px;
     transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
     display: flex;
+    inset: 0px;
     opacity: 1;
 }
 .tiktok-9zul1d-DivFrameContainer {
