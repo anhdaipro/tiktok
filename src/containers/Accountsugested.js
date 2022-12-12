@@ -19,15 +19,15 @@ const Sinabar=(props)=>{
                     axios.get(suggestedaccountURL,headers),
                     axios.get(listhagtagURL,headers),
                     axios.get(listmusicURL,headers),
-                    localStorage.token!='null' && expiry>0?axios.get(listfollowingcommentURL,headers):''
+                    localStorage.token && expiry>0?axios.get(listfollowingcommentURL,headers):''
                 ])
                 const list_sugessted=obj1.data.map(item=>{
                     return({...item,suggested:true})
                 })
-                const list_followers=localStorage.token!='null' && expiry>0?obj4.data.map(item=>{
+                const list_followers=localStorage.token && expiry>0?obj4.data.map(item=>{
                     return({...item,suggested:false})
                 }):[]
-                console.log(list_sugessted)
+                
                 setListuser([...listuser,...list_sugessted,...list_followers])
                 setListhashtag(obj2.data)
                 setListmusic(obj3.data)
@@ -81,7 +81,7 @@ const Sinabar=(props)=>{
         })
         setListuser(list_user)
         const rects = e.currentTarget.getBoundingClientRect();
-        console.log(rects)
+       
         setState({...state,index:value?index:state.index,top:rects.top+rects.height,left:rects.left})
     }
     const setkeepuser=(e,index,name,value)=>{

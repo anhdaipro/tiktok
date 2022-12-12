@@ -6,14 +6,14 @@ import Loginhome from '../user/Loginhome';
 const Layout = ({children,checkAuthenticated,isAuthenticated,user }) => {
     useEffect(() => {
         (async ()=>{
-            if(localStorage.token){
+            if(localStorage.getItem('token')){
                 checkAuthenticated()
             }
         })() 
        
-    }, [localStorage.token]);
+    }, []);
 
-    console.log(isAuthenticated)
+   
    
     return (
         <>  

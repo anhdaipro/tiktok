@@ -19,8 +19,6 @@ const Chat = (props) => {
    
     
 	
-    console.log(topgivecoin)
-    console.log(messages)
     useEffect(
 		() => {
 			if(user!=null){

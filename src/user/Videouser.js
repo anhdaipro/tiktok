@@ -4,7 +4,7 @@ const Videouser=({item,setshowvideo,setvideochoice,username})=>{
     const videoref=useRef(null)
     const navigate=useNavigate()
     useEffect(()=>{
-        console.log(item)
+        
         if(videoref.current!=null && item.show_video){
         if(item.play){
             videoref.current.play()

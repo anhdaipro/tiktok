@@ -56,7 +56,7 @@ const BrowserMode=(props)=>{
             const listrecommneds=res.data.map(item=>{
                 return({...item,seconds:Math.floor(item.duration) % 60,minutes:Math.floor(item.duration / 60) % 60})
             })
-            console.log(listrecommneds)
+          
             setListrecommned(listrecommneds)
         })()
     },[])
@@ -118,7 +118,7 @@ const BrowserMode=(props)=>{
 
     const fetchdata=(e)=>{
         (async ()=>{
-            if(localStorage.token!='null'&&expiry>0){
+            if(localStorage.token&&expiry>0){
                 let form=new FormData()
                 form.append('action','like')
                 try{

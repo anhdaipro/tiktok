@@ -51,7 +51,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
 
     const fetchdata=(e)=>{
         (async ()=>{
-            if(localStorage.token!='null'&&expiry>0){
+            if(localStorage.token&&expiry>0){
                 let form=new FormData()
                 form.append('action','like')
                 try{
@@ -92,7 +92,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
         })()
     },[id])
 
-    console.log(item)
+  
     useEffect(()=>{
         if(item!=null && item.muted){
         setVolume(0)
@@ -206,7 +206,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
                 const res = await axios.get(`${listcommentreplyURL}/${item.id}?parent_id=${parent.id}&from_item=${length}`,headers)
                 const  list_comments=[...list_comment,...res.data]
                 if(res.data)
-                    console.log(list_comments)
+                  
                     setlistcomment(list_comments)
                     
                 }

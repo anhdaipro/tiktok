@@ -89,7 +89,7 @@ const Formupload=(props)=>{
 	//handle new item addition
 	
 
-    console.log(defaultSuggestionsFilter)
+    
     const fetchkeyword=useCallback(debounce((trigger,value)=>{
       (async ()=>{
         try{ 

@@ -42,7 +42,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
     useEffect(()=>{
         (async ()=>{
             const res = await isAuthenticated
-            if (localStorage.token=='null' && expiry<0){
+            if (!localStorage.token && expiry<0){
                 window.location.href="/"
             }
         })()
@@ -160,7 +160,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
         }) 
     }
           
-    console.log(listimage)
+
     const timeprocess=()=>{
         setPercent(0)
         let percents=0

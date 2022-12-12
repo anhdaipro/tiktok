@@ -80,7 +80,7 @@ export default function Addcomment(props){
       
       supportWhitespace: true,
     });
-    console.log(editorState)
+    
     // eslint-disable-next-line no-shadow
     const { MentionSuggestions } = mentionPlugin;
     // eslint-disable-next-line no-shadow
@@ -96,7 +96,7 @@ export default function Addcomment(props){
 
     const onChange = useCallback((editorState) => {
         setEditorState(editorState);
-        console.log(editorState)
+        
     }, []);
 
     const onOpenChange = useCallback(() => {
@@ -108,7 +108,7 @@ export default function Addcomment(props){
         setSuggestions(defaultSuggestionsFilter(value, suggestions));
     }, []);
 
-    console.log(defaultSuggestionsFilter)
+    
     const fetchkeyword=useCallback(debounce((value)=>{
         (async ()=>{
             try{
@@ -128,7 +128,7 @@ export default function Addcomment(props){
     const listtag=Object.values(entityMap).map(entity => {
         return({id:entity.data.mention.id,username:entity.data.mention.username,name:entity.data.mention.name})
     })
-    //console.log(ref.current.editor.editor.innerText);
+    
    
     const setsubmit=(e)=>{
         (async ()=>{
