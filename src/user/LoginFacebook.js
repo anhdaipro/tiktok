@@ -43,8 +43,6 @@ const LoginFacebook=()=>{
     return(
         <ReactFacebookLogin
             appId="864145964959803"
-            
-            autoLoad={true}
             fields="name,email,picture"
             callback={responseFb}
             render={renderProps => (
