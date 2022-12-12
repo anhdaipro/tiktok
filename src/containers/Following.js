@@ -12,7 +12,7 @@ const Following=(props)=>{
     useEffect(()=>{
 
         (async ()=>{
-            if(localStorage.token!='null' && expiry>0){
+            if(localStorage.token && expiry>0){
             try{
                 await isAuthenticated
                 const res = await axios.get(listvideofollowingURL,headers)
