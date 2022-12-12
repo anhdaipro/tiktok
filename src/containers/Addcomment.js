@@ -64,7 +64,7 @@ export default function Addcomment(props){
     const socket=useRef()  
     const naviga=useNavigate()
     useEffect(() => { 
-        socket.current = io.connect('https://anhdai12345.herokuapp.com/');
+        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
         socket.current.on('message',(e)=>{
             const data = (e.data)
             const count_unread=notify.count_notify_unseen+1
