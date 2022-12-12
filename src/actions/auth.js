@@ -90,8 +90,8 @@ export const facebookLogin = (accessToken) => async dispatch =>{
         token: accessToken,
         backend: "facebook",
         grant_type: "convert_token",
-        client_id: "kVDYxFXPZ8KRIusXjnjAk44fgKEHptuWtDI98yke",
-        client_secret: "WlMOdXQKc3XALyVaIXOaEsVAjh1FTa2IrmxcbUARUHLIFLiL02RvEAEu2sJl4LpFO2P0cNvZnbF2W39VjVdEhsqcPK7vRyFwpYl1JCGgh2fu5jmTs6ip529SJN17u0CZ",
+        client_id: "864145964959803",
+        client_secret: "6d30952c56bcdd893b7f247bb4b11bee",
         })
         dispatch({
             type: FACEBOOK_AUTH_SUCCESS,
