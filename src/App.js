@@ -25,7 +25,7 @@ import Room from './stream/Room'
 import "./css/login.css"
 import "./css/fotter.css"
 import "./css/signup.css"
-import "./css/music.css"
+
 const Appstore=()=>{ 
 return(
         <Provider store={store}>
