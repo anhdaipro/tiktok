@@ -1,4 +1,4 @@
-export const api='https://daiviet.herokuapp.com/api'
+export const api='https://web-production-e83f.up.railway.app/api'
 export const verifyemailURL=`${api}/v3/verify/email`
 export const verifyphoneURL=`${api}/v3/verify/phone`
 export const sendOTPemailURL=`${api}/v3/send-otp/email`
