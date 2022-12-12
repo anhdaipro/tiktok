@@ -114,12 +114,10 @@ const Navbar=(props)=>{
 	},[])
 
     const onUnload=(e)=>{
-        if(expiry>0 && localStorage.token!='null'){
-        let form =new FormData()
-            form.append('online',false)
-            axios.post('https://daiviet.herokuapp.com/api/v3/user/update/online',form,headers)
-            .then(res=>{
-            })
+        if(expiry>0 && localStorage.token){
+        axios.post('https://web-production-e83f.up.railway.app/api/v3/user/update/online',JSON.stringify({online:false}),headers)
+        .then(res=>{
+        })
         }
     }
     
