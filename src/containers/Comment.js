@@ -11,7 +11,7 @@ import {connect} from 'react-redux'
 const Comment=({comment,setcomment,settag,user,setlistcomment,listcomment,updatenotify,notify})=>{  
     const socket=useRef()  
     useEffect(() => { 
-        socket.current = io.connect('https://anhdai12345.herokuapp.com/');
+        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
         socket.current.on('message',(e)=>{
             const data = (e.data)
             const data_unread={count_notify_unseen:data.like||data.follow?notify.count_notify_unseen+1:notify.count_notify_unseen}
