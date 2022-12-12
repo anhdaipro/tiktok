@@ -23,6 +23,7 @@ const Profile=(props)=>{
     useEffect(()=>{
         (async ()=>{
             try{  
+                console.log(headers)
                 const [obj1, obj2] = await axios.all([
                     axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/video?choice=${state.choice}`,headers),
                     axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/profile`,headers),
