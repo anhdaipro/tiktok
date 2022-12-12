@@ -22,11 +22,10 @@ const Profile=(props)=>{
     const navige=useNavigate()
     useEffect(()=>{
         (async ()=>{
-            await checkAuthenticated
             try{  
                 const [obj1, obj2] = await axios.all([
-                    axios.get(`https://daiviet.herokuapp.com/api/v3/${userprofile}/video?choice=${state.choice}`,headers),
-                    axios.get(`https://daiviet.herokuapp.com/api/v3/${userprofile}/profile`,headers),
+                    axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/video?choice=${state.choice}`,headers),
+                    axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/profile`,headers),
                 ])
                 const list_videos=obj1.data.listvideo.map(item=>{
                     return({...item,show_video:false,play:false})
@@ -113,7 +112,7 @@ const Profile=(props)=>{
         (async ()=>{
             try{
                 setState({...state,index:index,choice:value})
-                const res=await axios.get(`https://daiviet.herokuapp.com/api/v3/${userprofile}/video?choice=${value}`,headers)
+                const res=await axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/video?choice=${value}`,headers)
                 const list_videos=res.data.listvideo.map(item=>{
                     return({...item,show_video:false,play:false})
                 })
