@@ -76,9 +76,7 @@ const Formsignup=(props)=>{
                     },1000);
                 })
             }
-            else{
-                
-                setformData({ ...formData,form}); 
+            else{ 
                 axios.post(checkuserURL,JSON.stringify({name:formData.name,'email':formData.email}),headers)
                 .then(res=>{
                     setState({...state,error:res.data.error,show:true,requestsend:res.data.error?false:true})
@@ -95,15 +93,9 @@ const Formsignup=(props)=>{
         (async ()=>{
             try{
                 e.preventDefault()
-                let form =new FormData()
-                if(isVietnamesePhoneNumber(formData.phone)){
-                    form.append('phone',`+84 ${(formData.phone).slice(-9)}`)
-                }
-                else{
-                    form.append('email',formData.email)
-                }
-                form.append('code',formData.code)
-                const res =await axios.post(isVietnamesePhoneNumber(formData.phone)?verifyphoneURL:verifyemailURL,form,headers)
+                
+                const form=isVietnamesePhoneNumber(formData.phone)?{'code':formData.code,'phone':`+84 ${(formData.phone).slice(-9)}`}:{'code':formData.code,'email':formData.email}
+                const res =await axios.post(isVietnamesePhoneNumber(formData.phone)?verifyphoneURL:verifyemailURL,JSON.stringify(form),headers)
                 if(res.data.verify){
                     const username=formData.username
                     let profile=isVietnamesePhoneNumber(formData.phone)?{phone:formData.phone ,date_of_birth:formData.year+'-'+('0'+formData.month).slice(-2)+'-'+('0'+formData.day).slice(-2)}:{date_of_birth:formData.year+'-'+('0'+formData.month).slice(-2)+'-'+('0'+formData.day).slice(-2)}
