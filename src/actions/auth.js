@@ -77,6 +77,7 @@ export const responseGoogle = (response) => async dispatch => {
     const res1= await axios.post(loginURL,JSON.stringify({token:res.data.access_token}), config)
     const token = res1.data.access;
     localStorage.setItem('token',token);
+    localStorage.setItem("expirationDate", res1.data.access_expires);
     window.location.href="/"
     dispatch({
         type: GOOGLE_AUTH_SUCCESS,
@@ -103,6 +104,7 @@ export const responseFb = (response) => async dispatch =>{
         const res1= await axios.post(loginURL,JSON.stringify({token:res.data.access_token}), config)
         const token = res1.data.access;
         localStorage.setItem('token',token);
+        localStorage.setItem("expirationDate", res1.data.access_expires);
         window.location.href="/"
         dispatch({
             type: FACEBOOK_AUTH_SUCCESS,
