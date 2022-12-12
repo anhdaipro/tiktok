@@ -25,7 +25,7 @@ import {
 } from './types';
 
 import axios from 'axios';
-import { listThreadlURL, loginURL,registerURL,userinfoURL,userprofileURL} from '../urls';
+import { listThreadlURL, loginURL,registerURL,userinfoURL} from '../urls';
 import { isVietnamesePhoneNumber,validatEemail } from '../constants';
 
 
@@ -282,7 +282,7 @@ export const reset_password_confirm = (uidb64, token, password) => async dispatc
     const body = JSON.stringify({ uidb64, token,password});
 
     try {
-        const res =await axios.post(`https://anhdai.herokuapp.com/api/v4/password-reset/${uidb64}/${token}/`, body, config);
+        const res =await axios.post(`https://web-production-e83f.up.railway.app/api/v4/password-reset/${uidb64}/${token}/`, body, config);
 
         dispatch({
             type: PASSWORD_RESET_CONFIRM_SUCCESS,
@@ -371,48 +371,3 @@ export const updatenotify=(data,action)=>async dispatch=>{
     });
 }
 
-export const getStreams = (category) => async dispatch => {
-    if (!category) category = ''
-    const response = await axios.get(`streams?category=${category}`)
-    dispatch({
-        type: 'GET_STREAMS',
-        payload: response.data
-    })
-}
-
-export const getStream = (userName) => async dispatch => {
-    try {
-        var response = await axios.get(`streams?user=${userName}`)
-    } catch(e) {
-        
-    } finally {
-        if (!response) {
-            dispatch({
-                type: 'GET_STREAM',
-                payload: [{error: 'This channel does not exist'}]
-            })
-        } else {
-            if (response.status === 200 && !response.data[0]) {
-                dispatch({
-                    type: 'GET_STREAM',
-                    payload: [{error: 'This Channel is not streaming right now', errorName: userName}]
-                })
-            } else {
-                dispatch({
-                    type: 'GET_STREAM',
-                    payload: response.data
-                })
-            }
-        }
-        
-    }
-    
-}
-
-export const getCategories = () => async dispatch => {
-    const response = await axios.get('categories/')
-    dispatch({
-        type: 'GET_CATEGORIES',
-        payload: response.data
-    })
-} 
