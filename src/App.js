@@ -26,6 +26,8 @@ import Room from './stream/Room'
 import "./css/login.css"
 import "./css/fotter.css"
 import "./css/signup.css"
+import "./css/music.css"
+import Songs from './containers/Songs'
 const Appstore=()=>{ 
 return(
         <Provider store={store}>
@@ -41,7 +43,7 @@ return(
                                         <Route path="/room/:roomID" element={<Room/>} />
                                         <Route exact path="/en" element={<Recommend/>}/>
                                         <Route exact path="/live" element={<MainRecorder/>}/>
-                                        
+                                        <Route exact path="/musics" element={<Songs/>}/>
                                         <Route exact path="/following" element={<Following/>}/>
                                         <Route exact path="/tag/:name" element={<Hashtag/>}/>   
                                         <Route exact path="/upload" element={<Uploadvideo/>}/>
