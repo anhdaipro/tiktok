@@ -59,11 +59,9 @@ const Formsignup=(props)=>{
         e.stopPropagation()
         if(isVietnamesePhoneNumber(formData.phone) || validatEemail(formData.email)){
             if(isVietnamesePhoneNumber(formData.phone)){    
-                let form=new FormData()
-                form.append('phone',`+84 ${(formData.phone).slice(-9)}`)
                 let time=60
                 setState({...state,time:time})
-                axios.post(sendOTPphoneURL,form,headers)
+                axios.post(sendOTPphoneURL,JSON.stringify({phone:`+84 ${(formData.phone).slice(-9)}`}),headers)
                 .then(res=>{
                     setformData({...formData,id:res.data.id})
                         const countDown = setInterval(() => {
@@ -79,11 +77,9 @@ const Formsignup=(props)=>{
                 })
             }
             else{
-                let form= new FormData()
-                form.append('email',formData.email)
-                form.append('username',formData.username)
+                
                 setformData({ ...formData,form}); 
-                axios.post(checkuserURL,form,headers)
+                axios.post(checkuserURL,JSON.stringify({name:formData.name,'email':formData.email}),headers)
                 .then(res=>{
                     setState({...state,error:res.data.error,show:true,requestsend:res.data.error?false:true})
                     setTimeout(()=>{

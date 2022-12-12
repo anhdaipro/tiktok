@@ -37,13 +37,10 @@ const Formlogin=(props)=>{
 
     const setsentcode=(e)=>{
         e.preventDefault();
-        let form=new FormData()
-        form.append('phone',`+84 ${(formlogin.phone).slice(-9)}`)
-        form.append('login',true)
         setShow(true)
         let time=60
         setState({...state,time:time})
-        axios.post(sendOTPphoneURL,form)
+        axios.post(sendOTPphoneURL,JSON.stringify({'phone':`+84 ${(formlogin.phone).slice(-9)}`,login:true}))
         .then(res=>{
             setFormlogin({...formlogin,id:res.data.id})
             const countDown = setInterval(() => {
@@ -63,11 +60,7 @@ const Formlogin=(props)=>{
         e.preventDefault();
         (async () => {
             try {
-                let form=new FormData()
-                form.append('id',formlogin.id)
-                form.append('code',formlogin.code)
-                form.append('phone',`+84 ${formlogin.phone.slice(-9)}`)
-                const res = await axios.post(verifyphoneURL,form,headers)
+                const res = await axios.post(verifyphoneURL,JSON.stringify({id:formlogin.id,code:formlogin.code,'phone':`+84 ${(formlogin.phone).slice(-9)}`}),headers)
                 setFormlogin({...formlogin,...res.data})
                 if(res.data.user_id!=undefined){
                     loginotp(res.data.user_id)

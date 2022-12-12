@@ -19,18 +19,16 @@ const FormReset=(props)=>{
     });
     const [reset,setReset]=useState({email:true})
     let navigate = useNavigate();
-    const { email,new_password } = formData;
+    const { email,new_password,phone,code,username } = formData;
     const [state,setState]=useState({time:0,error:true,showpass:false,showrepass:false,style:{backgroundImage: `url(&quot;https://cf.shopee.vn/file/5569eb9dc7e09e2dbed5315b8f2ea8ba&quot;)`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center center'}})
     
     const setpassword=(e)=>{
         (async () =>{
             try{
                 e.preventDefault();
-                let form=new FormData()
-                form.append('code',formData.code)
-                form.append('email',formData.email)
-                form.append('phone',formData.phone)
-                const res=await axios.post(validatEemail(formData.email)?verifyemailURL:verifyphoneURL,form,headers)
+                
+                const form={code,email,phone}
+                const res=await axios.post(validatEemail(formData.email)?verifyemailURL:verifyphoneURL,JSON.stringify(form),headers)
                 if(res.verify){
                     setState({...state,error:false})
                     reset_password_confirm(formData.uidb64,formData.token, formData.password);
@@ -53,12 +51,10 @@ const FormReset=(props)=>{
         e.stopPropagation()
         if(isVietnamesePhoneNumber(formData.phone) || validatEemail(formData.email)){
             if(isVietnamesePhoneNumber(formData.phone)){    
-                let form=new FormData()
-                form.append('phone',`+84 ${(formData.phone).slice(-9)}`)
-                form.append('reset',true)
+                const form={'phone':`+84 ${(formData.phone).slice(-9)}`,reset:true}
                 let time=60
                 setState({...state,time:time})
-                axios.post(sendOTPphoneURL,form,headers)
+                axios.post(sendOTPphoneURL,JSON.stringify(form),headers)
                 .then(res=>{
                     setformData({...formData,id:res.data.id})
                         const countDown = setInterval(() => {
@@ -74,11 +70,7 @@ const FormReset=(props)=>{
                 })
             }
             else{
-                let form= new FormData()
-                form.append('email',formData.email)
-                form.append('username',formData.username)
-                setformData({ ...formData,form}); 
-                axios.post(sendOTPemailURL,form,headers)
+                axios.post(sendOTPemailURL,JSON.stringify({email,username}),headers)
                 .then(res=>{
                     setState({...state,error:res.data.error,show:true,requestsend:res.data.error?false:true})
                     setTimeout(()=>{
