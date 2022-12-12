@@ -4,7 +4,7 @@
 html *::-webkit-scrollbar {
     border-radius: 0;
     width: 8px;
-    
+    box-sizing: border-box;
     background-color: rgba(0,0,0,0);
 }
 :root {
@@ -295,6 +295,11 @@ img, picture {
   }
   ._25142T {
     color: #ee4d2d;
+}
+center{
+display: flex;
+align-items: center;
+justify-content: center;
 }
   ._2-4Lck {
     color: #ff424f;
