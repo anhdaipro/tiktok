@@ -1,11 +1,6 @@
-*, :after, :before {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-}
+
 .tiktok-py8jux-DivModalContainer {
     position: fixed;
-    inset: 0px;
     z-index: 1001;
     overflow: auto;
     outline: 0px;
