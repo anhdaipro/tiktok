@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React,{useState,useEffect} from 'react'
-import {signup,facebookLogin,googleLogin,reset_password,headers,expiry} from "../actions/auth"
+import {signup,reset_password,headers,expiry} from "../actions/auth"
 import {connect} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {validatEemail,validatePassword,isVietnamesePhoneNumber,onValidUsername,generateString} from "../constants"
 import {sendOTPphoneURL,registerURL,checkuserURL, verifyemailURL,verifyphoneURL} from "../urls"
 const Formsignup=(props)=>{
-    const {signup,facebookLogin,googleLogin,reset_password,isAuthenticated}=props
+    const {signup,isAuthenticated}=props
     const [singnup,setSignup]=useState({show_signup:false})
     const [formData,setformData]=useState({day:null,month:null,year:null,username:null,name:'',email:'',
     code:'',password:'',phone:null})
@@ -241,4 +241,4 @@ const Formsignup=(props)=>{
 const mapStateToProps = state => ({
     isAuthenticated: state.isAuthenticated
 });
-export default connect(mapStateToProps, {signup,facebookLogin,googleLogin,reset_password })(Formsignup);
+export default connect(mapStateToProps, {signup,reset_password })(Formsignup);
