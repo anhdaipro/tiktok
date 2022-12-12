@@ -61,7 +61,7 @@ export const googleAuthenticate = (state, code) => async dispatch => {
 };
 
 export const responseGoogle = (response) => async dispatch => {
-    const res=await axios.post('https://web-production-d411.up.railway.app/api-auth/convert-token', {
+    const res=await axios.post('https://web-production-e83f.up.railway.app/api-auth/convert-token', {
         token: response.accessToken,
         backend: "google-oauth2",
         grant_type: "convert_token",
@@ -86,7 +86,7 @@ export const responseGoogle = (response) => async dispatch => {
 
 export const responseFb = (response) => async dispatch =>{
     try {
-    const res=await axios.post('https://web-production-d411.up.railway.app/api-auth/convert-token', {
+    const res=await axios.post('https://web-production-e83f.up.railway.app/api-auth/convert-token', {
         token: response.accessToken,
         backend: "facebook",
         grant_type: "convert_token",
