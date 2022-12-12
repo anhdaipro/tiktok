@@ -5,9 +5,9 @@ import { GoogleLogin } from 'react-google-login';
 import { loginURL } from "../urls"
 import axios from 'axios';
 import { gapi } from "gapi-script";
-import { headers,googleLogin,login } from "../actions/auth"
+import { headers,responseGoogle,login } from "../actions/auth"
 const LoginGoogle=(props)=>{
-    const {googleLogin,login}=props
+    const {responseGoogle,login}=props
     useEffect(() => {
         function start() {
           gapi.client.init({
@@ -18,35 +18,7 @@ const LoginGoogle=(props)=>{
     
         gapi.load('client:auth2', start);
       }, []);
-    const responseGoogle = async (res) => {
-        
-            try{
-                console.log(res)
-                await googleLogin(res.accessToken);
-                let form=new FormData()
-                form.append('token',localStorage.access_token)
-                const res1 = await axios.post(loginURL,form, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                
-                const token = res1.data.access;
-                localStorage.setItem('token',token);
-                const search = window.location.search;
-                const params = new URLSearchParams(search);
-                if(params.get('next')!=null){
-                    window.location.href=params.get('next')
-                }
-                else{
-                    window.location.href='/'
-                } 
-            }
-            catch(e){
-                console.log(e)
-            }
-       
-    }
+    
     return(
         <GoogleLogin
             clientId="874868987927-hudvamdogth0ei4hctcp5gja538tggkf.apps.googleusercontent.com"
@@ -67,4 +39,4 @@ const LoginGoogle=(props)=>{
 const mapStateToProps = state => ({
     isAuthenticated: state.isAuthenticated
 });
-export default connect(mapStateToProps, { login,googleLogin })(LoginGoogle);
+export default connect(mapStateToProps, { login,responseGoogle })(LoginGoogle);
