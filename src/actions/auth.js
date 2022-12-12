@@ -60,44 +60,52 @@ export const googleAuthenticate = (state, code) => async dispatch => {
     }
 };
 
-export const googleLogin = (accessToken) => async dispatch => {
-    try {
-        console.log(accessToken)
-        const res=await axios.post('https://daiviet.herokuapp.com/api-auth/convert-token', {
-			token: accessToken,
-            backend: "google-oauth2",
-            grant_type: "convert_token",
-            client_id: "874868987927-hudvamdogth0ei4hctcp5gja538tggkf.apps.googleusercontent.com",
-            client_secret: "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",
-		})
-        dispatch({
-            type: GOOGLE_AUTH_SUCCESS,
-            payload: res.data
-        });
-        localStorage.setItem('access_token', res.data.access_token);
-		localStorage.setItem('refresh_token', res.data.refresh_token);
-    }
-    catch (err) {
-        dispatch({
-            type: GOOGLE_AUTH_FAIL
-        });
-    }
-};
+export const responseGoogle = (response) => async dispatch => {
+    const res=await axios.post('https://web-production-d411.up.railway.app/api-auth/convert-token', {
+        token: response.accessToken,
+        backend: "google-oauth2",
+        grant_type: "convert_token",
+        client_id: "874868987927-hudvamdogth0ei4hctcp5gja538tggkf.apps.googleusercontent.com",
+        client_secret: "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",
+    })
+    
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    const res1= await axios.post(loginURL,JSON.stringify({token:res.data.access_token}), config)
+    const token = res1.data.access;
+    localStorage.setItem('token',token);
+    dispatch({
+        type: GOOGLE_AUTH_SUCCESS,
+        payload: res.data
+    });
+}
 
-export const facebookLogin = (accessToken) => async dispatch =>{
+
+export const responseFb = (response) => async dispatch =>{
     try {
-    const res=await axios.post('https://daiviet.herokuapp.com/api-auth/convert-token', {
-        token: accessToken,
+    const res=await axios.post('https://web-production-d411.up.railway.app/api-auth/convert-token', {
+        token: response.accessToken,
         backend: "facebook",
         grant_type: "convert_token",
         client_id: "864145964959803",
         client_secret: "6d30952c56bcdd893b7f247bb4b11bee",
         })
+        
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        const res1= await axios.post(loginURL,JSON.stringify({token:res.data.access_token}), config)
+        const token = res1.data.access;
+        localStorage.setItem('token',token);
         dispatch({
             type: FACEBOOK_AUTH_SUCCESS,
             payload: res.data
         });
-        localStorage.setItem('access_token',res.data.access_token);
     }
     catch (err) {
         dispatch({
@@ -105,6 +113,7 @@ export const facebookLogin = (accessToken) => async dispatch =>{
         });
     }
 };
+
 
 export const loginotp = (user_id) => async dispatch =>{
     const config = {
@@ -223,7 +232,7 @@ export const signup = (username, email, password,profile) => async dispatch => {
     const body = JSON.stringify({ username, email, password, profile});
    
     try {
-        const res = await axios.post(`https://daiviet.herokuapp.com/api/v3/register`, body, config);
+        const res = await axios.post(`https://web-production-e83f.up.railway.app/api/v3/register`, body, config);
 
         dispatch({
             type: SIGNUP_SUCCESS,
@@ -305,7 +314,7 @@ export const updateprofile =(username,name,file,profile_info,picture) =>async di
     form.append('file',file)
     form.append('profile_info',profile_info)
     try {
-        await axios.post(`https://daiviet.herokuapp.com/api/v3/${username}/profile`, form,headers);
+        await axios.post(`https://web-production-e83f.up.railway.app/api/v3/${username}/profile`, form,headers);
 
         dispatch({
             type: UPDATE_PROFILE_SUCCESS,
