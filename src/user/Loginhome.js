@@ -1,7 +1,7 @@
 
 import React,{useState,useEffect} from 'react'
 import Formsignup from "./Formsignup"
-import {signup,login,facebookLogin,googleLogin,reset_password,setrequestlogin} from "../actions/auth"
+import {signup,login,reset_password,setrequestlogin} from "../actions/auth"
 import { connect,useDispatch } from 'react-redux';
 import Formlogin from './Formlogin'
 import LoginGoogle from "./LoginGoogle"
@@ -117,4 +117,4 @@ const Loginhome=({user,isAuthenticated,login,requestlogin})=>{
 const mapStateToProps = state => ({
     isAuthenticated: state.isAuthenticated,requestlogin:state.requestlogin
 });
-export default connect(mapStateToProps, { login,signup,facebookLogin,googleLogin,reset_password,setrequestlogin })(Loginhome);
+export default connect(mapStateToProps, { login,signup,reset_password,setrequestlogin })(Loginhome);
