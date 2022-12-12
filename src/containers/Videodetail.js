@@ -33,7 +33,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
     const {id}=useParams()
     const socket=useRef()  
     useEffect(() => { 
-        socket.current = io.connect('https://anhdai12345.herokuapp.com/');
+        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
         socket.current.on("message",({data}) => {
             const count_unread=data.like || data.follow ?notify.count_notify_unseen+1:notify.count_notify_unseen-1
             const count_notify_unseen=count_unread>0?count_unread:0
@@ -71,7 +71,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
         (async ()=>{
             try{
                 await isAuthenticated
-                if(expiry<0 || localStorage.token=='null'){
+                if(!localStorage.token){
                     window.location.href="/"
                 }
                 const [obj1, obj2] = await axios.all([
