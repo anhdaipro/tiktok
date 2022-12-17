@@ -296,7 +296,7 @@ console.log(expiry)
 export const headers={'headers': localStorage.token!='null' && expiry>0?{ Authorization:`JWT ${localStorage.token}`,'Content-Type': 'application/json' }:{'Content-Type': 'application/json'}}
 export const logout = () => dispatch => {
     localStorage.removeItem('token')
-    
+    localStorage.removeItem('expirationDate')
     dispatch({
         type: LOGOUT
     });
