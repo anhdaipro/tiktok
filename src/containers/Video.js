@@ -21,7 +21,6 @@ const Video=(props)=>{
     const videoref=useRef(null)
     const user=useSelector(state=>state.user)
     const requestlogin=useSelector(state=>state.requestlogin)
-    console.log(requestlogin)
     const seekbarref=useRef(null)
     const [time,setTime]=useState({seconds:0,minutes:0})
     const [volume,setVolume]=useState(0.5)
@@ -96,7 +95,7 @@ const Video=(props)=>{
 
     const setsharevideo=()=>{
         if(user){
-            console.log('aaaaaaaaaa')
+            return 
         }
         else{
             dispatch(requestlogin(true))
@@ -148,7 +147,6 @@ const Video=(props)=>{
         e.stopPropagation() 
         const rects = seekbarref.current.getBoundingClientRect();
         const volumerects = volumeref.current.getBoundingClientRect();
-        console.log(rects)
         const {height,bottom,top}=volumerects
         const clientY=e.clientY
         const value=bottom-clientY
@@ -300,7 +298,7 @@ const Video=(props)=>{
                                     onPlay={(e)=>setvideochoice(e,item,'play',true)}
                                     onPause={e=>setvideochoice(e,item,'play',false)}
                                     onTimeUpdate={()=>{
-                                        console.log(videoref.current.currentTime)
+                                        
                                         setTime({...time,seconds:videoref.current.currentTime % 60,minutes:Math.floor((videoref.current.currentTime) / 60) % 60
                                         })
                                     }} onLoadedData={()=>setDuration(videoref.current.duration)} onClick={(e)=>setshowcomment(e)} ref={videoref} src={item.video} autoplay=''  play={true} preload="auto" muted={item.muted && volume<=0?true:false} playsinline="" loop className="tiktok-lkdalv-VideoBasic e1yey0rl4"></video>
