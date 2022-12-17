@@ -77,7 +77,7 @@ const Formsignup=(props)=>{
                 })
             }
             else{ 
-                axios.post(checkuserURL,JSON.stringify({name:formData.name,'email':formData.email}),headers)
+                axios.post(checkuserURL,JSON.stringify({name:formData.name,'email':formData.email}))
                 .then(res=>{
                     setState({...state,error:res.data.error,show:true,requestsend:res.data.error?false:true})
                     setTimeout(()=>{
