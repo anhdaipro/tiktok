@@ -142,7 +142,7 @@ export const checkDay = (value) => {
 export function groupBy(data, property) {
   return data.reduce((acc, obj) => {
     const key = obj[property];
-    console.log(key)
+   
     if (!acc[key]) {  
       acc[key] = [];
     }

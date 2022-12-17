@@ -39,7 +39,7 @@ const Message=(props)=>{
         ]
     
 
-    console.log(listuser)
+   
    
     
     const setemoji=(e,value)=>{
@@ -113,7 +113,7 @@ const Message=(props)=>{
             let form=new FormData()
             form.append('thread_id',threadchoice.id)
             form.append('seen',true)
-            if(localStorage.token!='null'&&expiry>0){
+            if(localStorage.token&&expiry>0){
                 axios.post(listThreadlURL,form,headers)
                 .then(res=>{
                     setState({...state,loading:true,show_chat:true})
@@ -238,7 +238,7 @@ const Message=(props)=>{
     },[list_messages,list_threads,user])
     const thread_report=list_threads.find(thread=>thread.show_report)
 
-    console.log(list_threads)
+
     return(
         
         <div id="main"> 

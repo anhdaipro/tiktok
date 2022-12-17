@@ -12,7 +12,7 @@ import io from "socket.io-client"
 const Profile=(props)=>{
     const {user,updateprofile,isAuthenticated,checkAuthenticated,updatenotify,notify}=props
     const {userprofile}=useParams()
-    console.log(userprofile)
+    
     const [requestedit,setRequestedit]=useState(false)
     const [state,setState]=useState({index:0,choice:'onner'})
     const [loading,setLoading]=useState(false)

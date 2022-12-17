@@ -78,7 +78,7 @@ export const responseGoogle = (response) => async dispatch => {
     const token = res1.data.access;
     localStorage.setItem('token',token);
     localStorage.setItem("expirationDate", res1.data.access_expires);
-    window.location.href="/"
+    
     dispatch({
         type: GOOGLE_AUTH_SUCCESS,
         payload: res.data
@@ -290,8 +290,7 @@ export const reset_password_confirm = (uidb64, token, password) => async dispatc
     }
 };
 const expirationDate = localStorage.getItem("expirationDate")
-console.log(new Date(expirationDate))
-console.log(new Date())
+
 export const expiry=new Date(expirationDate).getTime() - new Date().getTime()
 console.log(expiry)
 export const headers={'headers': localStorage.token!='null' && expiry>0?{ Authorization:`JWT ${localStorage.token}`,'Content-Type': 'application/json' }:{'Content-Type': 'application/json'}}
