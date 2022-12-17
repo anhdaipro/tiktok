@@ -170,7 +170,7 @@ const Profile=(props)=>{
                 <div className="tiktok-r0hg2a-DivSideNavContainer eg65pf91">
                 </div>
                 <div className="tiktok-w4ewjk-DivShareLayoutV2 efojldo0">
-                    {loading?
+                    {loading && user?
                     <div className="tiktok-1hfe8ic-DivShareLayoutContentV2 efojldo1">
                         <div className="tiktok-1g04lal-DivShareLayoutHeader-StyledDivShareLayoutHeaderV2 efojldo2">
                             <div class="tiktok-1gk89rh-DivShareInfo e2qg2m52">
