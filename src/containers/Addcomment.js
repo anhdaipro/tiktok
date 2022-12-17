@@ -62,9 +62,12 @@ export default function Addcomment(props){
     const [listuser,setListuser]=useState([]);
 
     const socket=useRef()  
-    const naviga=useNavigate()
     useEffect(() => { 
         socket.current = io.connect('https://web-production-eaad.up.railway.app/');
+        return () => socket.current.disconnect()
+        
+    },[])
+    useEffect(()=>{
         socket.current.on('message',(e)=>{
             const data = (e.data)
             const count_unread=notify.count_notify_unseen+1
@@ -73,7 +76,6 @@ export default function Addcomment(props){
             updatenotify(data_unread,data.notifi_type)     
         })
     },[listcomment])
-    
     const { MentionSuggestions, plugins } = useMemo(() => {
         const mentionPlugin = createMentionPlugin({
           entityMutability: 'IMMUTABLE',
