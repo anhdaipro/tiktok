@@ -204,6 +204,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
 
     const resetpage=()=>{
         setState({...state,change_video:false,muted:true,show_viewer:false,success:false})
+        window.location.href="/upload"
     }
     
     const setstate=(name,value)=>{
