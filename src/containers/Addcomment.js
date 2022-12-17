@@ -75,18 +75,17 @@ export default function Addcomment(props){
     },[listcomment])
     
     const { MentionSuggestions, plugins } = useMemo(() => {
-    const mentionPlugin = createMentionPlugin({
-      entityMutability: 'IMMUTABLE',
-      
-      supportWhitespace: true,
-    });
-    
-    // eslint-disable-next-line no-shadow
-    const { MentionSuggestions } = mentionPlugin;
-    // eslint-disable-next-line no-shadow
-    const plugins = [mentionPlugin];
+        const mentionPlugin = createMentionPlugin({
+          entityMutability: 'IMMUTABLE',
+          mentionPrefix: '@',
+          supportWhitespace: true,
+        });
+        // eslint-disable-next-line no-shadow
+        const { MentionSuggestions } = mentionPlugin;
+        // eslint-disable-next-line no-shadow
+        const plugins = [mentionPlugin];
         return { plugins, MentionSuggestions };
-    }, []);
+      }, []);
   
     useEffect(()=>{
         if(ref!=null&&  ref.current!=null){
