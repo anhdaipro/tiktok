@@ -156,41 +156,7 @@ const priceRef=useRef()
                 showlogin={e=>showlogin(e)}
                 />
                 <div class="tiktok-1id9666-DivMainContainer evzvjqg0">
-                    <div class="FilterGroup_slide__label__rPFaE">
-                        <div class="FilterGroup_range__4lkdv">Price Range:<span>${Math.round(pricefrom)}</span> - <span>$${Math.round(priceto)}</span>
-                        </div>
-                    </div>
-                    <div className="FilterGroup_slider__FdsV1">
-                        <div ref={priceRef} onMouseDown={(e)=>setprice(e)}  className="ant-slider ant-slider-horizontal ant-slider-with-marks">
-                            <div className="ant-slider-rail"></div>
-                            <div class="ant-slider-track ant-slider-track-1" style={{left: `${pricefrom*100/max_price}%`, width: `${(priceto-pricefrom)*100/max_price}%`}}></div>
-                            <div className="ant-slider-step">
-                                {listprice.map(item=>
-                                <span key={item} className={`ant-slider-dot ${pricefrom<=item*max_price/100 && priceto>=item*max_price/100 ?'ant-slider-dot-active':''}`} style={{left: `${item}%`, transform: `translateX(-50%)`}}></span>
-                                )}
-                                
-                            </div>
-                            <div class="ant-slider-handle ant-slider-handle-1" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="800"  style={{left: `${pricefrom*100/max_price}%`, transform: `translateX(-50%)`}}>
-                                <div style={{position: `absolute`, top: `0px`, left: `0px`, width: `100%`}}>
-                                    
-                                </div>
-                            </div>
-                            <div class="ant-slider-handle ant-slider-handle-2" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="800"  style={{left: `${priceto*100/max_price}%`, transform: `translateX(-50%)`}}>
-                                <div style={{position: `absolute`, top: `0px`, left: `0px`, width: `100%`}}>
-                                    
-                                </div>
-                            </div>
-                            
-                            <div className="ant-slider-mark">
-                                {listprice.map(item=>
-                                    <span key={item} className={`ant-slider-mark-text ${pricefrom<=item*max_price/100 && priceto>=item*max_price/100?'ant-slider-mark-text-active':''}`} style={{left: `${item}%`, transform: `translateX(-50%)`}}>${item*max_price/100}</span>
-                                )}
-                                    
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
+                    
                     {listpost.length>0?
                     <div>
                         {listpost.map(item=>
