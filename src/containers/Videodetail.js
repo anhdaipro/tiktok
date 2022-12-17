@@ -414,14 +414,14 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
                     <div class="tiktok-3q30id-DivContentContainer e13y27ie0">
                         <div  class="tiktok-7l7okx-DivInfoContainer ec62sd0">
                             <div></div>
-                            <a onMouseEnter={(e)=>setshowinfo(e,true)} onMouseLeave={(e)=>setshowinfo(e,false)} data-e2e="browse-user-avatar" class="tiktok-3izs7l ec62sd5" href="/@thaybeou40">
+                            <a onMouseEnter={(e)=>setshowinfo(e,true)} onMouseLeave={(e)=>setshowinfo(e,false)} data-e2e="browse-user-avatar" class="tiktok-3izs7l ec62sd5" href={`/${item.user.username}`}>
                                 <div  class="tiktok-uha12h-DivContainer e1vl87hj1" style={{width: '40px', height: '40px'}}>
                                     <span shape="circle" class="e1vl87hj2 tiktok-gigx3u-SpanAvatarContainer-StyledAvatar e1e9er4e0" style={{width: '40px', height: '40px'}}>
                                         <img loading="lazy" src={item.user.picture} class="tiktok-1zpj2q-ImgAvatar e1e9er4e1"/>
                                     </span>
                                 </div>
                             </a>
-                            <a onMouseEnter={(e)=>setshowinfo(e,true)} onMouseLeave={(e)=>setshowinfo(e,false)} class="tiktok-bcidt6-StyledLink ec62sd3" href="/@thaybeou40">
+                            <a onMouseEnter={(e)=>setshowinfo(e,true)} onMouseLeave={(e)=>setshowinfo(e,false)} class="tiktok-bcidt6-StyledLink ec62sd3" href={`/${item.user.username}`}>
                                 <span data-e2e="browse-username" class="tiktok-12ahmhf-SpanUniqueId ec62sd1">{item.user.username}
                                     <svg class="tiktok-shsbhf-StyledVerifyBadge e1aglo370" width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="24" fill="#20D5EC"></circle><path fillRule="evenodd" clipRule="evenodd" d="M37.1213 15.8787C38.2929 17.0503 38.2929 18.9497 37.1213 20.1213L23.6213 33.6213C22.4497 34.7929 20.5503 34.7929 19.3787 33.6213L10.8787 25.1213C9.70711 23.9497 9.70711 22.0503 10.8787 20.8787C12.0503 19.7071 13.9497 19.7071 15.1213 20.8787L21.5 27.2574L32.8787 15.8787C34.0503 14.7071 35.9497 14.7071 37.1213 15.8787Z" fill="white"></path></svg>
                                 </span>
