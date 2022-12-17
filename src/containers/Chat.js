@@ -379,9 +379,9 @@ const Message=(props)=>{
                                                     </div>
                                                     <div className="emoji-container" >
                                                         <EmojiPicker
-                                                        showemoji={showemoji}
+                                                       
                                                         setemoji={(e,value)=>setemoji(e,value)}
-                                                        setshowemoji={data=>setshowemoji(data)}
+                                                       
                                                         />
                                                         
                                                     </div>

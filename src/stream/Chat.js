@@ -365,9 +365,9 @@ const Chat = (props) => {
                                 <textarea onChange={(e)=>setState({...state,message:e.target.value})} value={state.message} maxLength="150" placeholder="Add comment..." className="tiktok-1e359ru-TextareaEditor e1ciaho81"></textarea>
                             </div>
                             <EmojiPicker
-                            showemoji={showemoji}
+                            
                             setaddkey={(e,value)=>setaddkey(e,value)}
-                            setshowemoji={data=>setshowemoji(data)}
+                           
                             />
                         </div>
                     </div>
