@@ -199,28 +199,28 @@ const Video=(props)=>{
         setvolume(e)
     }
     const settime=(e)=>{
-        const rects = progress.current.getBoundingClientRect();
-        const clientX=e.clientX
-        const left =rects.left
-        const width=rects.width
-        const min=left
-        const max=left+width
-        if(drag.time && clientX>=min && clientX <=max){
-            const percent=(clientX-left)/width
+        if(drag.time){
+            const rects = progress.current.getBoundingClientRect();
+            const clientX=e.clientX
+            const left =rects.left
+            const width=rects.width
+            const min=left
+            const max=left+width
+            const percent=clientX<min?0:clientX>max?1:(clientX-left)/width
             const times=percent*item.duration
             videoref.current.currentTime=times
         }
     }
 
     const setvolume=(e)=>{
-        if(state.show_volume){
+        if(state.show_volume && drag.volume){
         const rects = seekbarref.current.getBoundingClientRect();
         const volumerects = volumeref.current.getBoundingClientRect();
         const {top,bottom,height}=volumerects
         const clientY=e.clientY
         const min=rects.top
         const max=rects.bottom
-        if(drag.volume && clientY>=min && clientY <=max){
+        if(clientY>=min && clientY <=max){
             const percent=(bottom-clientY)/height>=1?1:(bottom-clientY)/height<=0?0:(bottom-clientY)/height
             if(percent==0){
                 setvideochoice(e,item,'muted',true)
