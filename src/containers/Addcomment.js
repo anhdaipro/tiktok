@@ -124,7 +124,7 @@ export default function Addcomment(props){
     
     const rawContentState = convertToRaw(editorState.getCurrentContent());
     const entityMap = rawContentState.entityMap;
-    console.log(rawContentState)
+   
     const listtag=Object.values(entityMap).map(entity => {
         return({id:entity.data.mention.id,username:entity.data.mention.username,name:entity.data.mention.name})
     })
