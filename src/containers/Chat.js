@@ -93,12 +93,7 @@ const Message=(props)=>{
     }
     },[])
 
-    useEffect(() => { 
-        if(user!=null){
-            let data={send_by:user.id}
-            socket.current.emit("sendData",data)
-        }
-    },[user])
+    
 
     const showmessage=(e,threadchoice)=>{
         if(!list_threads.some(thread=>thread.choice) || list_threads.find(thread=>thread.choice).id!==threadchoice.id){
@@ -185,6 +180,10 @@ const Message=(props)=>{
 
     useEffect(() => { 
         socket.current = io.connect('https://web-production-eaad.up.railway.app/');
+        if(user!=null){
+            let data={send_by:user.id}
+            socket.current.emit("sendData",data)
+        }
         socket.current.on('message',(e)=>{
         const data = (e.data)
         if(data.send_to!=undefined){
