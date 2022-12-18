@@ -2086,3 +2086,111 @@ cursor: pointer;
 .active{
 border: 2px solid #e77979;
 }
+.ant-slider-with-marks {
+    margin-bottom: 28px;
+}
+.ant-slider {
+    font-feature-settings: "tnum";
+    box-sizing: border-box;
+    color: rgba(0,0,0,.85);
+    cursor: pointer;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    height: 12px;
+    line-height: 1.5715;
+    list-style: none;
+    margin: 10px 6px;
+    padding: 4px 0;
+    position: relative;
+    touch-action: none;
+}
+.ant-slider-rail, .ant-slider-track {
+    border-radius: 2px;
+    height: 4px;
+    position: absolute;
+    transition: background-color .3s;
+}
+.ant-slider-rail {
+    background-color: #f5f5f5;
+    width: 100%;
+}
+.sidebar__menu .ant-slider .ant-slider-track {
+    background-color: #333;
+    transition: .5s!important;
+}
+.ant-slider-step {
+    background: transparent;
+    height: 4px;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+}
+.products__filter-slide .ant-slider-dot {
+    border: 1px solid var(--text-color);
+}
+.ant-slider .ant-slider-track {
+    background-color: #333;
+    transition: .2s!important;
+}
+.ant-slider-dot {
+    background-color: #fff;
+    border: 2px solid #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 8px;
+    position: absolute;
+    top: -2px;
+    width: 8px;
+}
+.ant-slider-dot-active {
+    border-color: #7daedb;
+}
+.sidebar__menu .ant-slider .ant-slider-handle {
+    border: 1px solid #333;
+    transition: .5s!important;
+}
+.ant-slider-handle {
+    background-color: #fff;
+    border: 2px solid #91d5ff;
+    border-radius: 50%;
+    box-shadow: 0;
+    cursor: pointer;
+    height: 14px;
+    margin-top: -5px;
+    position: absolute;
+    transition: border-color .3s,box-shadow .6s,transform .3s cubic-bezier(.18,.89,.32,1.28);
+    width: 14px;
+}
+.ant-slider-handle:after {
+    bottom: -6px;
+    content: "";
+    left: -6px;
+    position: absolute;
+    right: -6px;
+    top: -6px;
+}
+.ant-slider-mark {
+    font-size: 14px;
+    left: 0;
+    position: absolute;
+    top: 14px;
+    width: 100%;
+}
+.ant-slider-mark-text {
+    color: rgba(0,0,0,.45);
+    cursor: pointer;
+    display: inline-block;
+    position: absolute;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    word-break: keep-all;
+}
+.ant-slider-mark-text-active {
+    color: rgba(0,0,0,.85);
+}
+.FilterGroup_slider__FdsV1 {
+    margin-top: 30px;
+}
