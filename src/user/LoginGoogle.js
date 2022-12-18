@@ -1,9 +1,6 @@
 import React,{useState,useEffect} from 'react'
-import {useNavigate,Link} from "react-router-dom"
 import { connect } from 'react-redux';
 import { GoogleLogin } from 'react-google-login';
-import { loginURL } from "../urls"
-import axios from 'axios';
 import { gapi } from "gapi-script";
 import { headers,responseGoogle,login } from "../actions/auth"
 const LoginGoogle=(props)=>{

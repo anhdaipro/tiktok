@@ -63,7 +63,7 @@ export default function Addcomment(props){
 
     const socket=useRef()  
     useEffect(() => { 
-        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
+        socket.current = io.connect('https://servertiktok-production.up.railway.app/');
         return () => socket.current.disconnect()
         
     },[])

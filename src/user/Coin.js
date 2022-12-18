@@ -20,7 +20,7 @@ const Coins=(props)=>{
     useEffect(()=>{
         (async()=>{
             try{
-                if(localStorage.token && expiry<0){
+                if(!localStorage.token && expiry<0){
                     window.location="/"
                 }
                 else{

@@ -179,7 +179,7 @@ const Message=(props)=>{
 
 
     useEffect(() => { 
-        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
+        socket.current = io.connect('https://servertiktok-production.up.railway.app/');
         if(user!=null){
             let data={send_by:user.id}
             socket.current.emit("sendData",data)

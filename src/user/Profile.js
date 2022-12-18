@@ -129,7 +129,7 @@ const Profile=(props)=>{
     const socket=useRef()  
     const naviga=useNavigate()
     useEffect(() => { 
-        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
+        socket.current = io.connect('https://servertiktok-production.up.railway.app/');
         socket.current.on("message",e => {
             const data=e.data
             const count_unread=data.follow?notify.count_notify_unseen+1:notify.count_notify_unseen-1
