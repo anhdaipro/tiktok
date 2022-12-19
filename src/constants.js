@@ -158,8 +158,9 @@ export function matchYoutubeUrl(url) {
   }
   return false;
 }
-const now=new Date()
+
 export const timeago=(value)=>{
+  const now=new Date()
   const totalseconds=(now.getTime()-new Date(value).getTime())/1000
   let time=Math.round(totalseconds)+'s'
   if(totalseconds>60 && totalseconds<60*60){

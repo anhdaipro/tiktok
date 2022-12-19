@@ -25,7 +25,7 @@ import {
 } from './types';
 
 import axios from 'axios';
-import { listThreadlURL, loginURL,registerURL,userinfoURL} from '../urls';
+import { listThreadlURL, loginURL,registerURL,userinfoURL,registerURL} from '../urls';
 import { isVietnamesePhoneNumber,validatEemail } from '../constants';
 
 
@@ -227,7 +227,7 @@ export const signup = (username, email, password,profile) => async dispatch => {
     const body = JSON.stringify({ username, email, password, profile});
    
     try {
-        const res = await axios.post(`https://servertiktok-production.up.railway.app/api/v3/register`, body, config);
+        const res = await axios.post(registerURL, body, config);
 
         dispatch({
             type: SIGNUP_SUCCESS,

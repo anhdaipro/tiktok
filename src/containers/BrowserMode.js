@@ -32,7 +32,7 @@ const BrowserMode=(props)=>{
     const naviga=useNavigate()
     const [listrecommend,setListrecommned]=useState([])
     useEffect(() => { 
-        socket.current = io.connect('https://web-production-eaad.up.railway.app/');
+        socket.current = io.connect('https://servertiktok-production.up.railway.app/');
         socket.current.on("message",e => {
             const data=e.data
             const count_unread=data.like || data.follow ?notify.count_notify_unseen+1:notify.count_notify_unseen-1
