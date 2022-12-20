@@ -113,7 +113,7 @@ export default function Addcomment(props){
     const fetchkeyword=useCallback(debounce((value)=>{
         (async ()=>{
             try{
-                const res = await axios.get(`${listfollowingURL}?keyword=${value}`,headers)
+                const res = await axios.get(`${listfollowingURL}?keyword=${value}`,headers())
                 setSuggestions(res.data)
             }
             catch{
@@ -162,7 +162,7 @@ export default function Addcomment(props){
                 let data={send_by:user.id,send_to:item.user.id,action:'comment'}
                 socket.current.emit("sendData",data)
                
-                const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers)
+                const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers())
                 const commentadd={id:res.data.id,body:caption,count_like:0,count_reply: 0,
                 date:new Date().toString(),like: false,parent:parent!=null?parent.id:null,user:user,following: false,tags: listtag}
                 

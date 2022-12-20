@@ -27,7 +27,7 @@ const Reportvideo=({video,setvideochoice,setcomment,type})=>{
                 e.preventDefault()
                 let form=new FormData()
                 form.append('reason',listtext.name)
-                const res =await axios.post(`${type=='video'?actionvideoURL:actioncommentURL}/${video.id}`,form,headers)
+                const res =await axios.post(`${type=='video'?actionvideoURL:actioncommentURL}/${video.id}`,form,headers())
                 type=='video'?setvideochoice(e,video,'reported',true,'success_report',true):setvideochoice(e,video,'reported',true,'success_report',true)
             }
             catch{

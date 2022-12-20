@@ -93,7 +93,7 @@ const Formupload=(props)=>{
     const fetchkeyword=useCallback(debounce((trigger,value)=>{
       (async ()=>{
         try{ 
-            const res = await axios.get(`${trigger=="@"?listfollowingURL:listhagtagURL}?keyword=${value}`,headers)
+            const res = await axios.get(`${trigger=="@"?listfollowingURL:listhagtagURL}?keyword=${value}`,headers())
             if(trigger=="@"){
             setSuggestions(res.data)
             }
@@ -144,7 +144,7 @@ const Formupload=(props)=>{
                         form.append('hashtag',item)
                     }
                 })
-                axios.post(uploadvideoURL,form,headers)
+                axios.post(uploadvideoURL,form,headers())
                 .then(res=>{
                 setstate('success',true)
             })

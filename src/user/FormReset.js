@@ -28,7 +28,7 @@ const FormReset=(props)=>{
                 e.preventDefault();
                 
                 const form={code,email,phone}
-                const res=await axios.post(validatEemail(formData.email)?verifyemailURL:verifyphoneURL,JSON.stringify(form),headers)
+                const res=await axios.post(validatEemail(formData.email)?verifyemailURL:verifyphoneURL,JSON.stringify(form),headers())
                 if(res.verify){
                     setState({...state,error:false})
                     reset_password_confirm(formData.uidb64,formData.token, formData.password);
@@ -54,7 +54,7 @@ const FormReset=(props)=>{
                 const form={'phone':`+84 ${(formData.phone).slice(-9)}`,reset:true}
                 let time=60
                 setState({...state,time:time})
-                axios.post(sendOTPphoneURL,JSON.stringify(form),headers)
+                axios.post(sendOTPphoneURL,JSON.stringify(form),headers())
                 .then(res=>{
                     setformData({...formData,id:res.data.id})
                         const countDown = setInterval(() => {
@@ -70,7 +70,7 @@ const FormReset=(props)=>{
                 })
             }
             else{
-                axios.post(sendOTPemailURL,JSON.stringify({email,username}),headers)
+                axios.post(sendOTPemailURL,JSON.stringify({email,username}),headers())
                 .then(res=>{
                     setState({...state,error:res.data.error,show:true,requestsend:res.data.error?false:true})
                     setTimeout(()=>{

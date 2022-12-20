@@ -60,7 +60,7 @@ const Formlogin=(props)=>{
         e.preventDefault();
         (async () => {
             try {
-                const res = await axios.post(verifyphoneURL,JSON.stringify({id:formlogin.id,code:formlogin.code,'phone':`+84 ${(formlogin.phone).slice(-9)}`}),headers)
+                const res = await axios.post(verifyphoneURL,JSON.stringify({id:formlogin.id,code:formlogin.code,'phone':`+84 ${(formlogin.phone).slice(-9)}`}),headers())
                 setFormlogin({...formlogin,...res.data})
                 if(res.data.user_id!=undefined){
                     loginotp(res.data.user_id)

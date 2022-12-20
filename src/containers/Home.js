@@ -18,7 +18,7 @@ const Homepage=(props)=>{
         (async ()=>{
             try{
                 await isAuthenticated
-                const res = await axios.get(listuploadvideoURL,headers)
+                const res = await axios.get(listuploadvideoURL,headers())
                 const listupload=res.data.map(item=>{
                     return({...item,show_info:false,show_comment:false,show_share:false,play:true,muted:true,show_video:false,seconds:Math.floor(item.duration) % 60,minutes:Math.floor(item.duration / 60) % 60})
                 })

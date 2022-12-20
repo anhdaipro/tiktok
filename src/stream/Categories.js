@@ -10,7 +10,7 @@ const Categories = () => {
     useEffect(() => {
         (async ()=>{
             try{
-                const res=axios.get(listcategoriesURL,headers)
+                const res=axios.get(listcategoriesURL,headers())
                 setCategories(res.data)
             }
             catch{

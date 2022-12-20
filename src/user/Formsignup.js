@@ -61,7 +61,7 @@ const Formsignup=(props)=>{
             if(isVietnamesePhoneNumber(formData.phone)){    
                 let time=60
                 setState({...state,time:time})
-                axios.post(sendOTPphoneURL,JSON.stringify({phone:`+84 ${(formData.phone).slice(-9)}`}),headers)
+                axios.post(sendOTPphoneURL,JSON.stringify({phone:`+84 ${(formData.phone).slice(-9)}`}),headers())
                 .then(res=>{
                     setformData({...formData,id:res.data.id})
                         const countDown = setInterval(() => {
@@ -77,7 +77,7 @@ const Formsignup=(props)=>{
                 })
             }
             else{ 
-                axios.post(checkuserURL,JSON.stringify({username:formData.username,email:formData.email}),headers)
+                axios.post(checkuserURL,JSON.stringify({username:formData.username,email:formData.email}),headers())
                 .then(res=>{
                     setState({...state,error:res.data.error,show:true,requestsend:res.data.error?false:true})
                     setTimeout(()=>{
@@ -95,7 +95,7 @@ const Formsignup=(props)=>{
                 e.preventDefault()
                 
                 const form=isVietnamesePhoneNumber(formData.phone)?{'code':formData.code,'phone':`+84 ${(formData.phone).slice(-9)}`}:{'code':formData.code,'email':formData.email}
-                const res =await axios.post(isVietnamesePhoneNumber(formData.phone)?verifyphoneURL:verifyemailURL,JSON.stringify(form),headers)
+                const res =await axios.post(isVietnamesePhoneNumber(formData.phone)?verifyphoneURL:verifyemailURL,JSON.stringify(form),headers())
                 if(res.data.verify){
                     const username=formData.username
                     let profile=isVietnamesePhoneNumber(formData.phone)?{phone:formData.phone ,date_of_birth:formData.year+'-'+('0'+formData.month).slice(-2)+'-'+('0'+formData.day).slice(-2)}:{date_of_birth:formData.year+'-'+('0'+formData.month).slice(-2)+'-'+('0'+formData.day).slice(-2)}

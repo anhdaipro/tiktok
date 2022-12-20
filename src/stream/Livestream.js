@@ -65,9 +65,9 @@ const Livestream=(props) =>{
 			try{
 				await isAuthenticated
 				const [obj1,obj2,obj3]=await axios.all([
-					axios.get(`${api}/v2/${name}/live`,headers),
-					axios.get(`${api}/v2/${name}/live/messages`,headers),
-					axios.get(`${api}/v2/${name}/live/give/coin`,headers)
+					axios.get(`${api}/v2/${name}/live`,headers()),
+					axios.get(`${api}/v2/${name}/live/messages`,headers()),
+					axios.get(`${api}/v2/${name}/live/give/coin`,headers())
 				])
 				setThread({...thread,views:obj1.data.count_views})
 				setMessages(obj2.data)
@@ -108,7 +108,7 @@ const Livestream=(props) =>{
 				form.append('send_by',user.id)
 				form.append('id',mylive.id)
 				form.append('send_to',mylive.user.id)
-				const res = await axios.post(sendcoinURL,form,headers)
+				const res = await axios.post(sendcoinURL,form,headers())
 				const data={stream_id:name,user:user,gift:item}
 				socket.emit("sendData", data)
 			}
@@ -127,7 +127,7 @@ const Livestream=(props) =>{
 				
 				let form=new FormData()
 				form.append('id',mylive.user.id)
-				const res =await axios.post(followinguserURL,form,headers)
+				const res =await axios.post(followinguserURL,form,headers())
 				const data={stream_id:name,user:user,following:value}
 				if(value){
 				socket.emit("sendData", data)

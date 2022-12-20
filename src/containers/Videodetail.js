@@ -47,11 +47,11 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
 
     const fetchdata=(e)=>{
         (async ()=>{
-            if(localStorage.token&&expiry>0){
+            if(localStorage.token&&expiry()>0){
                 let form=new FormData()
                 form.append('action','like')
                 try{
-                    const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers)
+                    const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers())
                     setvideochoice(e,item,'like',res.data.like,'count_like',res.data.count_like)
                     let data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,like:res.data.like}
                    
@@ -72,8 +72,8 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
                 else{
                     if(user){
                     const [obj1, obj2] = await axios.all([
-                        axios.get(`${videodetailURL}/${id}?${params}`,headers),
-                        axios.get(`${listcommentURL}/${id}?${params}`,headers),
+                        axios.get(`${videodetailURL}/${id}?${params}`,headers()),
+                        axios.get(`${listcommentURL}/${id}?${params}`,headers()),
                     ])
                     const videodetail={...obj1.data,show_info:false,show_comment:false,show_share:false,show_video:false,seconds:Math.floor(obj1.data.duration) % 60,minutes:Math.floor(obj1.data.duration / 60) % 60}
                     setItem(videodetail)
@@ -96,7 +96,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
         let form=new FormData()
         form.append('id',item.user.id)
         try{
-            const res = await axios.post(followinguserURL,form,headers)
+            const res = await axios.post(followinguserURL,form,headers())
             setItem({...item,following:res.data.follow,count_follow:res.data.follow})
             const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,follow:res.data.follow}
             socket.current.emit("sendData",data)
@@ -157,7 +157,7 @@ const Showcomment=({user,updatenotify,notify,isAuthenticated})=>{
         try{
             const length=listcomment.filter(item=>item.parent==parent.id).length
             if(parent.count_reply>length){
-                const res = await axios.get(`${listcommentreplyURL}/${item.id}?parent_id=${parent.id}&from_item=${length}`,headers)
+                const res = await axios.get(`${listcommentreplyURL}/${item.id}?parent_id=${parent.id}&from_item=${length}`,headers())
                 const  list_comments=[...list_comment,...res.data]
                 if(res.data)
                   

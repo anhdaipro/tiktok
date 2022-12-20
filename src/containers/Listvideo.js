@@ -31,7 +31,7 @@ const Listvideo=(props)=>{
                     if(clientHeight + scrollTop >= scrollHeight-100 && loading && !state.full){
                         setLoading(false)
                         const url=window.location==origin+'/following'?listfollowingcommentURL:window.location==origin+'/en'?listvideorecommendURL:listuploadvideoURL
-                        const res=await axios.get(`${url}?from_item=${listpost.length}`,headers)
+                        const res=await axios.get(`${url}?from_item=${listpost.length}`,headers())
                         const listupload=res.data.map(item=>{
                             return({...item,show_info:false,show_comment:false,show_share:false,play:true,muted:true,show_video:false,seconds:Math.floor(item.duration) % 60,minutes:Math.floor(item.duration / 60) % 60})
                         })
@@ -135,7 +135,7 @@ const priceRef=useRef()
     useEffect(()=>{
         const setdrag=(e)=>{
             setDrag(false)
-            axios.get(`${listuploadvideoURL}`,headers)
+            axios.get(`${listuploadvideoURL}`,headers())
         }
         document.addEventListener('mouseup',setdrag)
         return ()=>{

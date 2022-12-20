@@ -24,7 +24,7 @@ const Chat = (props) => {
 			if(user!=null){
 			let form=new FormData()
 			form.append('action','enter')
-			axios.post(`${api}/v2/${name}/live`,form,headers)
+			axios.post(`${api}/v2/${name}/live`,form,headers())
 			.then(res=>{
 				const data={stream_id:name,user:user,views:res.data.views,join:true}
 				socket.emit("sendData", data)
@@ -40,7 +40,7 @@ const Chat = (props) => {
         alert('grrr')
         let form=new FormData()
         form.append('action','leave')
-        axios.post(`${api}/v2/${name}/live`,form,headers)
+        axios.post(`${api}/v2/${name}/live`,form,headers())
         .then(res=>{
             const data={stream_id:name,user:user,views:res.data.views,join:false}
             socket.emit("sendData", data)
@@ -53,7 +53,7 @@ const Chat = (props) => {
                 e.preventDefault()
                 let form=new FormData()
                 form.append('message',state.message)
-                const res =await axios.post(`${api}/v2/${name}/live/messages`,form,headers)
+                const res =await axios.post(`${api}/v2/${name}/live/messages`,form,headers())
                 const data={stream_id:name,user:user,message:state.message,id:res.data.id,show_action:false}
                 socket.emit("sendData", data)
                 setState({ ...state,message: ""})
@@ -77,7 +77,7 @@ const Chat = (props) => {
             try{
                 let form =new FormData()
                 form.append('reason','resson')
-                const res =await axios.post(`${actionMessageURL}/${message.id}`,form,headers)
+                const res =await axios.post(`${actionMessageURL}/${message.id}`,form,headers())
                 setmessage(e,message,'show_action',false)
             }
             catch{
@@ -88,7 +88,7 @@ const Chat = (props) => {
     const deletemessage=(e,message)=>{
         (async ()=>{
             try{
-                const res =await axios.post(`${actionMessageURL}/${message.id}`,{},headers)
+                const res =await axios.post(`${actionMessageURL}/${message.id}`,{},headers())
                 const list_message=messages.filter(item=>item.id!=message.id)
                 setmessages(list_message)
             }

@@ -42,7 +42,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
     useEffect(()=>{
         (async ()=>{
             const res = await isAuthenticated
-            if (!localStorage.token && expiry<0){
+            if (!localStorage.token || expiry()<=0){
                 window.location.href="/"
             }
         })()
@@ -113,7 +113,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
                             form.append('file',fileupload.file)
                             form.append('file_preview',fileupload.file_preview,)
                             form.append('duration',Math.round(fileupload.duration))
-                            const res=await axios.post(videoloadURL,form,headers)
+                            const res=await axios.post(videoloadURL,form,headers())
                             var receiveDate = (new Date()).getTime();
                             var responseTimeMs = (receiveDate - sendDate)/1000
                             setLoading(true)
@@ -175,7 +175,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
         let form =new FormData()
         form.append('id',idfile)
         form.append('duration',Math.round(files.duration))
-        axios.post(videoloadURL,form,headers)
+        axios.post(videoloadURL,form,headers())
         .then(res=>{
             setIdfile(null)
             setFile({...files,file:null,list_image:[],id:null})

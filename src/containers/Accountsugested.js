@@ -16,15 +16,15 @@ const Sinabar=(props)=>{
         (async ()=>{
             try{
                 const [obj1, obj2,obj3,obj4] = await axios.all([
-                    axios.get(suggestedaccountURL,headers),
-                    axios.get(listhagtagURL,headers),
-                    axios.get(listmusicURL,headers),
-                    localStorage.token && expiry>0?axios.get(listfollowingcommentURL,headers):''
+                    axios.get(suggestedaccountURL,headers()),
+                    axios.get(listhagtagURL,headers()),
+                    axios.get(listmusicURL,headers()),
+                    localStorage.token && expiry()>0?axios.get(listfollowingcommentURL,headers()):''
                 ])
                 const list_sugessted=obj1.data.map(item=>{
                     return({...item,suggested:true})
                 })
-                const list_followers=localStorage.token && expiry>0?obj4.data.map(item=>{
+                const list_followers=localStorage.token && expiry()>0?obj4.data.map(item=>{
                     return({...item,suggested:false})
                 }):[]
                 
@@ -44,7 +44,7 @@ const Sinabar=(props)=>{
         (async ()=>{
             try{
                 e.stopPropagation()
-                const res= await axios.get(`${listfollowingcommentURL}?from_item=${list_sugessted.length}`,headers)
+                const res= await axios.get(`${listfollowingcommentURL}?from_item=${list_sugessted.length}`,headers())
                 const list_sugessted=res.data.map(item=>{
                     return({...item,suggested:true})
                 })
@@ -59,7 +59,7 @@ const Sinabar=(props)=>{
     const adduserfollowing=(e)=>{
         (async ()=>{
             try{
-                const res= await axios.get(`${suggestedaccountURL}?from_item=${list_followers.length}`,headers)
+                const res= await axios.get(`${suggestedaccountURL}?from_item=${list_followers.length}`,headers())
                 const list_followers=res.data.map(item=>{
                     return({...item,suggested:false})
                 })
@@ -98,7 +98,7 @@ const Sinabar=(props)=>{
             let form=new FormData()
             form.append('id',user_choice.user.id)
             try{
-                const res = await axios.post(followinguserURL,form,headers)
+                const res = await axios.post(followinguserURL,form,headers())
                 const list_users=listuser.map(item=>{
                     if(item.user.username==user_choice.user.username){
                         return({...item,following:res.data.following})

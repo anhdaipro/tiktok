@@ -21,8 +21,8 @@ const Hashtag=({user,isAuthenticated,notify})=>{
         (async ()=>{
             try{
                 const [obj1, obj2] = await axios.all([
-                    axios.get(`${hashtagURL}/${name}`,headers),
-                    axios.get(`${videotagURL}/${name}`,headers)
+                    axios.get(`${hashtagURL}/${name}`,headers()),
+                    axios.get(`${videotagURL}/${name}`,headers())
                 ])
                 setHashtag(obj1.data)
                 setListvideo(obj2.data)

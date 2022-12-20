@@ -22,8 +22,8 @@ const Searchitem=()=>{
         (async ()=>{
             try{
                 const [obj1, obj2] = await axios.all([
-                    params.get('type')==null||params.get('type')=='account'?axios.get(`${userseachURL}?${params}`,headers):'',
-                    params.get('type')==null||params.get('type')=='video'?axios.get(`${videoseachURL}?${params}`,headers):'',
+                    params.get('type')==null||params.get('type')=='account'?axios.get(`${userseachURL}?${params}`,headers()):'',
+                    params.get('type')==null||params.get('type')=='video'?axios.get(`${videoseachURL}?${params}`,headers()):'',
                 ])
                 const list_sugessted=obj1.data.map(item=>{
                     return({...item,suggested:true})

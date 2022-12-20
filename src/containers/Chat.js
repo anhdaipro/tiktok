@@ -56,7 +56,7 @@ const Message=(props)=>{
             try{
             await isAuthenticated
             setShow(true)
-            axios.get(`${listThreadlURL}`,headers)
+            axios.get(`${listThreadlURL}`,headers())
             .then(res=>{
                 if (search.thread_id!=null){
                 setState({...state,loading:true})
@@ -81,7 +81,7 @@ const Message=(props)=>{
     useEffect(() => {
         if(params.get('thread_id')!=null){ 
             setTimeout(()=>{
-            axios.get(`${listThreadlURL}?${params}`,headers)
+            axios.get(`${listThreadlURL}?${params}`,headers())
             .then(res=>{
             const list_messages=res.data.messages.map(item=>{
                 return({...item,show_action:false})
@@ -108,8 +108,8 @@ const Message=(props)=>{
             let form=new FormData()
             form.append('thread_id',threadchoice.id)
             form.append('seen',true)
-            if(localStorage.token&&expiry>0){
-                axios.post(listThreadlURL,form,headers)
+            if(localStorage.token&&expiry()>0){
+                axios.post(listThreadlURL,form,headers())
                 .then(res=>{
                     setState({...state,loading:true,show_chat:true})
                     setListmessages(res.data.messages.reverse())
@@ -170,7 +170,7 @@ const Message=(props)=>{
             socket.current.emit("sendData",data)
             let form =new FormData()
             form.append('message',message)
-            axios.post(`${conversationsURL}${list_threads.find(thread=>thread.choice).id}`,form,headers)
+            axios.post(`${conversationsURL}${list_threads.find(thread=>thread.choice).id}`,form,headers())
             .then(res=>{
                 setMessage('')
             })

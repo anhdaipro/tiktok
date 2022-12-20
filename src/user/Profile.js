@@ -25,8 +25,8 @@ const Profile=(props)=>{
             try{  
                 console.log(headers)
                 const [obj1, obj2] = await axios.all([
-                    axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/video?choice=${state.choice}`,headers),
-                    axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/profile`,headers),
+                    axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/video?choice=${state.choice}`,headers()),
+                    axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/profile`,headers()),
                 ])
                 const list_videos=obj1.data.listvideo.map(item=>{
                     return({...item,show_video:false,play:false})
@@ -102,7 +102,7 @@ const Profile=(props)=>{
         let form=new FormData()
         form.append('participants',user.id)
         form.append('participants',profile.id)
-        axios.post(listThreadlURL,form,headers)
+        axios.post(listThreadlURL,form,headers())
         .then(res=>{
             navige(`/messages?thread_id=${res.data.threadchoice.id}`)
         })
@@ -113,7 +113,7 @@ const Profile=(props)=>{
         (async ()=>{
             try{
                 setState({...state,index:index,choice:value})
-                const res=await axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/video?choice=${value}`,headers)
+                const res=await axios.get(`https://web-production-e83f.up.railway.app/api/v3/${userprofile}/video?choice=${value}`,headers())
                 const list_videos=res.data.listvideo.map(item=>{
                     return({...item,show_video:false,play:false})
                 })
@@ -150,7 +150,7 @@ const Profile=(props)=>{
             let form=new FormData()
             form.append('id',profile.id)
             try{
-                const res = await axios.post(followinguserURL,form,headers)
+                const res = await axios.post(followinguserURL,form,headers())
                 setProfile({...profile,following:res.data.follow})
                 let data={send_by:user.id,send_to:profile.id,action:'follow_user',follow:res.data.follow}
             

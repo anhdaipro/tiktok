@@ -23,7 +23,7 @@ const StreamEdit = ({user, stream, getStream}) => {
             title: event.target.title.value
         }
         if (!formValues.title) return
-        streams.put('mystream/', formValues,headers)
+        streams.put('mystream/', formValues,headers())
         .then(res => {
             if (res.status === 200 || res.status === 204) {
                 setMessage('Redirect')

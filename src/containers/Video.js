@@ -58,7 +58,7 @@ const Video=(props)=>{
         form.append('id',item.user.id)
         try{
             if(user){
-                const res = await axios.post(followinguserURL,form,headers)
+                const res = await axios.post(followinguserURL,form,headers())
                 setvideochoice(e,item,'following',res.data.follow)
                 const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,follow:res.data.follow}
                 if(user.id!=item.user.id){
@@ -79,7 +79,7 @@ const Video=(props)=>{
         form.append('action','like')
         try{
             if(user){
-                const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers)
+                const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers())
                 setvideochoice(e,item,'like',res.data.like,'count_like',res.data.count_like)
                 const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,like:res.data.like}
                 socket.current.emit("sendData",data)

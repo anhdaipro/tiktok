@@ -291,9 +291,13 @@ export const reset_password_confirm = (uidb64, token, password) => async dispatc
 };
 const expirationDate = localStorage.getItem("expirationDate")
 
-export const expiry=new Date(expirationDate).getTime() - new Date().getTime()
-console.log(expiry)
-export const headers={'headers': localStorage.token!='null' && expiry>0?{ Authorization:`JWT ${localStorage.token}`,'Content-Type': 'application/json' }:{'Content-Type': 'application/json'}}
+export const expiry=()=>{
+   return new Date(expirationDate).getTime() - new Date().getTime()
+}
+
+export const headers=()=>{
+   return {'headers': localStorage.token && expiry()>0?{ Authorization:`JWT ${localStorage.token}`,'Content-Type': 'application/json' }:{'Content-Type': 'application/json'}}
+}
 export const logout = () => dispatch => {
     localStorage.removeItem('token')
     localStorage.removeItem('expirationDate')
@@ -308,7 +312,7 @@ export const updateprofile =(username,name,file,profile_info,picture) =>async di
     form.append('file',file)
     form.append('profile_info',profile_info)
     try {
-        await axios.post(`https://servertiktok-production.up.railway.app/api/v3/${username}/profile`, form,headers);
+        await axios.post(`https://servertiktok-production.up.railway.app/api/v3/${username}/profile`, form,headers());
 
         dispatch({
             type: UPDATE_PROFILE_SUCCESS,
@@ -325,7 +329,7 @@ export const updateprofile =(username,name,file,profile_info,picture) =>async di
         let form=new FormData()
         form.append('participants',user_id)
         form.append('participants',profile_id)
-        const res =await axios.post(`${listThreadlURL}`, form,headers);
+        const res =await axios.post(`${listThreadlURL}`, form,headers());
 
         dispatch({
             type: CREATE_THREAD_SUCCESS,
@@ -346,7 +350,7 @@ export const  get_thread=(getlist,seen,thread_id)=> async dispatch=>{
         search_params.append('thread_id',thread_id)
         url.search = search_params.toString();
         let new_url = url.toString();
-        const res =await axios.get(new_url,headers)
+        const res =await axios.get(new_url,headers())
         dispatch({
             type: GET_THREAD_SUCCESS,
             payload:res.data

@@ -28,7 +28,7 @@ const Searchinput=()=>{
         ( async ()=>{
             try{
                 if(keyword!=''){
-                const res =await axios.get(`${searchinputURL}?keyword=${keyword}`,headers)
+                const res =await axios.get(`${searchinputURL}?keyword=${keyword}`,headers())
                 setShowResult(true)
                 setListuser(res.data.list_user)
                 setlistTag(res.data.hashtag)
@@ -115,8 +115,8 @@ const Navbar=(props)=>{
 	},[])
 
     const onUnload=(e)=>{
-        if(expiry>0 && localStorage.token){
-        axios.post('https://web-production-e83f.up.railway.app/api/v3/user/update/online',JSON.stringify({online:false}),headers)
+        if(expiry()>0 && localStorage.token){
+        axios.post('https://web-production-e83f.up.railway.app/api/v3/user/update/online',JSON.stringify({online:false}),headers())
         .then(res=>{
         })
         }
@@ -143,7 +143,7 @@ const Navbar=(props)=>{
         setState({...state,show_notification:!state.show_notification,show_inbox:false})
         const data={count_notify_unseen:0,send_to:user.id}
         updatenotify(data,1)
-        axios.get(notifycationURL,headers)
+        axios.get(notifycationURL,headers())
         .then(res=>{
             setListnotify(res.data)
         })

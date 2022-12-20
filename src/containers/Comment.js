@@ -30,7 +30,7 @@ const Comment=({comment,setcomment,settag,user,setlistcomment,listcomment,update
         setlistcomment(list_comment)
         let form=new FormData()
         form.append('action','delete')
-        axios.post(`${actioncommentURL}/${commentchoice.id}`,form,headers)
+        axios.post(`${actioncommentURL}/${commentchoice.id}`,form,headers())
         .then({
 
         })
@@ -46,7 +46,7 @@ const Comment=({comment,setcomment,settag,user,setlistcomment,listcomment,update
     const fetchdatalike=(commentchoice)=>{
         let form=new FormData()
         form.append('like',true)
-        axios.post(`${actioncommentURL}/${commentchoice.id}`,form,headers)
+        axios.post(`${actioncommentURL}/${commentchoice.id}`,form,headers())
         .then( res=>{
             const list_comments=listcomment.map(item=>{
                 if(item.id==commentchoice.id){
@@ -65,7 +65,7 @@ const Comment=({comment,setcomment,settag,user,setlistcomment,listcomment,update
             let form=new FormData()
             form.append('id',commentchoice.user.id)
             try{
-                const res = await axios.post(followinguserURL,form,headers)
+                const res = await axios.post(followinguserURL,form,headers())
                 const list_comment=listcomment.map(item=>{
                     if(item.user.username==commentchoice.user.username){
                         return({...item,following:res.data.follow})

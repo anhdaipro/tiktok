@@ -92,7 +92,7 @@ export default function Payment(props) {
                                             form.append('payID',details.purchase_units[0].payments.captures[0].id)
                                             form.append('coins',state.coins)
                                             form.append('amounts',state.amounts)
-                                            axios.post(paymentURL,form,headers)
+                                            axios.post(paymentURL,form,headers())
                                             .then(res=>{
                                                 setstate('totalcoins',state.coins+state.totalcoins)
                                             })

@@ -20,12 +20,12 @@ const Coins=(props)=>{
     useEffect(()=>{
         (async()=>{
             try{
-                if(!localStorage.token && expiry<0){
+                if(!localStorage.token || expiry()<=0){
                     window.location="/"
                 }
                 else{
                 await isAuthenticated
-                const res=await axios.get(coinuserURL,headers)
+                const res=await axios.get(coinuserURL,headers())
                 setState({...state,coingive:res.data.totalcoins,totalcoins:res.data.coins})
                 }
             }
