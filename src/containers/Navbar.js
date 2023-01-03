@@ -116,7 +116,7 @@ const Navbar=(props)=>{
 
     const onUnload=(e)=>{
         if(expiry()>0 && localStorage.token){
-        axios.post('https://web-production-e83f.up.railway.app/api/v3/user/update/online',JSON.stringify({online:false}),headers())
+        axios.post('https://web-production-5dc9.up.railway.app/api/v3/user/update/online',JSON.stringify({online:false}),headers())
         .then(res=>{
         })
         }
