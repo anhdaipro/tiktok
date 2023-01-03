@@ -78,9 +78,8 @@ export default function Addcomment(props){
     },[listcomment])
     const { MentionSuggestions, plugins } = useMemo(() => {
         const mentionPlugin = createMentionPlugin({
-          entityMutability: 'IMMUTABLE',
-          mentionPrefix: '@',
-          supportWhitespace: true,
+            entityMutability: 'IMMUTABLE',
+            supportWhitespace: true,
         });
         // eslint-disable-next-line no-shadow
         const { MentionSuggestions } = mentionPlugin;
