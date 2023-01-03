@@ -25,7 +25,7 @@ import {
 } from './types';
 
 import axios from 'axios';
-import { listThreadlURL, loginURL,registerURL,userinfoURL,registerURL} from '../urls';
+import { listThreadlURL, loginURL,registerURL,userinfoURL} from '../urls';
 import { isVietnamesePhoneNumber,validatEemail } from '../constants';
 
 

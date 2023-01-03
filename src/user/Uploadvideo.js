@@ -70,7 +70,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
             // at the time as we expect
             generateThumbnail(i);
             // when frame is captured, increase here by 5 seconds
-            i += files.duration/9;
+            i += files.duration/8;
             // if we are not past end, seek to next interval
             if (i <= this.duration) {
               // this will trigger another seeked event

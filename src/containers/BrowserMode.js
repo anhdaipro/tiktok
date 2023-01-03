@@ -51,7 +51,7 @@ const BrowserMode=(props)=>{
     })
     useEffect(()=>{
         (async ()=>{
-            const res =await axios.get(listrecomendbrowserURL,headers)
+            const res =await axios.get(listrecomendbrowserURL,headers())
          
             const listrecommneds=res.data.map(item=>{
                 return({...item,seconds:Math.floor(item.duration) % 60,minutes:Math.floor(item.duration / 60) % 60})
@@ -118,11 +118,11 @@ const BrowserMode=(props)=>{
 
     const fetchdata=(e)=>{
         (async ()=>{
-            if(localStorage.token&&expiry>0){
+            if(localStorage.token&&expiry()>0){
                 let form=new FormData()
                 form.append('action','like')
                 try{
-                    const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers)
+                    const res = await axios.post(`${actionvideoURL}/${item.id}`,form,headers())
                     setvideochoice(e,item,'like',res.data.like,'count_like',res.data.count_like)
                     const data={action:'like_video',send_by:user.id,send_to:item.user.id,id:item.id,like:res.data.like}
                     socket.current.emit("sendData",data)
