@@ -23,7 +23,7 @@ const Profile=(props)=>{
     useEffect(()=>{
         (async ()=>{
             try{  
-                console.log(headers)
+           
                 const [obj1, obj2] = await axios.all([
                     axios.get(`https://web-production-5dc9.up.railway.app/api/v3/${userprofile}/video?choice=${state.choice}`,headers()),
                     axios.get(`https://web-production-5dc9.up.railway.app/api/v3/${userprofile}/profile`,headers()),
@@ -45,7 +45,7 @@ const Profile=(props)=>{
         })()
     },[])
 
-    console.log(profile)
+    
     const item=listvideo.find(item=>item.show_comment)
     const setshowvideo=(e,itemchoice,name,value)=>{
         const list_videos=listvideo.map(item=>{
