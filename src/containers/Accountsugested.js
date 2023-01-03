@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useRef,useCallback} from 'react'
 import axios from "axios"
 import { listfollowingURL,listhagtagURL,listmusicURL,suggestedaccountURL,listfollowingcommentURL,followinguserURL } from '../urls'
-import { expiry,headers } from '../actions/auth'
+import { expiry,headers,setrequestlogin } from '../actions/auth'
 import { number } from '../constants'
 import {Link,NavLink} from "react-router-dom"
 import { useSelector ,useDispatch} from 'react-redux'
@@ -116,7 +116,7 @@ const Sinabar=(props)=>{
         })()
     }
     
-    const setshowfollowing=event=>{
+    const setshowfollowing=e=>{
         if(!user){
             e.preventDefault()
             dispatch(setrequestlogin(true))
