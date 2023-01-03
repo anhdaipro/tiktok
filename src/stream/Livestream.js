@@ -52,7 +52,7 @@ const Livestream=(props) =>{
 		})
 		setMessages(listmessages)
 	}
-	console.log(me)
+	
 	const settopgivecoin=(data)=>{
 		setTopgivecoin(data)
 	}
@@ -173,7 +173,7 @@ const Livestream=(props) =>{
 			});
 			socket.on("broadcaster", () => {
 				socket.emit("watcher");
-				console.log('aaa')
+				
 			});
 
 			socket.on("watch", name => {
@@ -181,7 +181,7 @@ const Livestream=(props) =>{
 			
 				peerConnections[name] = peerConnection;
 				let stream = refVideo.current.srcObject;
-				console.log(refVideo.current.srcObject)
+				
 				
 				peerConnection.onicecandidate = event => {
 				  if (event.candidate) {
@@ -255,7 +255,7 @@ const Livestream=(props) =>{
 	useEffect(()=>{
 		if(gifts.length>0){
 		const timer=setTimeout(()=>{
-			console.log('aa')
+		
 			const list_gift =gifts.filter((item,i)=>i>0)
 			setListgif(list_gift)
 		},2000)
@@ -263,7 +263,7 @@ const Livestream=(props) =>{
 		}
 	},[gifts])
 	const list_gift_coins=gifts.slice(-3)
-	console.log(gifts)
+	
 	return (
 		<div id="main">
 			<Navbar/>

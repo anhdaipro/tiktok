@@ -52,7 +52,7 @@ const Listvideo=(props)=>{
         },[loading])
         
     const showlogin=()=>{
-        console.log(setrequestlogin(true))
+       
         dispatch(setrequestlogin(true))
     }
     

@@ -82,7 +82,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
             }
         });
         function generateThumbnail(i) {   
-            console.log(i)  
+            
             let canvas = document.createElement('canvas');
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
@@ -92,7 +92,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
             list_image.push({media_preview:image,file_preview:file_preview,time:i})
             setListimage(list_image)
         }
-        console.log(i)
+       
         video.preload = 'metadata';
         video.src=files.video
     }
@@ -198,7 +198,7 @@ const Uploadvideo=({user,isAuthenticated})=>{
         const rects = baref.current.getBoundingClientRect();
         const x = e.clientX - rects.left;
         const times=(x/rects.width)*files.duration
-        console.log(x)
+       
         videoref.current.currentTime=times
     }
 

@@ -109,7 +109,7 @@ const Navbar=(props)=>{
         logout()
         window.location.href='/'
     }
-    console.log(notify)
+    
     useEffect(()=>{
 		window.addEventListener("beforeunload", onUnload);
 	},[])
