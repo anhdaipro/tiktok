@@ -51,10 +51,7 @@ const Listvideo=(props)=>{
         }
         },[loading])
         
-    const showlogin=()=>{
-       
-        dispatch(setrequestlogin(true))
-    }
+    
     
     
     const setvideochoice=(e,itemchoice,name,value,name_choice,value_choice)=>{
@@ -148,12 +145,11 @@ const priceRef=useRef()
             <Navbar
             user={user}
             notify={notify}
-            showlogin={()=>showlogin()}
+           
             />
             <div class="tiktok-19fglm-DivBodyContainer eg65pf90">
                 <Sinabar
                 user={user}
-                showlogin={e=>showlogin(e)}
                 />
                 <div class="tiktok-1id9666-DivMainContainer evzvjqg0">
                     

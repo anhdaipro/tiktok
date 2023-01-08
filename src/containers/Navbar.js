@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useRef,useCallback} from 'react'
 import '../css/header.css';
 import { connect } from 'react-redux';
-import { expiry, headers, login,logout,updatenotify } from '../actions/auth';
+import { expiry, headers, login,logout,setrequestlogin,updatenotify } from '../actions/auth';
 import {debounce} from 'lodash';
 import axios from 'axios';
 import { searchinputURL,notifycationURL } from '../urls';
@@ -96,13 +96,13 @@ const Searchinput=()=>{
 }
 
 const Navbar=(props)=>{
-    const {showlogin,isAuthenticated,user,logout,notify,setnotify,updatenotify}=props
+    const {user,logout,notify,updatenotify}=props
     const [state, setState] = useState({show_info:false,show_notification:false,text:''})
     const [listnotify,setListnotify]=useState([])
     useEffect(()=>{
         setState({...state,user:user})
     },[user])
-    
+    const  dispatch = useDispatch()
     const notifyref=useRef(null)
     const setlogout=(e)=>{
         e.preventDefault();
@@ -177,7 +177,7 @@ const Navbar=(props)=>{
                     <div>
                         <a href="/upload?lang=en" data-e2e="upload-icon" className="tiktok-1w1wxiy-StyledLinkText e18d3d941">Upload </a>
                     </div>
-                    <button onClick={()=>showlogin()} type="button" data-e2e="top-login-button" className="e13wiwn62 tiktok-1mm63h3-Button-StyledLoginButton ehk74z00">Log in</button>
+                    <button onClick={()=>dispatch(setrequestlogin(true))} type="button" data-e2e="top-login-button" className="e13wiwn62 tiktok-1mm63h3-Button-StyledLoginButton ehk74z00">Log in</button>
                    
                     <i data-e2e="see-more-icon" className="tiktok-74g1sb-IMoreIconWrapper e13wiwn63">
                         <svg className="tiktok-lgo5n0-StyledEllipsisVertical e13wiwn64" width="1em" height="1em" viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M24 4C26.2091 4 28 5.79086 28 8C28 10.2091 26.2091 12 24 12C21.7909 12 20 10.2091 20 8C20 5.79086 21.7909 4 24 4ZM24 20C26.2091 20 28 21.7909 28 24C28 26.2091 26.2091 28 24 28C21.7909 28 20 26.2091 20 24C20 21.7909 21.7909 20 24 20ZM24 36C26.2091 36 28 37.7909 28 40C28 42.2091 26.2091 44 24 44C21.7909 44 20 42.2091 20 40C20 37.7909 21.7909 36 24 36Z"></path></svg>

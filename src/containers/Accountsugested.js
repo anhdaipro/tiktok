@@ -6,7 +6,7 @@ import { number } from '../constants'
 import {Link,NavLink} from "react-router-dom"
 import { useSelector ,useDispatch} from 'react-redux'
 const Sinabar=(props)=>{
-    const {user,showlogin}=props
+    const {user}=props
     const [state,setState]=useState({show_all_suggested:false,show_all_following:false})
     const [listuser,setListuser]=useState([])
     const [listhagtag,setListhashtag]=useState([])
@@ -166,7 +166,7 @@ const Sinabar=(props)=>{
                             {user!=null?'':
                             <div className="tiktok-ms3iqs-DivFrameContainer efna91q0">
                                 <p data-e2e="nav-login-tip" className="tiktok-105v97b-PLoginHint efna91q1">Log in to follow creators, like videos, and view comments.</p>
-                                <button onClick={(e)=>showlogin(e)} type="button" data-e2e="nav-login-button" className="efna91q2 tiktok-7i6i4k-Button-StyledLogin ehk74z00">Log in</button>
+                                <button onClick={(e)=>dispatch(setrequestlogin(true))} type="button" data-e2e="nav-login-button" className="efna91q2 tiktok-7i6i4k-Button-StyledLogin ehk74z00">Log in</button>
                             </div>}
                             <div className="tiktok-1liq5tk-DivUserContainer e4a681b0">
                                 <p data-e2e="suggest-accounts" className="tiktok-kkg08c-PTitle e4a681b1">Suggested accounts</p>
