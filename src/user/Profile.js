@@ -3,7 +3,7 @@ import React,{useState,useEffect,useRef,useCallback} from 'react'
 import { useParams,useLocation,useNavigate,useSearchParams } from "react-router-dom";
 import "../css/profile.css"
 import { videouserURL,followinguserURL,listThreadlURL } from "../urls";
-import { headers,updateprofile,checkAuthenticated,updatenotify } from "../actions/auth";
+import { headers,updateprofile,checkAuthenticated,updatenotify, expiry, setrequestlogin } from "../actions/auth";
 import axios from "axios"
 import Videouser from "./Videouser"
 import {connect} from "react-redux"
@@ -12,7 +12,7 @@ import io from "socket.io-client"
 const Profile=(props)=>{
     const {user,updateprofile,isAuthenticated,checkAuthenticated,updatenotify,notify}=props
     const {userprofile}=useParams()
-    
+    const dispatch = useDispatch()
     const [requestedit,setRequestedit]=useState(false)
     const [state,setState]=useState({index:0,choice:'onner'})
     const [loading,setLoading]=useState(false)
@@ -74,8 +74,7 @@ const Profile=(props)=>{
         setListvideo(list_videos)
     }
     const setedit=()=>{
-        setRequestedit(true)
-        
+        setRequestedit(true)   
     }
     
     const saveprofile=(e)=>{
@@ -91,12 +90,18 @@ const Profile=(props)=>{
     }
 
     const addthread=(e)=>{
-        if(profile.exists){
-            navige(`/messages?thread_id=${profile.thread}`)
+        if(expiry()>0 && localStorage.token){
+            if(profile.exists){
+                navige(`/messages?thread_id=${profile.thread}`)
+            }
+            else{
+                create_thread()
+            }
         }
         else{
-            create_thread()
+            dispatch(setrequestlogin(true))
         }
+        
     }
     const create_thread=()=>{  
         let form=new FormData()
@@ -127,7 +132,7 @@ const Profile=(props)=>{
     },[state.index])
 
     const socket=useRef()  
-    const naviga=useNavigate()
+    
     useEffect(() => { 
         socket.current = io.connect('https://servertiktok-production.up.railway.app/');
         socket.current.on("message",e => {
@@ -143,7 +148,13 @@ const Profile=(props)=>{
     },[profile])
 
     const setfollow=(e)=>{  
-        fetchdata()
+        if(expiry()>0 && localStorage.token){
+            fetchdata()
+        }
+        else{
+            dispatch(setrequestlogin(true))
+        }
+        
     }
     const fetchdata=()=>{
         (async ()=>{
