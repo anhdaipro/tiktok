@@ -142,7 +142,7 @@ const Searchitem=()=>{
                                     </div>)}
                                     <div className="tiktok-te1uci-DivTitleDivide ezds1l5"></div>
                                 </div>:''}
-                                {search.type=='video' || search.type==null?<>
+                                {search.type=='video' || !search.type?<>
                                 <div className="tiktok-1eqw6mr-DivBlockContainer ezds1l3">
                                     <div className="tiktok-67r7bb-DivTitleContainer ezds1l4">
                                         <p data-e2e="search-top-video-title" className="tiktok-y1tgyi-PTitle ezds1l6">Videos</p>

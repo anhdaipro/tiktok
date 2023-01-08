@@ -233,7 +233,7 @@ const Profile=(props)=>{
                                 <div class="tiktok-lqjilr-DivBottomLine ewfzvtw4" style={{transform: `translateX(${state.index*230}px)`}}></div>
                             </div>
                             <div data-e2e="user-more" class="tiktok-1qb12g8-DivThreeColumnContainer eiyo6ki2">
-                                
+                                {listvideo.length>0?
                                 <div data-e2e="user-liked-item-list" class="tiktok-yvmafn-DivVideoFeedV2 e3gtgzk0">
                                     {listvideo.map(item=>
                                         <Videouser
@@ -244,7 +244,7 @@ const Profile=(props)=>{
                                         />
                                     )}
                                 </div>
-
+                                :<div style={{width:'100%',height:'100%'}}>Không tìm thấy video nào</div>}
                             </div>
                         </div>
                     </div>
