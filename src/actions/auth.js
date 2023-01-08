@@ -61,7 +61,7 @@ export const googleAuthenticate = (state, code) => async dispatch => {
 };
 
 export const responseGoogle = (response) => async dispatch => {
-    const res=await axios.post('https://servertiktok-production.up.railway.app/api-auth/convert-token', {
+    const res=await axios.post('https://web-production-5dc9.up.railway.app/api-auth/convert-token', {
         token: response.accessToken,
         backend: "google-oauth2",
         grant_type: "convert_token",
@@ -88,7 +88,7 @@ export const responseGoogle = (response) => async dispatch => {
 
 export const responseFb = (response) => async dispatch =>{
     try {
-    const res=await axios.post('https://servertiktok-production.up.railway.app/api-auth/convert-token', {
+    const res=await axios.post('https://web-production-5dc9.up.railway.app/api-auth/convert-token', {
         token: response.accessToken,
         backend: "facebook",
         grant_type: "convert_token",
@@ -277,7 +277,7 @@ export const reset_password_confirm = (uidb64, token, password) => async dispatc
     const body = JSON.stringify({ uidb64, token,password});
 
     try {
-        const res =await axios.post(`https://servertiktok-production.up.railway.app/api/v4/password-reset/${uidb64}/${token}/`, body, config);
+        const res =await axios.post(`https://web-production-5dc9.up.railway.app/api/v4/password-reset/${uidb64}/${token}/`, body, config);
 
         dispatch({
             type: PASSWORD_RESET_CONFIRM_SUCCESS,
@@ -312,7 +312,7 @@ export const updateprofile =(username,name,file,profile_info,picture) =>async di
     form.append('file',file)
     form.append('profile_info',profile_info)
     try {
-        await axios.post(`https://servertiktok-production.up.railway.app/api/v3/${username}/profile`, form,headers());
+        await axios.post(`https://web-production-5dc9.up.railway.app/api/v3/${username}/profile`, form,headers());
 
         dispatch({
             type: UPDATE_PROFILE_SUCCESS,
