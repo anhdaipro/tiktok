@@ -6,7 +6,7 @@ import { videouserURL,followinguserURL,listThreadlURL } from "../urls";
 import { headers,updateprofile,checkAuthenticated,updatenotify, expiry, setrequestlogin } from "../actions/auth";
 import axios from "axios"
 import Videouser from "./Videouser"
-import {connect} from "react-redux"
+import {connect,useDispatch} from "react-redux"
 import Showcoment from "../containers/Videodetail"
 import io from "socket.io-client"
 const Profile=(props)=>{

@@ -1,6 +1,6 @@
 import React,{useState,useEffect,useRef,useCallback} from 'react'
 import '../css/header.css';
-import { connect } from 'react-redux';
+import { connect,useDispatch } from 'react-redux';
 import { expiry, headers, login,logout,setrequestlogin,updatenotify } from '../actions/auth';
 import {debounce} from 'lodash';
 import axios from 'axios';
