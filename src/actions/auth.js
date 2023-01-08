@@ -78,7 +78,7 @@ export const responseGoogle = (response) => async dispatch => {
     const token = res1.data.access;
     localStorage.setItem('token',token);
     localStorage.setItem("expirationDate", res1.data.access_expires);
-    
+    window.location.href="/"
     dispatch({
         type: GOOGLE_AUTH_SUCCESS,
         payload: res.data
