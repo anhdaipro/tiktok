@@ -25,6 +25,7 @@ import Room from './stream/Room'
 import "./css/login.css"
 import "./css/fotter.css"
 import "./css/signup.css"
+import Dragitem from './containers/Dragitem'
 
 const Appstore=()=>{ 
 return(
@@ -40,6 +41,7 @@ return(
                                         <Route exact path="/" element={<HomePage/>}/>
                                         <Route path="/room/:roomID" element={<Room/>} />
                                         <Route exact path="/en" element={<Recommend/>}/>
+                                        <Route exact path="/dragitem" element={<Dragitem/>}/>
                                         <Route exact path="/live" element={<MainRecorder/>}/>
                                         <Route exact path="/following" element={<Following/>}/>
                                         <Route exact path="/tag/:name" element={<Hashtag/>}/>   
