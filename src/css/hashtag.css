@@ -1,0 +1,94 @@
+.tiktok-1hfe8ic-DivShareLayoutContentV2 {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.tiktok-w4ewjk-DivShareLayoutV2 {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 0px auto;
+    padding: 32px 24px;
+    box-sizing: content-box;
+    min-height: calc(100vh - 59px);
+}
+.tiktok-1g04lal-DivShareLayoutHeader-StyledDivShareLayoutHeaderV2 {
+    position: relative;
+    flex: 0 0 auto;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    max-width: 624px;
+    padding-right: 92px;
+}
+
+.tiktok-fcfffm-DivShareInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.tiktok-14povld-DivDefaultImgContainer {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 120px;
+    height: 120px;
+    border-radius: 4px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    background-color: rgba(22, 24, 35, 0.03);
+}
+.tiktok-1hdrv89-DivShareTitleContainer {
+    flex: 1 1 0%;
+    cursor: pointer;
+    overflow: visible;
+    margin-left: 20px;
+}
+.tiktok-3w30yl-H1ShareTitle {
+    font-family: SofiaPro, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    padding-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+.tiktok-1kjpnro-H2ShareSubTitleThin {
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(18, 18, 18, 0.75);
+}
+.tiktok-1rxc7na-DivShareActions {
+    position: absolute;
+    top: 11px;
+    cursor: pointer;
+    right: 52px;
+}
+.tiktok-jzplnh-DivMoreActions {
+    position: absolute;
+    top: 11px;
+    cursor: pointer;
+    right: 12px;
+}
+.tiktok-1qb12g8-DivThreeColumnContainer {
+    width: 100%;
+}
+.tiktok-yvmafn-DivVideoFeedV2 {
+    display: grid;
+    gap: 24px 16px;
+    grid-template-columns: repeat(auto-fill, minmax(184px, 1fr));
+}
+.tiktok-x6y88p-DivItemContainerV2 {
+    border-radius: 4px;
+}
+@media screen and (max-width: 703px){
+    .tiktok-w4ewjk-DivShareLayoutV2 {
+        max-width: 520px;
+        min-width: 520px;
+    }
+    }

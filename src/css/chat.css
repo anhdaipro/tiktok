@@ -1,0 +1,919 @@
+.main-body.middle {
+    max-width: 1150px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.messages-layout.jsx-3100779177 {
+    max-width: 100% !important;
+    padding: 0;
+}
+.share-layout {
+    margin: auto;
+    padding: 24px 20px;
+    
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    max-width: 1194px;
+}
+.share-layout.middle .share-layout-content.no-padding {
+    padding-right: 0 !important;
+}
+.messages-layout-content.share-layout-content.jsx-3100779177 {
+    box-sizing: content-box;
+    width: 100%;
+    height: calc(100vh - 70px - 16px);
+    padding: 16px 0 10px;
+}
+.share-layout .share-layout-content {
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+.share-layout .share-layout-main {
+    flex: 1 1 auto;
+    flex-direction: column;
+    display: flex;
+   
+    justify-content: flex-start;
+    flex-direction: column;
+    min-height: 490px;
+    align-items: center;
+}
+.back-container.jsx-2553859180 {
+    position: absolute;
+    box-sizing: border-box;
+    left: -56px;
+    top: 8px;
+    width: 40px;
+    height: 40px;
+    padding: 10px 0 0 10px;
+    border-radius: 100%;
+    background-color: rgba(22,24,35,0.03);
+    cursor: pointer;
+}
+.left-part.jsx-2553859180 {
+    width: 356px;
+    height: 100%;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+.conversation-list-wrapper {
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 2px 8px rgb(0 0 0 / 6%);
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.conversation-list-wrapper .conversation-list-header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px 0 24px;
+    box-sizing: border-box;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+.conversation-list-wrapper .conversation-list-header .conversation-list-title {
+    font-family: "sofiapro-bold",Arial,Tahoma,PingFangSC,sans-serif,"Segoe UI Emoji","Noto Emoji";
+    font-weight: 700;
+    max-width: 240px;
+    font-size: 24px;
+    color: #000000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.conversation-list-wrapper .conversation-list-header .conversation-list-setting-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+.conversation-list-wrapper .conversation-list-content {
+    overflow: auto;
+    height: 100%;
+}
+.scroll-container.jsx-597607045 {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-perspective: 1px;
+    -moz-perspective: 1px;
+    -ms-perspective: 1px;
+    perspective: 1px;
+    -webkit-perspective-origin: right top;
+    -moz-perspective-origin: right top;
+    -ms-perspective-origin: right top;
+    perspective-origin: right top;
+    -webkit-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    padding-right: 12px;
+}
+.conversation-list-wrapper .conversation-list-content .side-bar-wrapper {
+    height: 100%;
+    padding-right: 0;
+}
+.conversation-list-wrapper .conversation-list-content .side-scroll-wrapper {
+    height: 100%;
+}
+.conversation-list-item-wrapper {
+    position: relative;
+    width: 100%;
+    height: 72px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0px 24px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.selected {
+    background-color: rgb(241, 241, 241);
+}
+.conversation-list-item-wrapper:hover .more-action-icon{
+    display: block;
+}
+.conversation-list-item-wrapper .more-action {
+    position: absolute;
+    display: none;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+    padding: 8px 0px;
+    z-index: 9;
+    top: 48px;
+    right: 8px;
+    min-width: 200px;
+}
+.conversation-list-item-wrapper .more-action .action-item {
+    position: relative;
+    padding: 0px 16px;
+    height: 48px;
+}
+.conversation-list-item-wrapper .more-action .action-item:hover {
+    background-color: rgba(22, 24, 35, 0.06);
+}
+.conversation-list-item-wrapper .conversation-list-item-info {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-avatar-wrapper {
+    position: relative;
+    width: 56px;
+    height: 56px;
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-avatar-wrapper .info-avatar {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-avatar-wrapper .info-avatar-mask {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: block;
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-text-wrapper {
+    padding-left: 12px;
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-text-wrapper .info-nickname {
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 600;
+    max-width: 224px;
+    font-size: 16px;
+    line-height: 22px;
+    min-height: 22px;
+    color: rgb(22, 24, 35);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-text-wrapper .info-extract-time {
+    display: flex;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    max-width: 224px;
+    padding-top: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgba(22, 24, 35, 0.75);
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-text-wrapper .info-extract {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: proxima-regular, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+}
+.conversation-list-item-wrapper .conversation-list-item-info .info-text-wrapper .info-time {
+    display: inline-block;
+    flex-shrink: 0;
+    line-height: 20px;
+    min-height: 20px;
+    padding-left: 4px;
+    color: rgba(22, 24, 35, 0.5);
+}
+.conversation-list-item-wrapper .more-action-icon {
+    position: absolute;
+    display: none;
+    width: 24px;
+    height: 24px;
+    top: 24px;
+    right: 16px;
+}
+.conversation-list-item-wrapper .more-action {
+    position: absolute;
+    display: none;
+    background: rgb(255, 255, 255);
+    border-radius: 8px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 4px 16px;
+    padding: 8px 0px;
+    z-index: 9;
+    top: 48px;
+    right: 8px;
+    min-width: 200px;
+}
+.conversation-list-item-wrapper .more-action .action-item {
+    position: relative;
+    padding: 0px 16px;
+    height: 48px;
+}
+.conversation-list-item-wrapper .more-action .action-item .action-detail {
+    position: relative;
+}
+.conversation-list-item-wrapper .more-action .action-item .action-detail {
+    display: flex;
+    height: 100%;
+    -webkit-box-align: center;
+    align-items: center;
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    padding-right: 20px;
+}
+.conversation-list-item-wrapper .more-action .action-item .action-detail .action-detail-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    margin-right: 8px;
+}
+.conversation-list-item-wrapper .more-action .action-item .action-detail {
+    position: relative;
+}
+.conversation-list-item-wrapper .more-action .action-item .action-detail {
+    display: flex;
+    height: 100%;
+    -webkit-box-align: center;
+    align-items: center;
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    padding-right: 20px;
+}
+.conversation-list-item-wrapper .more-action .action-item .action-detail .action-detail-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    margin-right: 8px;
+}
+.conversation-list-item-wrapper .show-more-action {
+    display: block;
+}
+.conversation-list-item-wrapper .more-action::after {
+    position: absolute;
+    right: 12px;
+    top: -16px;
+    width: 0px;
+    height: 0px;
+    content: "";
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent white;
+}
+.scroll-container.jsx-597607045 .scroll-bar.jsx-597607045 {
+    position: absolute;
+    padding: 0 4px;
+    top: 0;
+    right: 0;
+    -webkit-transform-origin: right top;
+    -ms-transform-origin: right top;
+    transform-origin: right top;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+    opacity: 0;
+}
+.scroll-container.jsx-597607045 .scroll-bar.jsx-597607045 .scroll-bar-thumb.jsx-597607045 {
+    width: 6px;
+    height: 100%;
+    border-radius: 3px;
+    background: rgba(22,24,35,0.06);
+}
+.right-part.jsx-2553859180 {
+    width: 728px;
+    height: 100%;
+    margin-left: 16px;
+}
+.conversation-container.jsx-2123414624 {
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+    border-radius: 8px;
+}
+.conversation-header.jsx-2123414624 {
+    position: relative;
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    height: 80px;
+    padding: 16px 0 16px 16px;
+    border-bottom: 0.5px solid rgba(22,24,35,0.12);
+}
+.tiktok-avatar img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+.conversation-header.jsx-2123414624 .name-container.jsx-2123414624 {
+    margin-left: 12px;
+}
+.conversation-header.jsx-2123414624 .name-container.jsx-2123414624 .nickname.jsx-2123414624 {
+    font-family: "proxima-semibold",Arial,Tahoma,PingFangSC,sans-serif,"Segoe UI Emoji","Noto Emoji";
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+}
+.conversation-header.jsx-2123414624 .name-container.jsx-2123414624 .unique-id.jsx-2123414624 {
+    font-family: "proxima-regular",Arial,Tahoma,PingFangSC,sans-serif,"Segoe UI Emoji","Noto Emoji";
+    font-weight: 400;
+    margin-top: 2px;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(22,24,35,0.75);
+}
+.conversation-main.jsx-2123414624 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    padding: 24px 0 16px;
+}
+.conversation-item-wrapper.jsx-228382986 {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+.conversation-item-wrapper.jsx-228382986 .message-container.jsx-228382986 {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    margin: 8px 0px 8px 24px;
+}
+.conversation-item-wrapper.jsx-228382986 .message-container.myself.jsx-228382986 {
+    flex-direction: row-reverse;
+    align-self: flex-end;
+    margin-right: 24px;
+}
+.conversation-item-wrapper.jsx-228382986 .message-container.myself.jsx-228382986 .text-container.jsx-228382986 {
+    margin-right: 8px;
+    margin-left: 0px;
+    background: rgba(22, 24, 35, 0.06);
+}
+.conversation-item-wrapper.jsx-228382986 .message-container.jsx-228382986 .text-container.jsx-228382986 {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    overflow: hidden;
+    max-width: 360px;
+    margin-right: 0px;
+    margin-left: 8px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    background: transparent;
+    font-size: 16px;
+    line-height: 22px;
+    word-break: break-word;
+    white-space: pre-line;
+}
+.conversation-item-wrapper.jsx-228382986 .message-container.jsx-228382986 .icon-more.jsx-228382986 {
+    display: none;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 9px 16px 0px;
+    cursor: pointer;
+}
+.conversation-bottom.jsx-2662929349 {
+    display: flex;
+    align-items: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px 16px;
+    border-top: 0.5px solid rgba(22, 24, 35, 0.12);
+}
+.conversation-bottom.jsx-2662929349 .editor-container.jsx-2662929349 {
+    width: calc(100%);
+    transition: width 150ms cubic-bezier(0.4, 0.14, 0.3, 1) 0s;
+}
+.comment-input-inner-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    background: rgba(22,24,35,0.06);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    z-index: 2;
+}
+.comment-input-inner-wrapper .editor {
+    box-sizing: border-box;
+    cursor: text;
+    padding-left: 16px;
+    padding-right: 45px;
+    word-break: break-all;
+    white-space: pre-line;
+}
+.comment-input-inner-wrapper .editor .public-DraftEditorPlaceholder-root {
+    position: absolute;
+    top: 10px;
+    left: 17px;
+    z-index: -1;
+    font-family: ProximaNova,system-ui;
+    font-size: 15px;
+    line-height: 18px;
+    color: rgba(22,24,35,0.5);
+    right: 15%;
+}
+.comment-input-inner-wrapper .editor .emoji-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 2px;
+    right: 11px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+.emojiSelect {
+    display: inline-block;
+}
+.emojiDarkSelectButton, .emojiDarkSelectButtonPressed, .emojiSelectButton, .emojiSelectButtonPressed {
+    width: 24px;
+    height: 24px;
+    margin-top: 4px;
+    padding: 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNCA2QzE0LjA1ODkgNiA2IDE0LjA1ODkgNiAyNEM2IDMzLjk0MTEgMTQuMDU4OSA0MiAyNCA0MkMzMy45NDExIDQyIDQyIDMzLjk0MTEgNDIgMjRDNDIgMTQuMDU4OSAzMy45NDExIDYgMjQgNlpNMiAyNEMyIDExLjg0OTcgMTEuODQ5NyAyIDI0IDJDMzYuMTUwMyAyIDQ2IDExLjg0OTcgNDYgMjRDNDYgMzYuMTUwMyAzNi4xNTAzIDQ2IDI0IDQ2QzExLjg0OTcgNDYgMiAzNi4xNTAzIDIgMjRaIiBmaWxsPSJibGFjayIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE3IDIzQzE4LjY1NjkgMjMgMjAgMjEuMjA5MSAyMCAxOUMyMCAxNi43OTA5IDE4LjY1NjkgMTUgMTcgMTVDMTUuMzQzMSAxNSAxNCAxNi43OTA5IDE0IDE5QzE0IDIxLjIwOTEgMTUuMzQzMSAyMyAxNyAyM1oiIGZpbGw9ImJsYWNrIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzEgMjNDMzIuNjU2OSAyMyAzNCAyMS4yMDkxIDM0IDE5QzM0IDE2Ljc5MDkgMzIuNjU2OSAxNSAzMSAxNUMyOS4zNDMxIDE1IDI4IDE2Ljc5MDkgMjggMTlDMjggMjEuMjA5MSAyOS4zNDMxIDIzIDMxIDIzWiIgZmlsbD0iYmxhY2siLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xNiAyOC4zNDMxQzE2IDMxLjQ2NzMgMTkuNTgxNyAzNiAyNCAzNkMyOC40MTgzIDM2IDMyIDMxLjQ2NzMgMzIgMjguMzQzMUMzMiAyNS4yMTkgMTYgMjUuMjE5IDE2IDI4LjM0MzFaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K);
+    background-size: 24px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    font-size: 0;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.emojiSelectPopoverClosed {
+    display: none;
+}
+.emojiSelectPopoverTitle {
+    display: none;
+    margin: 0 0 0.3em;
+    padding-left: 1em;
+    height: 2.5em;
+    line-height: 2.5em;
+    font-weight: 400;
+    font-size: 1em;
+    color: #9e9e9e;
+}
+.conversation-item-wrapper.jsx-228382986 .message-container.jsx-228382986 .text-container.jsx-228382986 p.jsx-228382986 {
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: proxima-regular, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+}
+.conversation-main.jsx-2123414624 .time-container.jsx-2123414624 {
+    font-family: "proxima-regular",Arial,Tahoma,PingFangSC,sans-serif,"Segoe UI Emoji","Noto Emoji";
+    font-weight: 400;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+    color: rgba(22,24,35,0.5);
+}
+.conversation-bottom.jsx-2662929349 .editor-container.has-content.jsx-2662929349 {
+    width: calc((100% - 32px) - 16px);
+}
+.conversation-bottom.jsx-2662929349 .send-button.jsx-2662929349 {
+    width: 32px;
+    height: 32px;
+    margin: 0px 0px 3px 16px;
+    background-image: url(https://lf16-tiktok-web.ttwstatic.com/obj/tiktok-web/tiktok/web/node/_next/static/images/send-746a8f8….svg);
+    background-size: 32px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.conversation-main.jsx-2123414624 .time-container.first-time.jsx-2123414624 {
+    margin-top: 0;
+    padding-top: 20px;
+}
+.messages-layout-main.jsx-3100779177 {
+    position: relative;
+    -webkit-flex-direction: row !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+    width: 100%;
+    height: 100%;
+}
+.page-with-header {
+    padding-top: 60px;
+}
+.emojiSelectPopoverGroups {
+    position: relative;
+    z-index: 0;
+    width: 308px;
+    height: 280px;
+}
+
+.modal.show.jsx-1285478177 {
+    display: block;
+}
+.modal.jsx-1285478177 .modal-wrapper.jsx-1285478177 {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    left: 0;
+    z-index: 1000;
+    overflow: auto;
+    outline: 0;
+}
+.modal.jsx-1285478177 .modal-mask.jsx-1285478177 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(22,22,22,0.9);
+}
+.modal.jsx-1285478177 .modal-wrapper.jsx-1285478177 .modal-content.jsx-1285478177 {
+    position: relative;
+    border-radius: 8px;
+    margin: auto;
+}
+.report-reason-container {
+    width: 700px;
+    min-height: 400px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+    border-radius: 8px;
+}
+.report-reason-container .report-reason-header {
+    position: relative;
+}
+.report-reason-container .report-reason-header {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0px 24px;
+    height: 72px;
+}
+.report-reason-container .report-reason-header .title {
+    font-family: proxima-bold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: rgb(22, 24, 35);
+}
+.report-reason-container .report-reason-header::after {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 1px;
+    background: rgba(22, 24, 35, 0.2);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%) scale(0.5);
+}
+.report-reason-container .report-reason-header::after {
+    bottom: 0px;
+}
+.report-reason-container .report-reason-content {
+    position: relative;
+}
+.report-reason-container .report-reason-content {
+    min-height: 253px;
+}
+.report-reason-container .report-reason-content .report-reason-why-title {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 16px 24px;
+}
+.report-reason-container .report-reason-content .report-reason-group {
+    padding: 0px 24px 0px 8px;
+}
+.report-reason-container .report-reason-content .report-reason-group .report-reason-item {
+    display: inline-block;
+    font-family: proxima-bold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 12px 16px;
+    background: rgb(241, 241, 241);
+    border-radius: 24px;
+    cursor: pointer;
+    margin-left: 16px;
+    margin-bottom: 16px;
+}
+.report-reason-container .report-reason-footer {
+    padding: 23px 24px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+.report-reason-container .report-reason-footer .report-reason-button-container {
+    width: 344px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.tiktok-btn-pc {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    font-family: ProximaNova,system-ui;
+    min-width: 88px;
+    height: 28px;
+    padding: 6px 8px;
+    background-color: #fff;
+    border: 1px solid rgba(22,24,35,0.12);
+    color: #161823;
+    user-select: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    -webkit-transition: all 0.2s cubic-bezier(0.65,0,0.35,1);
+    transition: all 0.2s cubic-bezier(0.65,0,0.35,1);
+    font-size: 18px;
+    line-height: 25px;
+    font-weight: 700;
+}
+.tiktok-btn-pc-primary:hover{
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),#FE2C55;
+}
+.tiktok-btn-light:hover{
+background-color: rgba(22, 24, 35, 0.06);
+}
+.report-reason-container .report-reason-content .report-reason-group .report-reason-item-selected {
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0);
+}
+.tiktok-btn-pc-disabled{
+opacity: 0.6;
+cursor: not-allowed;
+
+}
+.tiktok-btn-pc-disabled:active{
+    pointer-events: none;
+}
+.report-reason-container .report-reason-header .close-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: block;
+}
+.tiktok-btn-pc-medium, .tiktok-btn-pc-small {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+}
+.tiktok-btn-pc-medium {
+    min-width: 164px;
+    height: 36px;
+}
+.tiktok-btn-pc-primary {
+    background-color: #fe2c55;
+    color: #fff;
+    border: none;
+}
+.message-setting-container {
+    width: 700px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+    border-radius: 8px;
+}
+.message-setting-container .message-setting-header {
+    position: relative;
+}
+.message-setting-container .message-setting-header {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0px 24px;
+    height: 72px;
+}
+.message-setting-container .message-setting-content {
+    position: relative;
+}
+.message-setting-container .message-setting-content {
+    height: auto;
+    padding: 0px 24px;
+}
+.message-setting-container .message-setting-content .msg-who {
+    padding-bottom: 40px;
+}
+.message-setting-container .message-setting-content .message-setting-what {
+    padding-top: 16px;
+    font-family: proxima-semibold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgb(22, 24, 35);
+}
+.message-setting-container .message-setting-content .message-setting-detail {
+    padding-top: 4px;
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: rgba(22, 24, 35, 0.5);
+    word-break: break-word;
+}
+.message-setting-container .message-setting-content .setting-type-group {
+    padding-top: 24px;
+}
+.tiktok-radio {
+    position: relative;
+    box-sizing: border-box;
+    overflow: visible;
+    display: inline-flex;
+    align-items: center;
+    color: #161823;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+}
+.tiktok-radio.is-checked .tiktok-radio__radio:after {
+    position: absolute;
+    content: "";
+    width: 16px;
+    height: 16px;
+    top: 2px;
+    left: 2px;
+    background-color: #fe2c55;
+    border-radius: 100px;
+}
+.tiktok-radio input[type=radio] {
+    width: 24px;
+    height: 24px;
+    margin: 0 8px 0 0;
+    box-sizing: border-box;
+    opacity: 0;
+    cursor: pointer;
+}
+.tiktok-radio .tiktok-radio__inner {
+    height: 22px;
+    font-family: ProximaNova,system-ui;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #161823;
+}
+.message-setting-container .message-setting-footer {
+    padding: 23px 24px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+.message-setting-container .message-setting-footer .message-setting-button-container {
+    width: 344px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.tiktok-btn-pc-disabled.tiktok-btn-pc-primary {
+    opacity: 1;
+    background: rgba(22,24,35,0.06);
+}
+.tiktok-radio .tiktok-radio__radio {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    border: 1.5px solid rgba(22,24,35,0.12);
+    border-radius: 50%;
+    z-index: 10;
+}
+.tiktok-radio.is-checked .tiktok-radio__radio {
+    background-color: transparent !important;
+    border: 2px solid #fe2c55;
+}
+.message-setting-container .message-setting-header .title {
+    font-family: proxima-bold, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+    color: rgb(22, 24, 35);
+}
+.message-setting-container .message-setting-header::after {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 1px;
+    background: rgba(22, 24, 35, 0.2);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%) scale(0.5);
+}
+.message-setting-container .message-setting-header::after {
+    bottom: 0px;
+}
+.message-setting-container .message-setting-header .close-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: block;
+}
+.message-setting-container .message-setting-content .setting-type {
+    font-family: proxima-regular, Arial, Tahoma, PingFangSC, sans-serif, "Segoe UI Emoji", "Noto Emoji";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgb(22, 24, 35);
+}
+.tiktok-radio:first-child {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+}
+@media (max-width: 991px){
+.main-body.middle.em-follow {
+    -webkit-box-pack: unset;
+    -webkit-justify-content: unset;
+    -ms-flex-pack: unset;
+    justify-content: unset;
+}
+.share-layout {
+    width: auto;
+}
+.share-layout .share-layout-content {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 24px;
+}
+}
