@@ -1,4 +1,4 @@
-export const api='https://web-production-5b64.up.railway.app/api'
+export const api='https://tiktok-3pv4.onrender.com/api'
 export const verifyemailURL=`${api}/v3/verify/email`
 export const verifyphoneURL=`${api}/v3/verify/phone`
 export const sendOTPemailURL=`${api}/v3/send-otp/email`
