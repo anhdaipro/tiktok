@@ -1,0 +1,9 @@
+<resources>
+  <string name="app_name">tiktok</string>
+  <string name="expo_system_ui_user_interface_style" translatable="false">automatic</string>
+  <string name="facebook_app_id">2678524135908127</string>
+  <string name="facebook_client_token">9b2b8cf4b1e545c147107e047c2ae374</string>
+  <string name="fb_login_protocol_scheme">fb2678524135908127</string>
+  <string name="expo_splash_screen_resize_mode" translatable="false">contain</string>
+  <string name="expo_splash_screen_status_bar_translucent" translatable="false">false</string>
+</resources>

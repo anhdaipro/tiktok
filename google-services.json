@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "980633605159",
+    "project_id": "tidal-fusion-476705-p6",
+    "storage_bucket": "tidal-fusion-476705-p6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980633605159:android:59f0e545db6441a720aa02",
+        "android_client_info": {
+          "package_name": "com.tiktokapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980633605159-t56theb5q838ii56i2rc13sj2sapo6mn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tiktokapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "980633605159-j305374vkpfva1o8v5isaj6bq1262h9h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf2PsGc1DbNeIP7o8YG7K-dUokPk0EAy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980633605159-j305374vkpfva1o8v5isaj6bq1262h9h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,8 +8,25 @@
     "scheme": "tiktok",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "notification": {
+      "icon": "./assets/cart.jpg",
+      "color": "#ffffff"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tiktokapp",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Ứng dụng cần truy cập Camera để bạn có thể quay video review món ăn.",
+        "NSMicrophoneUsageDescription": "Ứng dụng cần truy cập Micro để thu âm thanh cho video của bạn.",
+        "NSPhotoLibraryUsageDescription": "Cho phép truy cập thư viện để tải video review lên.",
+        "NSPhotoLibraryAddUsageDescription": "Cho phép lưu video đã chỉnh sửa về máy.",
+        "NSFaceIDUsageDescription": "Cho phép ứng dụng sử dụng Face ID để xác thực an toàn và bảo vệ thông tin của bạn.",
+        "UIBackgroundModes": [
+          "audio",
+          "fetch",
+          "remote-notification"
+        ]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -18,8 +35,21 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "package": "com.tiktokapp",
+      "googleServicesFile": "./google-services.json",
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "CAMERA",
+        "RECORD_AUDIO",
+        "READ_MEDIA_IMAGES",
+        "READ_MEDIA_VIDEO",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "MODIFY_AUDIO_SETTINGS",
+        "BLUETOOTH",
+        "INTERNET"
+      ]
     },
     "web": {
       "output": "static",
@@ -38,11 +68,68 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": true,
+          "supportsPictureInPicture": true
+        }
+      ],
+      [
+        "@config-plugins/react-native-webrtc",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone"
+        }
+      ],
+      "expo-font",
+      "expo-web-browser",
+      "@react-native-google-signin/google-signin",
+      "@react-native-firebase/messaging",
+      "react-native-compressor",
+      [
+        "react-native-maps",
+        {
+          "iosGoogleMapsApiKey": "AIzaSyALB8FmzBZbPVLEBdJnoZCIhc1XW_MMAUM",
+          "androidGoogleMapsApiKey": "AIzaSyALB8FmzBZbPVLEBdJnoZCIhc1XW_MMAUM"
+        }
+      ],
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
+        }
+      ],
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "2678524135908127",
+          "clientToken": "9b2b8cf4b1e545c147107e047c2ae374",
+          "displayName": "FlyFood TikTok",
+          "scheme": "fb2678524135908127",
+          "advertiserIDCollectionEnabled": false,
+          "autoLogAppEventsEnabled": false,
+          "isAutoInitEnabled": true
+        }
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Cho phép ứng dụng sử dụng Face ID để xác thực an toàn và bảo vệ thông tin của bạn."
+        }
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a9fa6a27-7fa4-4745-9269-846f7f2dfbd9"
+      }
     }
   }
 }
