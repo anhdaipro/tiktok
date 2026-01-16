@@ -38,6 +38,7 @@ yarn-error.*
 
 app-example
 assets/
-nestjs-backend/
 *.msi
 # generated native folders
+
+vocal-clone-476803-u3-firebase-adminsdk-fbsvc-c5050d9afa.json
